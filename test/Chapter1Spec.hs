@@ -19,9 +19,8 @@ spec = do
                 , (10, 20)
                 ]
 
-
-        it "quadruple 3" $ do
-            quadruple 3 `shouldBe` 12
-
-        it "quadruple 5" $ do
-            quadruple 5 `shouldBe` 20
+        it "quadruple integers" $ do
+            mapM_ (\(input, expected) -> quadruple input `shouldBe` expected)
+                [ (3, 12)
+                , (5, 20)
+                ]
