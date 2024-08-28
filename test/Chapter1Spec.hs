@@ -9,11 +9,16 @@ spec = do
         it "add one" $ do
             add_one 0 `shouldBe` 1
 
-        it "double 2" $ do
-            double 2 `shouldBe` 4
+        it "double integers" $ do
+            mapM_ (\(input, expected) -> double input `shouldBe` expected)
+                [ (0, 0)
+                , (2, 4)
+                , (-2, -4)
+                , (4, 8)
+                , (5, 10)
+                , (10, 20)
+                ]
 
-        it "double 4" $ do
-            double 4 `shouldBe` 8
 
         it "quadruple 3" $ do
             quadruple 3 `shouldBe` 12
