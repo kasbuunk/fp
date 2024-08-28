@@ -11,3 +11,6 @@ spec = do
 
         it "double" $ do
             double 2 `shouldBe` 4
+
+        it "double" $ do
+            double 4 `shouldBe` 8
