@@ -1,6 +1,7 @@
-module Chapter1 (spec) where
+module Chapter1Spec (spec) where
 
 import Test.Hspec
+import Chapter1 (add_one)
 
 spec :: Spec
 spec = do
@@ -10,3 +11,6 @@ spec = do
 
         it "example test 2" $ do
             2 `shouldBe` 2
+
+        it "add one" $ do
+            add_one 0 `shouldBe` 1
