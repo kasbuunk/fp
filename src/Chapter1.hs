@@ -1,4 +1,4 @@
-module Chapter1 (add_one, double, quadruple, last', last'') where
+module Chapter1  where
 
 add_one :: Int -> Int
 add_one n = n + 1
@@ -13,4 +13,10 @@ last' :: [a] -> a
 last' xs = head (reverse xs)
 
 last'' :: [a] -> a
-last'' xs = xs!!(length xs - 1)
+last'' xs = (head . reverse) xs
+
+last''' :: [a] -> a
+last''' = head . reverse
+
+last'''' :: [a] -> a
+last'''' xs = xs!!(length xs - 1)
