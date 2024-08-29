@@ -33,3 +33,24 @@ spec = do
             last'' input `shouldBe` expected
             last''' input `shouldBe` expected
             last'''' input `shouldBe` expected
+
+        it "select second from list" $ do
+            second [1,2,3,4,5] `shouldBe` 2
+
+        it "swap two items" $ do
+            swap ('a', 5) `shouldBe` (5, 'a')
+
+        it "form pair" $ do
+            pair 1 "abc" `shouldBe` (1, "abc")
+
+        it "double number" $ do
+            double' 10.5 `shouldBe` 21
+
+        it "is palindrome" $ do
+            palindrome "aba"
+
+        it "is not palindrome" $ do
+            not (palindrome "ba")
+
+        it "apply function twice" $ do
+            quadruple 5 `shouldBe` twice double 5
