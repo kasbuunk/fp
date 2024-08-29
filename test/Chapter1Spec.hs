@@ -54,3 +54,6 @@ spec = do
 
         it "apply function twice" $ do
             quadruple 5 `shouldBe` twice double 5
+
+        it "pipe operator" $ do
+            reverse [1,2,3] |> head `shouldBe` head (reverse [1,2,3])

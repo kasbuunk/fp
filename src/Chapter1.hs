@@ -38,3 +38,6 @@ palindrome xs = reverse xs == xs
 
 twice :: (a -> a) -> a -> a
 twice f x = f (f x)
+
+(|>) :: a -> (a -> b) -> b
+x |> f = f x
