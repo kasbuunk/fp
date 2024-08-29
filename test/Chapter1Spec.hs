@@ -1,7 +1,7 @@
 module Chapter1Spec (spec) where
 
 import Test.Hspec
-import Chapter1 (add_one, double, quadruple)
+import Chapter1 (add_one, double, quadruple, last', last'')
 
 spec :: Spec
 spec = do
@@ -24,3 +24,9 @@ spec = do
                 [ (3, 12)
                 , (5, 20)
                 ]
+
+        it "alternatively implement last" $ do
+            last' [1,2,3,4,5] `shouldBe` 5
+
+        it "alternatively implement last again" $ do
+            last'' [1,2,3,4,5] `shouldBe` 5
