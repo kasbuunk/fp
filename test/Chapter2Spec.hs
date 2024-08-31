@@ -23,3 +23,6 @@ spec = do
 
         it "remove the first n elements from a list" $ do
             drop 3 [1,2,3,4,5] `shouldBe` [4,5]
+
+        it "calculate the length of a list" $ do
+            length [1,2,3,4,5] `shouldBe` 5
