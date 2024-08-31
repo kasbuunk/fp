@@ -35,6 +35,13 @@ reverse_qsort (x:xs) = reverse_qsort larger ++ [x] ++ reverse_qsort smaller
                             smaller = [a | a <- xs, a <= x]
                             larger = [a | a <- xs, a > x]
 
+qsort_unique :: Ord a => [a] -> [a]
+qsort_unique [] = []
+qsort_unique (x:xs) = qsort_unique smaller ++ [x] ++ qsort_unique larger
+               where
+                   smaller = [a | a <- xs, a < x]
+                   larger = [a | a <- xs, a > x]
+
 product' :: Num a => [a] -> a
 product' [] = 1
 product' (x:xs) = x * product xs

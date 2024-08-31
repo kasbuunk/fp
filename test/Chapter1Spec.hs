@@ -69,3 +69,6 @@ spec = do
                 , ([1,2], [2,1])
                 , ([2,4,4,3,1,9], [9,4,4,3,2,1])
                 ]
+
+        it "T1.5: qsort remove duplicates" $ do
+            qsort_unique [2,2,3,1,1] `shouldBe` [1,2,3]
