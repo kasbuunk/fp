@@ -54,3 +54,11 @@ See `last'` in the Playground module.
 
 T2.5
 See `init'` in the Chapter2 module.
+
+W2.5
+a) The error arises because the length function accepts a list, but is given a function `drop`.
+b) The parentheses are not necessary, because drop is a curried function. So after applying it to `2`, it returns a function that accepts the list that follows. Only after that application does it return a list that will be the argument to the length function.
+
+W2.8
+a) `take` takes an integer n and list a and returns a list with the first n elements of a.
+b) When the first argument to `take` is 0, it will return an empty list whatever the second argument is.
