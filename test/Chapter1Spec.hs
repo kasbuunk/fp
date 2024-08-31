@@ -13,6 +13,11 @@ spec = do
         it "W1.1: surface square" $ do
             square 5 `shouldBe` 25
 
-        -- T1.1 means exercise 1 in chapter 1 in the text book.
-        it "T1.1: calculate double (double 2)" $ do
-            double_twice 2 `shouldBe` double (double 2)
+        it "T1.3a: generate list of numbers" $ do
+            numbers 6 `shouldBe` [1,2,3,4,5,6]
+
+        it "T1.3b: numbers 5" $ do
+            numbers 5 `shouldBe` [1,2,3,4,5]
+
+        it "T1.3c: sum from 1 to 5" $ do
+            sum (numbers 5) `shouldBe` 15

@@ -10,3 +10,6 @@ square side = side * side
 
 double_twice :: Num a => a -> a
 double_twice n = double' n
+
+numbers :: Int -> [Int]
+numbers n = [1..n]
