@@ -25,6 +25,7 @@ source-repository head
 
 library
   exposed-modules:
+      Chapter1
       Lib
       Playground
   other-modules:
@@ -56,6 +57,7 @@ test-suite fp-test
   type: exitcode-stdio-1.0
   main-is: Spec.hs
   other-modules:
+      Chapter1Spec
       PlaygroundSpec
       Paths_fp
   autogen-modules:
