@@ -20,3 +20,6 @@ spec = do
 
         it "take the first n elements of a list" $ do
             take 3 [1,2,3,4,5] `shouldBe` [1,2,3]
+
+        it "remove the first n elements from a list" $ do
+            drop 3 [1,2,3,4,5] `shouldBe` [4,5]
