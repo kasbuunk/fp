@@ -47,3 +47,6 @@ spec = do
 
         it "average" $ do
             average [1,2,9,10,3] `shouldBe` 5
+
+        it "alternative init'" $ do
+            init' [1,2,3,4,5] `shouldBe` init [1,2,3,4,5]

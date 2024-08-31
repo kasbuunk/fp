@@ -14,3 +14,13 @@ factorial n = product [1..n]
 average :: [Int] -> Int
 average [] = 0
 average xs = sum xs `div` length xs
+
+n = a `div` length xs
+    where
+        a = 10
+        xs = [1,2,3,4,5]
+
+
+init' :: [a] -> [a]
+init' [] = []
+init' xs = reverse (tail (reverse xs))

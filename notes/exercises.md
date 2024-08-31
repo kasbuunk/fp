@@ -31,3 +31,26 @@ So, sum [x] = x.
 
 QED.
 ```
+
+## Chapter 2
+
+T2.2
+(2^3)*4
+(2*3)+(4*5)
+2+(3*(4^5))
+
+T2.3
+Corrected script:
+
+```haskell
+n = a `div` length xs
+    where
+        a = 10
+        xs = [1,2,3,4,5]
+```
+
+T2.4
+See `last'` in the Playground module.
+
+T2.5
+See `init'` in the Chapter2 module.
