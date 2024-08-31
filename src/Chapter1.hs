@@ -28,6 +28,13 @@ qsort (x:xs) = qsort smaller ++ [x] ++ qsort larger
                    -- All values of xs that are greater than x.
                    larger = [a | a <- xs, a > x]
 
+reverse_qsort :: Ord a => [a] -> [a]
+reverse_qsort [] = []
+reverse_qsort (x:xs) = reverse_qsort larger ++ [x] ++ reverse_qsort smaller
+                        where
+                            smaller = [a | a <- xs, a <= x]
+                            larger = [a | a <- xs, a > x]
+
 product' :: Num a => [a] -> a
 product' [] = 1
 product' (x:xs) = x * product xs

@@ -61,3 +61,11 @@ spec = do
                 , ([1], 1)
                 , ([2,3,4], 24)
                 ]
+
+        it "T1.4: reverse qsort" $ do
+            mapM_ (\(input, expected) -> reverse_qsort input `shouldBe` reverse (qsort input))
+                [([], [])
+                , ([1], [1])
+                , ([1,2], [2,1])
+                , ([2,4,4,3,1,9], [9,4,4,3,2,1])
+                ]
