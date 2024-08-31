@@ -41,3 +41,6 @@ twice f x = f (f x)
 
 (|>) :: a -> (a -> b) -> b
 x |> f = f x
+
+faculty :: Int -> Int
+faculty n = product [1..n]

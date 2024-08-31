@@ -57,3 +57,6 @@ spec = do
 
         it "pipe operator" $ do
             reverse [1,2,3] |> head `shouldBe` head (reverse [1,2,3])
+
+        it "faculty" $ do
+            faculty 6 `shouldBe` 1*2*3*4*5*6
