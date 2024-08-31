@@ -35,3 +35,6 @@ spec = do
 
         it "append two lists" $ do
             [1,2,3] ++ [4,5] `shouldBe` [1,2,3,4,5]
+
+        it "reverse a list" $ do
+            reverse [1,2,3,4,5] `shouldBe` [5,4,3,2,1]
