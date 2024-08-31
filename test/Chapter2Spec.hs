@@ -50,3 +50,6 @@ spec = do
 
         it "alternative init'" $ do
             init' [1,2,3,4,5] `shouldBe` init [1,2,3,4,5]
+
+        it "sort characters in string" $ do
+            sort_string "functioneel" `shouldBe` "ceefilnnotu"

@@ -1,5 +1,7 @@
 module Chapter2 where
 
+import Data.List
+
 add_one x = x+1
 
 double :: Num a => a -> a
@@ -24,3 +26,6 @@ n = a `div` length xs
 init' :: [a] -> [a]
 init' [] = []
 init' xs = reverse (tail (reverse xs))
+
+sort_string :: [Char] -> [Char]
+sort_string cs = sort cs
