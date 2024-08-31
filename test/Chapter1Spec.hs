@@ -24,3 +24,21 @@ spec = do
 
         it "Alternatively implement sum" $ do
             sum' (numbers 5) `shouldBe` sum (numbers 5)
+
+        it "Quicksort algorithm: list of chars" $ do
+            mapM_ (\(input, expected) -> qsort input `shouldBe` expected)
+                [
+                ("abdc", "abcd")
+                , ([], [])
+                , (['a'], ['a'])
+                , (['a','b'], ['a','b'])
+                , (['b','a'], ['a','b'])
+                ]
+
+        it "Quicksort algorithm: list of numbers" $ do
+            mapM_ (\(input, expected) -> qsort input `shouldBe` expected)
+                [
+                ([], [])
+                , ([0], [0])
+                , ([1,4,5,2], [1,2,4,5])
+                ]
