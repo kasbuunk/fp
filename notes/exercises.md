@@ -15,3 +15,19 @@ W1.3
 a) See Spec.
 b) See Spec.
 c) The expression sum [1..5] can be formulated as such: `sum (numbers 5)`. See Spec.
+
+T1.2
+Prove that `sum [x] = x` for any integer `x`.
+
+Proof:
+
+```
+sum [x]
+= x + sum []
+= x + 0
+= x
+
+So, sum [x] = x.
+
+QED.
+```
