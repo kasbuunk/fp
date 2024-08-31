@@ -25,6 +25,9 @@ spec = do
         it "Alternatively implement sum" $ do
             sum' (numbers 5) `shouldBe` sum (numbers 5)
 
+        it "++ operator" $ do
+            [] ++ [4] ++ [3,2] ++ [] ++ [8] `shouldBe` [4,3,2,8]
+
         it "Quicksort algorithm: list of chars" $ do
             mapM_ (\(input, expected) -> qsort input `shouldBe` expected)
                 [
