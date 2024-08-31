@@ -16,4 +16,7 @@ spec = do
             tail [1,2,3,4,5] `shouldBe` [2,3,4,5]
 
         it "select nth element from list" $ do
-            [1,2,3,4,5]!!3 `shouldBe` 4
+            [1,2,3,4,5] !! 3 `shouldBe` 4
+
+        it "take the first n elements of a list" $ do
+            take 3 [1,2,3,4,5] `shouldBe` [1,2,3]
