@@ -13,3 +13,7 @@ double_twice n = double' n
 
 numbers :: Int -> [Int]
 numbers n = [1..n]
+
+sum' :: Num a => [a] -> a
+sum' [] = 0
+sum' (x:xs) = x + sum' xs

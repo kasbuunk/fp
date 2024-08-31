@@ -21,3 +21,6 @@ spec = do
 
         it "T1.3c: sum from 1 to 5" $ do
             sum (numbers 5) `shouldBe` 15
+
+        it "Alternatively implement sum" $ do
+            sum' (numbers 5) `shouldBe` sum (numbers 5)
