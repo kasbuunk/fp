@@ -27,3 +27,7 @@ qsort (x:xs) = qsort smaller ++ [x] ++ qsort larger
                    smaller = [a | a <- xs, a <= x]
                    -- All values of xs that are greater than x.
                    larger = [a | a <- xs, a > x]
+
+product' :: Num a => [a] -> a
+product' [] = 1
+product' (x:xs) = x * product xs

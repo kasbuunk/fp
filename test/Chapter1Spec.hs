@@ -54,3 +54,10 @@ spec = do
                 , ([2], 2)
                 , ([2.5], 2.5)
                 ]
+
+        it "T1.3: define product alternatively" $ do
+            mapM_ (\(input, expected) -> product' input `shouldBe` expected)
+                [ ([], 1)
+                , ([1], 1)
+                , ([2,3,4], 24)
+                ]
