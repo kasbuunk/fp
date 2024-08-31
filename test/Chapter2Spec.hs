@@ -32,3 +32,6 @@ spec = do
 
         it "calculate the product of a list of numbers" $ do
             product [1,2,3,4,5] `shouldBe` 120
+
+        it "append two lists" $ do
+            [1,2,3] ++ [4,5] `shouldBe` [1,2,3,4,5]
