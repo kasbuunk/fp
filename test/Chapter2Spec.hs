@@ -26,3 +26,6 @@ spec = do
 
         it "calculate the length of a list" $ do
             length [1,2,3,4,5] `shouldBe` 5
+
+        it "calculate the sum of a list of numbers" $ do
+            sum [1,2,3,4,5] `shouldBe` 15
