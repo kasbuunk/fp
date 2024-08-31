@@ -9,5 +9,10 @@ spec = do
         it "import test" $ do
             add_one 0 `shouldBe` 1
 
-        it "Exercise 1.1: surface square" $ do
+        -- W1.1 means exercise 1.1 in the work book.
+        it "W1.1: surface square" $ do
             square 5 `shouldBe` 25
+
+        -- T1.1 means exercise 1 in chapter 1 in the text book.
+        it "T1.1: calculate double (double 2)" $ do
+            double_twice 2 `shouldBe` double (double 2)
