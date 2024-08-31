@@ -38,3 +38,6 @@ spec = do
 
         it "reverse a list" $ do
             reverse [1,2,3,4,5] `shouldBe` [5,4,3,2,1]
+
+        it "quadruple number" $ do
+            quadruple 5 `shouldBe` 20
