@@ -29,3 +29,6 @@ spec = do
 
         it "calculate the sum of a list of numbers" $ do
             sum [1,2,3,4,5] `shouldBe` 15
+
+        it "calculate the product of a list of numbers" $ do
+            product [1,2,3,4,5] `shouldBe` 120
