@@ -1,9 +1,9 @@
 module Main (main) where 
 
 import Test.Hspec
-import qualified Chapter1Spec
+import qualified PlaygroundSpec
 
 main :: IO ()
 main = hspec $ do
-    describe "Chapter1" Chapter1Spec.spec
+    describe "Playground" PlaygroundSpec.spec
     -- Add the rest
