@@ -41,3 +41,6 @@ spec = do
 
         it "quadruple number" $ do
             quadruple 5 `shouldBe` 20
+
+        it "factorial" $ do
+            factorial 5 `shouldBe` 1*2*3*4*5
