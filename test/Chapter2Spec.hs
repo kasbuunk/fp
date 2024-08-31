@@ -44,3 +44,6 @@ spec = do
 
         it "factorial" $ do
             factorial 5 `shouldBe` 1*2*3*4*5
+
+        it "average" $ do
+            average [1,2,9,10,3] `shouldBe` 5

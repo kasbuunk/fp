@@ -10,3 +10,7 @@ quadruple x = double (double x)
 
 factorial :: Int -> Int
 factorial n = product [1..n]
+
+average :: [Int] -> Int
+average [] = 0
+average xs = sum xs `div` length xs
