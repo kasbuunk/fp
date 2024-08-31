@@ -11,3 +11,6 @@ spec = do
 
         it "get head from list" $ do
             head [1,2,3,4,5] `shouldBe` 1
+
+        it "get tail from list" $ do
+            tail [1,2,3,4,5] `shouldBe` [2,3,4,5]
