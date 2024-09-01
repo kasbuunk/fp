@@ -160,3 +160,12 @@ spec = do
 
         it "T3.3: typeOf twice" $ do
             twice double 2 `shouldBe` 8
+
+        it "exclusive or: False False" $ do
+            exclOr False False `shouldBe` False
+
+        it "exclusive or: True True" $ do
+            exclOr True True `shouldBe` False
+
+        it "exclusive or: False True" $ do
+            exclOr False True `shouldBe` True

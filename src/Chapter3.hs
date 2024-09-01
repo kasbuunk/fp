@@ -32,3 +32,6 @@ palindrome xs = reverse xs == xs
 
 twice :: (a -> a) -> a -> a
 twice f x = f (f x)
+
+exclOr :: Bool -> Bool -> Bool
+exclOr first second = (first && not second) || (not first && second)
