@@ -60,3 +60,18 @@ spec = do
 
         it "show Tuple" $ do
             show (1, 'a', False) `shouldBe` "(1,'a',False)"
+
+        it "read Bool" $ do
+            (read "False" :: Bool) `shouldBe` False
+
+        it "read Char" $ do
+            (read "'a'" :: Char) `shouldBe` 'a'
+
+        it "read String" $ do
+            (read "\"abc\"" :: String) `shouldBe` "abc"
+
+        it "read list" $ do
+            (read "[1,2,3]" :: [Int]) `shouldBe` [1,2,3]
+
+        it "read Tuple" $ do
+            (read "(1, False, ['a','b'])" :: (Int, Bool, [Char])) `shouldBe` (1, False, ['a','b'])
