@@ -227,3 +227,8 @@ spec = do
             'h':"ello" `shouldBe` h
             ['h','e','l','l','o'] `shouldBe` h
             "hel" ++ "lo" `shouldBe` h
+
+        it "assert list types" $ do
+            typeOf (['a', 'b', 'c']) `shouldBe` typeOf([] :: [Char])
+            typeOf ([not]) `shouldBe` typeOf([not] :: [Bool -> Bool])
+            typeOf ("Hello world!") `shouldBe` typeOf ("" :: String)
