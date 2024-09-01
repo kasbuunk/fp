@@ -221,3 +221,9 @@ spec = do
 
         it "construct with (:) and []" $ do
             0:(1:(2:[])) `shouldBe` [0,1,2]
+
+        it "construct hello" $ do
+            let h = "hello"
+            'h':"ello" `shouldBe` h
+            ['h','e','l','l','o'] `shouldBe` h
+            "hel" ++ "lo" `shouldBe` h
