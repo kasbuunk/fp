@@ -232,3 +232,6 @@ spec = do
             typeOf (['a', 'b', 'c']) `shouldBe` typeOf([] :: [Char])
             typeOf ([not]) `shouldBe` typeOf([not] :: [Bool -> Bool])
             typeOf ("Hello world!") `shouldBe` typeOf ("" :: String)
+
+        it "length of a list" $ do
+            length "Hello" `shouldBe` 5
