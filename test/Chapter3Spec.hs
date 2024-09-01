@@ -48,3 +48,15 @@ spec = do
 
         it "second value of tuple is considered when the first are equal" $ do
             ('a', 2) > ('a', 1) `shouldBe` True
+
+        it "show False" $ do
+            show False `shouldBe` "False"
+
+        it "show Char" $ do
+            show 'a' `shouldBe` "'a'"
+
+        it "show Int" $ do
+            show 123 `shouldBe` "123"
+
+        it "show Tuple" $ do
+            show (1, 'a', False) `shouldBe` "(1,'a',False)"
