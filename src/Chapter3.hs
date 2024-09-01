@@ -35,3 +35,6 @@ twice f x = f (f x)
 
 exclOr :: Bool -> Bool -> Bool
 exclOr first second = first /= second
+
+isSpace :: Char -> Bool
+isSpace c = c == ' '

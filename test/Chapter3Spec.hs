@@ -169,3 +169,9 @@ spec = do
 
         it "exclusive or: False True" $ do
             exclOr False True `shouldBe` True
+
+        it "isSpace: True" $ do
+            isSpace ' ' `shouldBe` True
+
+        it "isSpace: False" $ do
+            isSpace 'p' `shouldBe` False
