@@ -178,3 +178,15 @@ spec = do
 
         it "concatenate strings with space" $ do
             concatenateWithSpace "Hello," "world!" `shouldBe` "Hello, world!"
+
+        it "try div" $ do
+            div 7 3 `shouldBe` 2
+
+        it "try mod" $ do
+            mod 7 3 `shouldBe` 1
+
+        it "try abs" $ do
+            abs (-5.9) `shouldBe` 5.9
+
+        it "try negate" $ do
+            negate 7 `shouldBe` -7

@@ -79,3 +79,12 @@ W3.1
 
 W3.2
 Types play two roles in a functional programming language. They eliminate a class of programming errors, due to type mismatches. As such it constrains variables to be of a certain (intended and meaningful) type in the context of the expression and not of other values that may lead to unexpected results the expressions were not inteded for. And they allow the programmer to be more explicit in intent, so people and the compiler is aided in reasoning about the program.
+
+W3.3
+
+- `div`: integer division of Integral numbers. Takes two Integrals of the same type and returns an Integral of that same type.
+- `mod`: gives the modulus of two Integral numbers. Same type as `div`.
+- `abs`: takes a Num and returns the absolute value of that Num.
+- `negate`: takes an Num and returns the negation of that Num.
+
+For examples on usage of these functions, see the Chapter's Spec.
