@@ -99,3 +99,9 @@ spec = do
 
         it "absolute value" $ do
             abs (-12) `shouldBe` abs 12
+
+        it "Integral: div" $ do
+            div 7 2 `shouldBe` 3
+
+        it "Integral: mod" $ do
+            mod 7 2 `shouldBe` 1
