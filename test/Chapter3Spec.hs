@@ -212,3 +212,12 @@ spec = do
 
         it "Square root 9.9: Double" $ do
             (sqrt 9.9 :: Double) `shouldBe` (3.146426544510455 :: Double)
+
+        it ":-operator on empty list" $ do
+            1:[] `shouldBe` [1]
+
+        it ":-operator on non-empty list" $ do
+            0:[1,2] `shouldBe` [0,1,2]
+
+        it "construct with (:) and []" $ do
+            0:(1:(2:[])) `shouldBe` [0,1,2]
