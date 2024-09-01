@@ -191,10 +191,18 @@ spec = do
         it "try negate" $ do
             negate 7 `shouldBe` -7
 
-        it "calculate 2^31 :: Int" $ do
+        it "Int 2^31: no overflow" $ do
             -- In contrast to what the text book predicted, this did not result
             -- in an overflow.
             (2 ^ 31 :: Int) `shouldBe` (2147483648 :: Int)
 
-        it "calculate 2^31 :: Integer" $ do
+        it "Int 2^63: overflow" $ do
+            -- The overflow does occur at 2^63, so Ints are probably stored with 64 bits.
+            (2 ^ 63 :: Int) `shouldBe` (-9223372036854775808 :: Int)
+
+        it "Integer 2^31: no overflow" $ do
             (2 ^ 31 :: Integer) `shouldBe` (2147483648 :: Integer)
+
+        it "Integer 2^63: no overflow" $ do
+            -- The overflow does not occur for Integers.
+            (2 ^ 63 :: Integer) `shouldBe` (9223372036854775808 :: Integer)
