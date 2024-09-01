@@ -26,3 +26,25 @@ spec = do
 
         it "try Eq on list" $ do
             [1,2] == [1,2,3] `shouldBe` False
+
+        it "False is lower than True" $ do
+            False < True `shouldBe` True
+
+        it "a is the lowest of a and b" $ do
+            min 'a' 'b' `shouldBe` 'a'
+
+        it "elegant < elephant" $ do
+            "elegant" < "elephant" `shouldBe` True
+
+        it "list is ordered lexicographically" $ do
+            -- Like a phone book, 1 and 2 are equal
+            -- and a missing third element is 'lower'
+            -- than the 3.
+            [1,2] < [1,2,3] `shouldBe` True
+
+        it "tuple is ordered lexicographically" $ do
+            -- The 'a' is compared first.
+            ('a', 2) < ('b', 1) `shouldBe` True
+
+        it "second value of tuple is considered when the first are equal" $ do
+            ('a', 2) > ('a', 1) `shouldBe` True
