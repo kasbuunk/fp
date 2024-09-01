@@ -69,3 +69,13 @@ See the Chapter3 and Chapter3Spec modules.
 
 T3.5
 Functions in general cannot be checked for equality, because of the halting problem. It would lead to a contraction. It may be feasible if the types are known in advance and possibly other constraints are at place to make the functions less powerful.
+
+W3.1
+
+- `7` is an expression and a value of a Num type class.
+- `7 + 3` is an expression, not a value, and evaluates to the value 10 of a Num type class.
+- `7 + x` is an expression, not a value, that evaluates the value equal to x + 7, which will be of a Num type class. If x is not of a Num type, then a type error will occur during evaluation.
+- `double x + 7` is an expression, not a value, and will evaluate to the value equal to x * 2 + 7, which will be of a Num type class.
+
+W3.2
+Types play two roles in a functional programming language. They eliminate a class of programming errors, due to type mismatches. As such it constrains variables to be of a certain (intended and meaningful) type in the context of the expression and not of other values that may lead to unexpected results the expressions were not inteded for. And they allow the programmer to be more explicit in intent, so people and the compiler is aided in reasoning about the program.

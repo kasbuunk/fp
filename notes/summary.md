@@ -31,3 +31,12 @@ The list type is an ordered collection of values of the same type, without a fix
 The tuple type is an ordered set of values of potentially different types. Tuples with zero, two or more elements are allowed. One element is not allowed, due to the role of parentheses in expressions.
 
 The function is a type of its own. It maps arguments from one type to results of another.
+
+An expression is inductively defined as such:
+
+- a value is an expression (atom or base case)
+- a function (or operator) applied to a value
+
+Expressions can be evaluated to values. If the expression is atomic, i.e. a value like `6`, then evaluation yields the same value.
+
+An if-then-else clause is also an expression, but really just a ternary operator. So the syntax is different from other operators, but it really is a function with three arguments: `ifthenelse :: Bool -> a` where `a` is the type of then and else. Both branches must be of the same type.
