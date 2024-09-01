@@ -75,3 +75,27 @@ spec = do
 
         it "read Tuple" $ do
             (read "(1, False, ['a','b'])" :: (Int, Bool, [Char])) `shouldBe` (1, False, ['a','b'])
+
+        it "(+) Num: infix" $ do
+            1 + 2 `shouldBe` 3
+
+        it "(+) Num: prefix" $ do
+            (+) 1 2 `shouldBe` 3
+
+        it "(+) Num: Float" $ do
+            1.0 + 2.0 `shouldBe` 3.0
+
+        it "negate Num: Int" $ do
+            negate 1 `shouldBe` -1
+
+        it "negate Num: Float" $ do
+            negate 1.0 `shouldBe` -1.0
+
+        it "multiply Num" $ do
+            5 * 9.0 `shouldBe` 45.0
+
+        it "signum Num" $ do
+            signum (-12) `shouldBe` -1
+
+        it "absolute value" $ do
+            abs (-12) `shouldBe` abs 12
