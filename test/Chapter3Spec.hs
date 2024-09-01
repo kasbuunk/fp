@@ -190,3 +190,11 @@ spec = do
 
         it "try negate" $ do
             negate 7 `shouldBe` -7
+
+        it "calculate 2^31 :: Int" $ do
+            -- In contrast to what the text book predicted, this did not result
+            -- in an overflow.
+            (2 ^ 31 :: Int) `shouldBe` (2147483648 :: Int)
+
+        it "calculate 2^31 :: Integer" $ do
+            (2 ^ 31 :: Integer) `shouldBe` (2147483648 :: Integer)
