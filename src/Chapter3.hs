@@ -38,3 +38,6 @@ exclOr first second = first /= second
 
 isSpace :: Char -> Bool
 isSpace c = c == ' '
+
+concatenateWithSpace :: String -> String -> String
+concatenateWithSpace s1 s2 = s1 ++ " " ++ s2

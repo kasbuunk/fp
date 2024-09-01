@@ -175,3 +175,6 @@ spec = do
 
         it "isSpace: False" $ do
             isSpace 'p' `shouldBe` False
+
+        it "concatenate strings with space" $ do
+            concatenateWithSpace "Hello," "world!" `shouldBe` "Hello, world!"
