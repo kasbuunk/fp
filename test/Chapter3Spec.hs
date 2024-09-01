@@ -206,3 +206,9 @@ spec = do
         it "Integer 2^63: no overflow" $ do
             -- The overflow does not occur for Integers.
             (2 ^ 63 :: Integer) `shouldBe` (9223372036854775808 :: Integer)
+
+        it "Square root 9.9: Float" $ do
+            (sqrt 9.9 :: Float) `shouldBe` (3.1464264 :: Float)
+
+        it "Square root 9.9: Double" $ do
+            (sqrt 9.9 :: Double) `shouldBe` (3.146426544510455 :: Double)
