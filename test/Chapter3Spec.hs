@@ -105,3 +105,12 @@ spec = do
 
         it "Integral: mod" $ do
             mod 7 2 `shouldBe` 1
+
+        it "Fractional: (/)" $ do
+            1.0 / 2.0 `shouldBe` 0.5
+
+        it "Fractional: recip decimal" $ do
+            recip 0.1 `shouldBe` 10.0
+
+        it "Fractional: recip expression" $ do
+            recip (3/2) `shouldBe` (2/3)
