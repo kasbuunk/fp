@@ -62,3 +62,10 @@ b) The parentheses are not necessary, because drop is a curried function. So aft
 W2.8
 a) `take` takes an integer n and list a and returns a list with the first n elements of a.
 b) When the first argument to `take` is 0, it will return an empty list whatever the second argument is.
+
+## Chapter 3
+
+See the Chapter3 and Chapter3Spec modules.
+
+T3.5
+Functions in general cannot be checked for equality, because of the halting problem. It would lead to a contraction. It may be feasible if the types are known in advance and possibly other constraints are at place to make the functions less powerful.

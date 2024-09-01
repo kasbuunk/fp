@@ -1,5 +1,6 @@
 module Chapter3Spec where
 
+import Data.Typeable
 import Test.Hspec
 import Chapter3
 
@@ -114,3 +115,48 @@ spec = do
 
         it "Fractional: recip expression" $ do
             recip (3/2) `shouldBe` (2/3)
+
+        it "T3.1: typeOf [Char]" $ do
+            typeOf ['a', 'b', 'c'] `shouldBe` typeOf (['a'] :: [Char])
+
+        it "T3.1: typeOf (Char,Char,Char)" $ do
+            typeOf ('a', 'b', 'c') `shouldBe` typeOf (('a','b','c') :: (Char,Char,Char))
+
+        it "T3.1: typeOf [(Bool,Char)]" $ do
+            typeOf [(False, '0'),(True, '1')] `shouldBe` typeOf ([(True, 'a')] :: [(Bool, Char)])
+
+        it "T3.1: typeOf ([Bool],[Char])" $ do
+            typeOf ([False, True], ['0','1']) `shouldBe` typeOf (([True], ['a']) :: ([Bool], [Char]))
+
+        it "T3.2: bools :: [Bool]" $ do
+            typeOf [True] `shouldBe` typeOf ([] :: [Bool])
+
+        it "T3.2: nums :: [[Int]]" $ do
+            typeOf ([[1,2],[3,4]] :: [[Int]]) `shouldBe` typeOf ([[1,3]] :: [[Int]])
+
+        it "T3.2: add :: Int -> Int -> Int -> Int" $ do
+            add' 10 30 50 `shouldBe` 90
+
+        it "T3.2: copy :: a -> (a,a)" $ do
+            copy 9 `shouldBe` (9, 9)
+
+        it "T3.2: apply :: (a -> b) -> a -> b" $ do
+            apply copy 9 `shouldBe` (9,9)
+
+        it "T3.3: typeOf second" $ do
+            second [10, 4, 8] `shouldBe` 4
+
+        it "T3.3: typeOf swap" $ do
+            swap (10, 'a') `shouldBe` ('a', 10)
+
+        it "T3.3: typeOf pair" $ do
+            pair 40 'a' `shouldBe` (40, 'a')
+
+        it "T3.3: typeOf double" $ do
+            double 2 `shouldBe` 4
+
+        it "T3.3: typeOf palindrome" $ do
+            palindrome "meetsysteem" `shouldBe` True
+
+        it "T3.3: typeOf twice" $ do
+            twice double 2 `shouldBe` 8
