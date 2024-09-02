@@ -120,3 +120,37 @@ The function `sum :: [a] -> a` does not cover its intention, because we expect a
 W3.21
 
 Polymorphic functions are important, because it allows functions to be defined generically for various concrete types. It reduces repetition of the same functions for different types that may be of the same form, apart from their type. For example, the `length :: [a] -> Int` function's implementation counts the number of elements in the list of type `a`. But if you were to define it for any type `t`, then the implementation would be exactly the same, because the length of a list is independent of the type or value of its elements.
+
+W3.22
+
+Yes, sum is a polymorphic function, because it uses a type variable `a`. It is not overloaded, because it is defined only once for all different types of `a`. Just because `a` is a `Num`, it is the `+` operator as part of the implementation that will need to be overloaded.
+
+W3.23
+
+The function is defined as:
+
+```haskell
+multiply x y = x * y
+```
+
+The type inference is left to the compiler. This will look for the two most general types that * is defined for. But there are no two types for which * is defined, so the compiler cannot infer instance `Num Bool`.
+
+W3.24
+
+The function `minimum` determines the smallest value of a non-empty list `[a]`. Presumably, it will need to compare individual elements with each other and determine each time which is the smallest. Hence it makes sense to constrain `a` with the `Ord` type constraint. We then need to define the function such that it retains the lowest value and each time checks if the next value is lower, and if so, retain that whilst iterating through all values in the list, finally returning the lowest retained value. It seems that we can just define that function somewhere with a simple `<=` operator, which will need to be overloaded, but I don't think the `minimum` function itself needs to be defined more than once. Of course, it will be polymorphic, because it is defined for abstract type `a`, which multiple concrete types can be used for.
+
+
+W3.25
+
+a)
+
+`mod :: Integral a => a -> a -> a`
+`div :: Integral a => a -> a -> a`
+
+The functions are defined for `Integral`. That is the type class that encompasses the integers, including the fixed-size `Int` and dynamically sized `Integer`.
+
+b) For performance reasons it makes more sense to define them separately for `Int`. Fixed-size integer values (`Int`) have a much faster implementation than `Integer` types. We cannot mix them, because both types must be the same `a`.
+
+c) The type of the literal `7.3` is `Fractional a => a`.
+
+d) The types that are part of the `Fractional` type class are: `Float` and `Double`.
