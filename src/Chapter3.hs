@@ -44,3 +44,6 @@ concatenateWithSpace s1 s2 = s1 ++ " " ++ s2
 
 squarePlus1 :: Int -> Int
 squarePlus1 x = x^2 + 1
+
+threeUnequal :: Int -> Int -> Int -> Bool
+threeUnequal x y z = x /= y && y /= z && x /= z

@@ -243,3 +243,10 @@ spec = do
             squarePlus1 0 `shouldBe` 1
             squarePlus1 1 `shouldBe` 2
             squarePlus1 10 `shouldBe` 101
+
+        it "all three are equal" $ do
+            threeUnequal 0 0 0 `shouldBe` False
+            threeUnequal 0 0 1 `shouldBe` False
+            threeUnequal 0 1 1 `shouldBe` False
+            threeUnequal 1 1 1 `shouldBe` False
+            threeUnequal 1 2 3 `shouldBe` True
