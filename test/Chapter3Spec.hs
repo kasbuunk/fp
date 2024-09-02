@@ -273,3 +273,6 @@ spec = do
             powerOf10 0 `shouldBe` 1
             powerOf10 1 `shouldBe` 10
             powerOf10 2 `shouldBe` 100
+
+        it "first value of Tuple" $ do
+            fst (1, "Bread") `shouldBe` 1

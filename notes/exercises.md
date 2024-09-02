@@ -112,3 +112,11 @@ W3.18
 a) See Chapter3Spec
 
 b) The order matters, because we can only choose to curry with the next argument of the function.
+
+W3.20
+
+The function `sum :: [a] -> a` does not cover its intention, because we expect a sum to return a number. It only works for types where a has the Num constraint.
+
+W3.21
+
+Polymorphic functions are important, because it allows functions to be defined generically for various concrete types. It reduces repetition of the same functions for different types that may be of the same form, apart from their type. For example, the `length :: [a] -> Int` function's implementation counts the number of elements in the list of type `a`. But if you were to define it for any type `t`, then the implementation would be exactly the same, because the length of a list is independent of the type or value of its elements.
