@@ -235,3 +235,6 @@ spec = do
 
         it "length of a list" $ do
             length "Hello" `shouldBe` 5
+
+        it "assert type list of Tuples" $ do
+            typeOf ([("Jan Maas", 'm', (1962,8,18)),("Wilma Jansen",'v',(1968,12,8))] :: [(String, Char, (Int, Int, Int))]) `shouldBe` typeOf ([("",'a',(0,0,0))] :: [(String, Char, (Int, Int, Int))])

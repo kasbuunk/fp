@@ -88,3 +88,10 @@ W3.3
 - `negate`: takes an Num and returns the negation of that Num.
 
 For examples on usage of these functions, see the Chapter's Spec.
+
+W3.11
+
+Tuples and lists are both types that represent an ordered collection of elements, but differ as such:
+
+- Tuples have a fixed length of values. All elements of a particular Tuple type have exactly the same amount of values. Lists have a variable, and potentially even infinite, amount of elements.
+- The elements in a Tuple may be of different types. The elements of a list must be of the same type.
