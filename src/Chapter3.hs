@@ -47,3 +47,6 @@ squarePlus1 x = x^2 + 1
 
 threeUnequal :: Int -> Int -> Int -> Bool
 threeUnequal x y z = x /= y && y /= z && x /= z
+
+power :: Int -> Int -> Int
+power base exponent = base ^ exponent

@@ -257,8 +257,19 @@ spec = do
             successor 1 `shouldBe` 2
 
         it "types curried functions" $ do
-            -- addNumbers :: Int -> Int -> Int
-            let addNumbers x y = x + y
+            let addNumbers :: Int -> Int -> Int
+                addNumbers x y = x + y
             typeOf (addNumbers :: Int -> Int -> Int) `shouldBe` typeOf (addNumbers :: Int -> Int -> Int)
             typeOf (addNumbers 1 :: Int -> Int) `shouldBe` typeOf(addNumbers 0 :: Int -> Int)
             typeOf (addNumbers 1 3 :: Int) `shouldBe` typeOf(0 :: Int)
+
+        it "power fn" $ do
+            power 0 0 `shouldBe` 1
+            power 2 1 `shouldBe` 2
+            power 2 8 `shouldBe` 256
+
+        it "power of ten" $ do
+            let powerOf10 = power 10
+            powerOf10 0 `shouldBe` 1
+            powerOf10 1 `shouldBe` 10
+            powerOf10 2 `shouldBe` 100

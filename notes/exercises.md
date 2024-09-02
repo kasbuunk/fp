@@ -106,3 +106,9 @@ W3.16
 a) Yes, `Int -> Int -> Int` and `Int -> (Int -> Int)` can be used for the same function, because they are equivalent. Because of the rule that the function construction operator (the arrow `->`) is right-associative, we can leave out brackets knowing this.
 
 b) No, `(Int -> Int) -> Int` and `Int -> (Int -> Int)` cannot be used to describe the same function. The former describes a function that takes a function (that takes an Int and returns an Int) and returns an Int. The latter takes an Int, and returns a function (that takes an Int and returns an Int).
+
+W3.18
+
+a) See Chapter3Spec
+
+b) The order matters, because we can only choose to curry with the next argument of the function.
