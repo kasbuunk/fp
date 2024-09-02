@@ -19,3 +19,9 @@ spec = do
         it "reciprocal" $ do
             reciprocal 10 `shouldBe` 0.1
             reciprocal 0.5 `shouldBe` 2
+
+        it "abs" $ do
+            abs' 0 `shouldBe` 0
+            abs' 1 `shouldBe` 1
+            abs' (-1) `shouldBe` 1
+            abs' (-10) `shouldBe` 10
