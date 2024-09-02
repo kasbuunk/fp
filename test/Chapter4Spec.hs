@@ -24,4 +24,11 @@ spec = do
             abs' 0 `shouldBe` 0
             abs' 1 `shouldBe` 1
             abs' (-1) `shouldBe` 1
-            abs' (-10) `shouldBe` 10
+            abs' (-10.1) `shouldBe` 10.1
+
+        it "signum" $ do
+            signum' 0 `shouldBe` 0
+            signum' 1.9 `shouldBe` 1
+            signum' 2 `shouldBe` 1
+            signum' (-1) `shouldBe` -1
+            signum' (-2.5) `shouldBe` -1

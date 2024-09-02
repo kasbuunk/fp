@@ -11,3 +11,6 @@ reciprocal x = 1 / x
 
 abs' :: (Num a, Ord a) => a -> a
 abs' x = if x >= 0 then x else -x
+
+signum' :: (Num a, Ord a) => a -> Int
+signum' x = if x < 0 then -1 else if x == 0 then 0 else 1
