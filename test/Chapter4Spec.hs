@@ -12,3 +12,6 @@ spec = do
             even' 2 `shouldBe` True
             even' (-1) `shouldBe` False
             even' (-2) `shouldBe` True
+
+        it "split list at n" $ do
+            splitAt' [0, 1, 2, 3, 4] 3 `shouldBe` ([0, 1, 2], [3, 4])
