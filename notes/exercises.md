@@ -95,3 +95,14 @@ Tuples and lists are both types that represent an ordered collection of elements
 
 - Tuples have a fixed length of values. All elements of a particular Tuple type have exactly the same amount of values. Lists have a variable, and potentially even infinite, amount of elements.
 - The elements in a Tuple may be of different types. The elements of a list must be of the same type.
+
+W3.15
+
+We write `f x y = (f x) y`, because function application is left-associative. This means that if we leave out brackets, we basically mean to first apply the left-most function the the next argument, and the result of that (also a function) will be applied to the right-most argument.
+
+
+W3.16
+
+a) Yes, `Int -> Int -> Int` and `Int -> (Int -> Int)` can be used for the same function, because they are equivalent. Because of the rule that the function construction operator (the arrow `->`) is right-associative, we can leave out brackets knowing this.
+
+b) No, `(Int -> Int) -> Int` and `Int -> (Int -> Int)` cannot be used to describe the same function. The former describes a function that takes a function (that takes an Int and returns an Int) and returns an Int. The latter takes an Int, and returns a function (that takes an Int and returns an Int).

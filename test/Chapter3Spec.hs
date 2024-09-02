@@ -250,3 +250,8 @@ spec = do
             threeUnequal 0 1 1 `shouldBe` False
             threeUnequal 1 1 1 `shouldBe` False
             threeUnequal 1 2 3 `shouldBe` True
+
+        it "successor fn" $ do
+            let successor = (+) 1
+            successor 0 `shouldBe` 1
+            successor 1 `shouldBe` 2
