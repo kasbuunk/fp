@@ -15,3 +15,7 @@ spec = do
 
         it "split list at n" $ do
             splitAt' [0, 1, 2, 3, 4] 3 `shouldBe` ([0, 1, 2], [3, 4])
+
+        it "reciprocal" $ do
+            reciprocal 10 `shouldBe` 0.1
+            reciprocal 0.5 `shouldBe` 2
