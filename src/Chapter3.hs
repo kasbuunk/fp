@@ -41,3 +41,6 @@ isSpace c = c == ' '
 
 concatenateWithSpace :: String -> String -> String
 concatenateWithSpace s1 s2 = s1 ++ " " ++ s2
+
+squarePlus1 :: Int -> Int
+squarePlus1 x = x^2 + 1

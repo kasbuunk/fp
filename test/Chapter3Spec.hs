@@ -238,3 +238,8 @@ spec = do
 
         it "assert type list of Tuples" $ do
             typeOf ([("Jan Maas", 'm', (1962,8,18)),("Wilma Jansen",'v',(1968,12,8))] :: [(String, Char, (Int, Int, Int))]) `shouldBe` typeOf ([("",'a',(0,0,0))] :: [(String, Char, (Int, Int, Int))])
+
+        it "f (x) = x^2 + 1" $ do
+            squarePlus1 0 `shouldBe` 1
+            squarePlus1 1 `shouldBe` 2
+            squarePlus1 10 `shouldBe` 101
