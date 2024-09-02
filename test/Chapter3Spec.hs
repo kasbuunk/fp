@@ -255,3 +255,10 @@ spec = do
             let successor = (+) 1
             successor 0 `shouldBe` 1
             successor 1 `shouldBe` 2
+
+        it "types curried functions" $ do
+            -- addNumbers :: Int -> Int -> Int
+            let addNumbers x y = x + y
+            typeOf (addNumbers :: Int -> Int -> Int) `shouldBe` typeOf (addNumbers :: Int -> Int -> Int)
+            typeOf (addNumbers 1 :: Int -> Int) `shouldBe` typeOf(addNumbers 0 :: Int -> Int)
+            typeOf (addNumbers 1 3 :: Int) `shouldBe` typeOf(0 :: Int)
