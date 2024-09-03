@@ -45,3 +45,9 @@ and''' False _ = False
 and'''' :: Bool -> Bool -> Bool
 and'''' b c | b = c
             | otherwise = False
+
+first :: (a, b) -> a
+first (x, _) = x
+
+second :: (a, b) -> b
+second (_, x) = x

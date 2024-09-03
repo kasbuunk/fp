@@ -67,3 +67,8 @@ spec = do
             and'''' True False `shouldBe` False
             and'''' False True `shouldBe` False
             and'''' False False `shouldBe` False
+
+        it "Tuple with pattern match" $ do
+            let testCase = (5, "second")
+            first testCase `shouldBe` 5
+            second testCase `shouldBe` "second"
