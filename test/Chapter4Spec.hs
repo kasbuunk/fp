@@ -93,3 +93,7 @@ spec = do
 
         it "add with lambda" $ do
             add' 0 1 `shouldBe` 1
+
+        it "const with lambda" $ do
+            const 1 'a' `shouldBe` 1
+            const' 1 'a' `shouldBe` 1
