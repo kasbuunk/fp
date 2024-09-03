@@ -45,3 +45,25 @@ spec = do
             signum'' 2 `shouldBe` 1
             signum'' (-1) `shouldBe` -1
             signum'' (-2.5) `shouldBe` -1
+
+        it "not with pattern matching" $ do
+            not' True `shouldBe` False
+            not' False `shouldBe` True
+
+        it "and with pattern matching" $ do
+            and' True True `shouldBe` True
+            and' True False `shouldBe` False
+            and' False True `shouldBe` False
+            and' False False `shouldBe` False
+            and'' True True `shouldBe` True
+            and'' True False `shouldBe` False
+            and'' False True `shouldBe` False
+            and'' False False `shouldBe` False
+            and''' True True `shouldBe` True
+            and''' True False `shouldBe` False
+            and''' False True `shouldBe` False
+            and''' False False `shouldBe` False
+            and'''' True True `shouldBe` True
+            and'''' True False `shouldBe` False
+            and'''' False True `shouldBe` False
+            and'''' False False `shouldBe` False

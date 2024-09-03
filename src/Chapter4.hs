@@ -23,3 +23,25 @@ signum'' :: (Num a, Ord a) => a -> Int
 signum'' x | x < 0 = -1
            | x == 0 = 0
            | x > 0 = 1
+
+not' :: Bool -> Bool
+not' False = True
+not' True = False
+
+and' :: Bool -> Bool -> Bool
+and' True True = True
+and' True False = False
+and' False True = False
+and' False False = False
+
+and'' :: Bool -> Bool -> Bool
+and'' True True = True
+and'' _ _ = False
+
+and''' :: Bool -> Bool -> Bool
+and''' True b = b
+and''' False _ = False
+
+and'''' :: Bool -> Bool -> Bool
+and'''' b c | b = c
+            | otherwise = False
