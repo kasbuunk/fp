@@ -51,3 +51,6 @@ first (x, _) = x
 
 second :: (a, b) -> b
 second (_, x) = x
+
+startsWith :: Eq a => a -> [a] -> Bool
+startsWith x (y:ys) = x == y

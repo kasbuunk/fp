@@ -72,3 +72,11 @@ spec = do
             let testCase = (5, "second")
             first testCase `shouldBe` 5
             second testCase `shouldBe` "second"
+
+        it "list with pattern match" $ do
+            let startsWith_a = startsWith 'a'
+            startsWith_a ['a', 'b', 'c'] `shouldBe` True
+            startsWith_a ['b', 'c'] `shouldBe` False
+            startsWith 1 [1,2,3] `shouldBe` True
+            startsWith (0,"123") [(0,"123")] `shouldBe` True
+            startsWith [] [[0],[]] `shouldBe` False
