@@ -80,3 +80,13 @@ spec = do
             startsWith 1 [1,2,3] `shouldBe` True
             startsWith (0,"123") [(0,"123")] `shouldBe` True
             startsWith [] [[0],[]] `shouldBe` False
+
+        it "head with pattern match" $ do
+            head' ['a'] `shouldBe` 'a'
+            head' ['a', 'b'] `shouldBe` 'a'
+
+        it "tail with pattern match" $ do
+            tail' ['a'] `shouldBe` []
+            tail' ['a', 'b'] `shouldBe` ['b']
+            tail' ['a', 'b', 'c'] `shouldBe` ['b', 'c']
+            tail' [1,2,3] `shouldBe` [2,3]

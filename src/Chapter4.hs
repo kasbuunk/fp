@@ -54,3 +54,9 @@ second (_, x) = x
 
 startsWith :: Eq a => a -> [a] -> Bool
 startsWith x (y:ys) = x == y
+
+head' :: [a] -> a
+head' (x:xs) = x
+
+tail' :: [a] -> [a]
+tail' (x:xs) = xs
