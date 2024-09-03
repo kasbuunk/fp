@@ -101,3 +101,13 @@ spec = do
         it "n odd integers" $ do
             odds' 3 `shouldBe` [1,3,5]
             odds'' 3 `shouldBe` [1,3,5]
+
+        it "operator sections" $ do
+            (+) 3 2 `shouldBe` 5
+            (+3) 2 `shouldBe` 5
+            (3+) 2 `shouldBe` 5
+            (1/) 8 `shouldBe` 0.125
+            (/10) 100 `shouldBe` 10
+
+        it "sum as fold" $ do
+            sum' [0,1,5,1] `shouldBe` 7

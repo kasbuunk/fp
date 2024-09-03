@@ -73,3 +73,6 @@ odds' n = map f [0..n-1] where
 
 odds'' :: Int -> [Int]
 odds'' n = map (\x -> x*2 + 1) [0..n-1]
+
+sum' :: Num a => [a] -> a
+sum' = foldl (+) 0
