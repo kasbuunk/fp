@@ -90,3 +90,6 @@ spec = do
             tail' ['a', 'b'] `shouldBe` ['b']
             tail' ['a', 'b', 'c'] `shouldBe` ['b', 'c']
             tail' [1,2,3] `shouldBe` [2,3]
+
+        it "add with lambda" $ do
+            add' 0 1 `shouldBe` 1

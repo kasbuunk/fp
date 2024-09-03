@@ -60,3 +60,6 @@ head' (x:xs) = x
 
 tail' :: [a] -> [a]
 tail' (x:xs) = xs
+
+add' :: Num a => a -> a -> a
+add' = \x -> (\y -> x + y)
