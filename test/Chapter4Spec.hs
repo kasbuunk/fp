@@ -97,3 +97,6 @@ spec = do
         it "const with lambda" $ do
             const 1 'a' `shouldBe` 1
             const' 1 'a' `shouldBe` 1
+
+        it "n odd integers" $ do
+            odds' 3 `shouldBe` [1,3,5]
