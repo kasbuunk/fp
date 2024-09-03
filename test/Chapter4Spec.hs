@@ -100,3 +100,4 @@ spec = do
 
         it "n odd integers" $ do
             odds' 3 `shouldBe` [1,3,5]
+            odds'' 3 `shouldBe` [1,3,5]
