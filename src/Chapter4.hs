@@ -88,3 +88,14 @@ third' xs = xs !! 2
 
 third'' :: [a] -> a
 third'' (_:(_:(x:_))) = x
+
+safetail :: [a] -> [a]
+safetail xs = if length xs == 0 then [] else tail xs
+
+safetail' :: [a] -> [a]
+safetail' xs | length xs == 0 = []
+             | otherwise = tail xs
+
+safetail'' :: [a] -> [a]
+safetail'' [] = []
+safetail'' (_:xs) = xs

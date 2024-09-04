@@ -123,3 +123,17 @@ spec = do
             third' [0,1,2,3,4,5] `shouldBe` 2
             third'' [1,2,3] `shouldBe` 3
             third'' [0,1,2,3,4,5] `shouldBe` 2
+
+        it "safetail" $ do
+            safetail [] `shouldBe` ([] :: [Int]) -- type annotation needed for inference.
+            safetail [1] `shouldBe` []
+            safetail [1,2] `shouldBe` [2]
+            safetail ['a','b','c'] `shouldBe` ['b','c']
+            safetail' [] `shouldBe` ([] :: [Int]) -- type annotation needed for inference.
+            safetail' [1] `shouldBe` []
+            safetail' [1,2] `shouldBe` [2]
+            safetail' ['a','b','c'] `shouldBe` ['b','c']
+            safetail'' [] `shouldBe` ([] :: [Int]) -- type annotation needed for inference.
+            safetail'' [1] `shouldBe` []
+            safetail'' [1,2] `shouldBe` [2]
+            safetail'' ['a','b','c'] `shouldBe` ['b','c']
