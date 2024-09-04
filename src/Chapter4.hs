@@ -147,3 +147,14 @@ min3' x y z = if x <= y then
               else if y <= z
                    then y
                    else z
+
+discriminant :: Float -> Float -> Float -> Float
+discriminant a b c = b*b - 4 * a * c
+
+abc :: (Float, Float, Float) -> [Float]
+abc (a, b, c) | discriminant a b c < 0 = []
+              | discriminant a b c == 0 = [((-1*b) + sqrt (discriminant a b c)) / (2*a)]
+              | otherwise = [
+                    ((-1*b)+sqrt (discriminant a b c)) / (2*a),
+                    ((-1*b)-sqrt (discriminant a b c)) / (2*a)
+                ]

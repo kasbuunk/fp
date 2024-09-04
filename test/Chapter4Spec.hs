@@ -179,3 +179,8 @@ spec = do
             min3 10.1 1.5 4.3 `shouldBe` 1.5
             min3' 0 1 10 `shouldBe` 0
             min3' 10.1 1.5 4.3`shouldBe` 1.5
+
+        it "abc formula" $ do
+            abc (1, 0, 1) `shouldBe` []
+            abc (1, 0, 0) `shouldBe` [0]
+            abc (1, -1, 0) `shouldBe` [1, 0]
