@@ -137,3 +137,21 @@ spec = do
             safetail'' [1] `shouldBe` []
             safetail'' [1,2] `shouldBe` [2]
             safetail'' ['a','b','c'] `shouldBe` ['b','c']
+
+        it "disjunction with pattern matching" $ do
+            or' True True `shouldBe` True
+            or' True False `shouldBe` True
+            or' False True `shouldBe` True
+            or' False False `shouldBe` False
+            or'' True True `shouldBe` True
+            or'' True False `shouldBe` True
+            or'' False True `shouldBe` True
+            or'' False False `shouldBe` False
+            or''' True True `shouldBe` True
+            or''' True False `shouldBe` True
+            or''' False True `shouldBe` True
+            or''' False False `shouldBe` False
+            or'''' True True `shouldBe` True
+            or'''' True False `shouldBe` True
+            or'''' False True `shouldBe` True
+            or'''' False False `shouldBe` False

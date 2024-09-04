@@ -99,3 +99,22 @@ safetail' xs | length xs == 0 = []
 safetail'' :: [a] -> [a]
 safetail'' [] = []
 safetail'' (_:xs) = xs
+
+or' :: Bool -> Bool -> Bool
+or' True _ = True
+or' False a = a
+
+or'' :: Bool -> Bool -> Bool
+or'' False False = False
+or'' _ _ = True
+
+or''' :: Bool -> Bool -> Bool
+or''' True True = True
+or''' False True = True
+or''' True False = True
+or''' False False = False
+
+or'''' :: Bool -> Bool -> Bool
+or'''' True _ = True
+or'''' _ True = True
+or'''' _ _ = False
