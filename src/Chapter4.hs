@@ -152,9 +152,11 @@ discriminant :: Float -> Float -> Float -> Float
 discriminant a b c = b*b - 4 * a * c
 
 abc :: (Float, Float, Float) -> [Float]
-abc (a, b, c) | discriminant a b c < 0 = []
-              | discriminant a b c == 0 = [((-1*b) + sqrt (discriminant a b c)) / (2*a)]
-              | otherwise = [
-                    ((-1*b)+sqrt (discriminant a b c)) / (2*a),
-                    ((-1*b)-sqrt (discriminant a b c)) / (2*a)
-                ]
+abc (a, b, c)
+    | d < 0 = []
+    | d == 0 = [((-1*b) + sqrt d) / (2*a)]
+    | otherwise = [
+        ((-1*b)+sqrt d) / (2*a),
+        ((-1*b)-sqrt d) / (2*a)
+      ]
+    where d = discriminant a b c
