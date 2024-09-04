@@ -131,3 +131,19 @@ surfaceRectangle height width = height*width
 
 volumeCuboid :: Num a => a -> a -> a -> a
 volumeCuboid height width depth = depth * surfaceRectangle height width
+
+min2 :: (Ord a, Num a) => a -> a -> a
+min2 x y | x <= y = x
+         | otherwise = y
+
+min3 :: (Ord a, Num a) => a -> a -> a -> a
+min3 x y z = min2 (min2 x y) z
+
+min3' :: (Ord a, Num a) => a -> a -> a -> a
+min3' x y z = if x <= y then
+                        if x <= z then
+                                  x
+                        else z
+              else if y <= z
+                   then y
+                   else z
