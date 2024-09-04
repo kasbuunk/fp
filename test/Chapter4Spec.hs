@@ -155,3 +155,11 @@ spec = do
             or'''' True False `shouldBe` True
             or'''' False True `shouldBe` True
             or'''' False False `shouldBe` False
+
+        it "luhn double" $ do
+            luhnDouble 3 `shouldBe` 6
+            luhnDouble 6 `shouldBe` 3
+
+        it "luhn algorithm" $ do
+            luhn 1 7 8 4 `shouldBe` True
+            luhn 4 7 8 3 `shouldBe` False

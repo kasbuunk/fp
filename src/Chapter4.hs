@@ -118,3 +118,10 @@ or'''' :: Bool -> Bool -> Bool
 or'''' True _ = True
 or'''' _ True = True
 or'''' _ _ = False
+
+luhnDouble :: Int -> Int
+luhnDouble x | 2*x > 9 = 2*x - 9
+             | 2*x <= 9 = 2*x
+
+luhn :: Int -> Int -> Int -> Int -> Bool
+luhn a b c d = (((luhnDouble a) + b + (luhnDouble c) + d) `mod` 10) == 0
