@@ -154,9 +154,10 @@ discriminant a b c = b*b - 4 * a * c
 abc :: (Float, Float, Float) -> [Float]
 abc (a, b, c)
     | d < 0 = []
-    | d == 0 = [((-1*b) + sqrt d) / (2*a)]
-    | otherwise = [
-        ((-1*b)+sqrt d) / (2*a),
-        ((-1*b)-sqrt d) / (2*a)
-      ]
-    where d = discriminant a b c
+    | d == 0 = [singleRoot]
+    | otherwise = [root1, root2]
+    where
+      d = discriminant a b c
+      root1 = ((-1*b)+sqrt d) / (2*a)
+      root2 = ((-1*b)-sqrt d) / (2*a)
+      singleRoot = root1 -- root1 == root2
