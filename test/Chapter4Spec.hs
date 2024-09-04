@@ -167,3 +167,7 @@ spec = do
         it "surface rectangle" $ do
             surfaceRectangle 10 5 `shouldBe` 50
             surfaceRectangle 10.5 2.0 `shouldBe` 21.0
+
+        it "volume cuboid" $ do
+            volumeCuboid 10 5 2 `shouldBe` 100
+            volumeCuboid 10.5 2.0 3.0 `shouldBe` 63.0

@@ -128,3 +128,6 @@ luhn a b c d = (((luhnDouble a) + b + (luhnDouble c) + d) `mod` 10) == 0
 
 surfaceRectangle :: Num a => a -> a -> a
 surfaceRectangle height width = height*width
+
+volumeCuboid :: Num a => a -> a -> a -> a
+volumeCuboid height width depth = depth * surfaceRectangle height width
