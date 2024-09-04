@@ -76,3 +76,15 @@ odds'' n = map (\x -> x*2 + 1) [0..n-1]
 
 sum' :: Num a => [a] -> a
 sum' = foldl (+) 0
+
+halve :: [a] -> ([a], [a])
+halve xs = (take (length xs `div` 2) xs, drop (length xs `div` 2) xs)
+
+third :: [a] -> a
+third xs = head (tail (tail xs))
+
+third' :: [a] -> a
+third' xs = xs !! 2
+
+third'' :: [a] -> a
+third'' (_:(_:(x:_))) = x

@@ -111,3 +111,15 @@ spec = do
 
         it "sum as fold" $ do
             sum' [0,1,5,1] `shouldBe` 7
+
+        it "halve a list" $ do
+            halve [1,2] `shouldBe` ([1],[2])
+            halve [1,2,3,4,5,6] `shouldBe` ([1,2,3],[4,5,6])
+
+        it "third element" $ do
+            third [1,2,3] `shouldBe` 3
+            third [0,1,2,3,4,5] `shouldBe` 2
+            third' [1,2,3] `shouldBe` 3
+            third' [0,1,2,3,4,5] `shouldBe` 2
+            third'' [1,2,3] `shouldBe` 3
+            third'' [0,1,2,3,4,5] `shouldBe` 2
