@@ -125,3 +125,6 @@ luhnDouble x | 2*x > 9 = 2*x - 9
 
 luhn :: Int -> Int -> Int -> Int -> Bool
 luhn a b c d = (((luhnDouble a) + b + (luhnDouble c) + d) `mod` 10) == 0
+
+surfaceRectangle :: Num a => a -> a -> a
+surfaceRectangle height width = height*width

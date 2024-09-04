@@ -163,3 +163,7 @@ spec = do
         it "luhn algorithm" $ do
             luhn 1 7 8 4 `shouldBe` True
             luhn 4 7 8 3 `shouldBe` False
+
+        it "surface rectangle" $ do
+            surfaceRectangle 10 5 `shouldBe` 50
+            surfaceRectangle 10.5 2.0 `shouldBe` 21.0
