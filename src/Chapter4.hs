@@ -244,3 +244,11 @@ decrementRight (x, y) = (x, y-1)
 
 cutPaste :: [[a]] -> [[a]]
 cutPaste (x:xs) = xs ++ [x]
+
+intToString :: Int -> String
+intToString 0 = "zero"
+intToString 1 = "one"
+intToString 2 = "two"
+intToString 3 = "three"
+intToString 4 = "four"
+intToString _ = "too bad, too big"

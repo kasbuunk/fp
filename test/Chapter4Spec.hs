@@ -270,3 +270,11 @@ spec = do
             cutPaste [[0,1]] `shouldBe` [[0,1]]
             cutPaste [[0,1],[2,3]] `shouldBe` [[2,3],[0,1]]
             cutPaste [[0,1],[2,3],[4,5]] `shouldBe` [[2,3],[4,5],[0,1]]
+
+        it "integer to string" $ do
+            intToString 0 `shouldBe` "zero"
+            intToString 1 `shouldBe` "one"
+            intToString 2 `shouldBe` "two"
+            intToString 3 `shouldBe` "three"
+            intToString 4 `shouldBe` "four"
+            intToString 5 `shouldBe` "too bad, too big"
