@@ -197,3 +197,8 @@ spec = do
             rootsQuadratic' 1 0 1 `shouldBe` 0
             rootsQuadratic' 1 0 0 `shouldBe` 1
             rootsQuadratic' 1 (-1) 0 `shouldBe` 2
+
+        it "is positive" $ do
+            isPositive 1 `shouldBe` True
+            isPositive 0 `shouldBe` False
+            isPositive (-1) `shouldBe` False

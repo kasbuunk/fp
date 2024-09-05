@@ -189,3 +189,7 @@ rootsQuadratic' a b c
                     | otherwise = 0
                         where
                             d = discriminant a b c
+
+isPositive :: Int -> Bool
+isPositive n | n > 0 = True
+             | otherwise = False
