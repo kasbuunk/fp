@@ -265,3 +265,8 @@ spec = do
 
             decrementRight t `shouldBe` (5, 6)
             decrementRight t' `shouldBe` (-5.1, 6.3)
+
+        it "cut and paste list to the end" $ do
+            cutPaste [[0,1]] `shouldBe` [[0,1]]
+            cutPaste [[0,1],[2,3]] `shouldBe` [[2,3],[0,1]]
+            cutPaste [[0,1],[2,3],[4,5]] `shouldBe` [[2,3],[4,5],[0,1]]

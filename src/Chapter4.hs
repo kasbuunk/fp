@@ -241,3 +241,6 @@ decrementLeft (x, y) = (x-1, y)
 
 decrementRight :: Num b => (a, b) -> (a, b)
 decrementRight (x, y) = (x, y-1)
+
+cutPaste :: [[a]] -> [[a]]
+cutPaste (x:xs) = xs ++ [x]
