@@ -287,3 +287,6 @@ spec = do
 
         it "give itself and its square" $ do
             map (\x -> (x, x*x)) [0,1,2,3] `shouldBe` [(0,0),(1,1),(2,4),(3,9)]
+
+        it "swap tuple elements" $ do
+            map (\(x,y) -> (y,x)) [(0,'a'),(1,'b')] `shouldBe` [('a',0),('b',1)]
