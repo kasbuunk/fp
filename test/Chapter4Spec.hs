@@ -291,3 +291,11 @@ spec = do
         it "swap tuple elements" $ do
             -- The type of the lambda expression is: (a, b) -> (b, a)
             map (\(x,y) -> (y,x)) [(0,'a'),(1,'b')] `shouldBe` [('a',0),('b',1)]
+
+        it "prepend list with element" $ do
+            cons 'a' ['b','c'] `shouldBe` ['a','b','c']
+            cons' 'a' ['b','c'] `shouldBe` ['a','b','c']
+
+        it ":-operator" $ do
+            consA "bc" `shouldBe` "abc"
+            consEllo 'h' `shouldBe` "hello"

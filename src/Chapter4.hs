@@ -252,3 +252,15 @@ intToString 2 = "two"
 intToString 3 = "three"
 intToString 4 = "four"
 intToString _ = "too bad, too big"
+
+cons :: a -> [a] -> [a]
+cons x xs = x:xs
+
+cons' :: a -> [a] -> [a]
+cons' x xs = (:) x xs
+
+consA :: [Char] -> [Char]
+consA = cons 'a'
+
+consEllo :: Char -> [Char]
+consEllo x = x:"ello"
