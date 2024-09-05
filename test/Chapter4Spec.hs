@@ -255,3 +255,13 @@ spec = do
             duplicateFirst [0] `shouldBe` [0,0]
             duplicateFirst [0,1] `shouldBe` [0,0,1]
             duplicateFirst [0,1,2] `shouldBe` [0,0,1,2]
+
+        it "decrement tuple" $ do
+            let t = (5, 7)
+            let t' = (-5.1, 7.3)
+
+            decrementLeft t `shouldBe` (4, 7)
+            decrementLeft t' `shouldBe` (-6.1, 7.3)
+
+            decrementRight t `shouldBe` (5, 6)
+            decrementRight t' `shouldBe` (-5.1, 6.3)

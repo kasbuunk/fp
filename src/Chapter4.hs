@@ -235,3 +235,9 @@ headAndTail (x:xs) = (x, xs)
 
 duplicateFirst :: [a] -> [a]
 duplicateFirst (x:xs) = [x,x] ++ xs
+
+decrementLeft :: Num a => (a, b) -> (a, b)
+decrementLeft (x, y) = (x-1, y)
+
+decrementRight :: Num b => (a, b) -> (a, b)
+decrementRight (x, y) = (x, y-1)
