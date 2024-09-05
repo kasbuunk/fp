@@ -250,3 +250,8 @@ spec = do
             headAndTail ['a'] `shouldBe` ('a',[])
             headAndTail ['a','b'] `shouldBe` ('a',['b'])
             headAndTail ['a','b','c'] `shouldBe` ('a',['b','c'])
+
+        it "duplicate first element of list" $ do
+            duplicateFirst [0] `shouldBe` [0,0]
+            duplicateFirst [0,1] `shouldBe` [0,0,1]
+            duplicateFirst [0,1,2] `shouldBe` [0,0,1,2]

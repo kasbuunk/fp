@@ -232,3 +232,6 @@ tailOfList (_:xs) = xs
 
 headAndTail :: [a] -> (a, [a])
 headAndTail (x:xs) = (x, xs)
+
+duplicateFirst :: [a] -> [a]
+duplicateFirst (x:xs) = [x,x] ++ xs
