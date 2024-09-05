@@ -211,3 +211,9 @@ spec = do
             smallOrBig 9 `shouldBe` "smaller than 10"
             smallOrBig 10 `shouldBe` "big"
             smallOrBig 11 `shouldBe` "big"
+
+        it "elements from 3-tuple" $ do
+            let t = (0, 'a', 2)
+            fst3 t `shouldBe` 0
+            scd3 t `shouldBe` 'a'
+            trd3 t `shouldBe` 2

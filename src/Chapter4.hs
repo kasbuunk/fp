@@ -198,3 +198,12 @@ smallOrBig :: Int -> String
 smallOrBig n | n < 5 = "smaller than 5"
              | n < 10 = "smaller than 10"
              | otherwise = "big"
+
+fst3 :: (a, b, c) -> a
+fst3 (x, _, _) = x
+
+scd3 :: (a, b, c) -> b
+scd3 (_, x, _) = x
+
+trd3 :: (a, b, c) -> c
+trd3 (_, _, x) = x
