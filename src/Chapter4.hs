@@ -207,3 +207,28 @@ scd3 (_, x, _) = x
 
 trd3 :: (a, b, c) -> c
 trd3 (_, _, x) = x
+
+firstFromListLength3Is_a :: [Char] -> Bool
+firstFromListLength3Is_a ['a', _, _] = True
+firstFromListLength3Is_a _ = False
+
+firstIs_a :: [Char] -> Bool
+firstIs_a ('a':_) = True
+firstIs_a _ = False
+
+listIsEmpty :: [a] -> Bool
+listIsEmpty [] = True
+listIsEmpty _ = False
+
+listIsNonEmpty :: [a] -> Bool
+listIsNonEmpty (_:_) = True
+listIsNonEmpty _ = False
+
+headOfList :: [a] -> a
+headOfList (x:_) = x
+
+tailOfList :: [a] -> [a]
+tailOfList (_:xs) = xs
+
+headAndTail :: [a] -> (a, [a])
+headAndTail (x:xs) = (x, xs)

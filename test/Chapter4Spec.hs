@@ -217,3 +217,36 @@ spec = do
             fst3 t `shouldBe` 0
             scd3 t `shouldBe` 'a'
             trd3 t `shouldBe` 2
+
+        it "list pattern matching" $ do
+            firstFromListLength3Is_a ['a','b','c'] `shouldBe` True
+            firstFromListLength3Is_a ['a','b'] `shouldBe` False
+            firstFromListLength3Is_a ['b','b','c'] `shouldBe` False
+            firstFromListLength3Is_a [] `shouldBe` False
+
+            firstIs_a ['a'] `shouldBe` True
+            firstIs_a ['a','b'] `shouldBe` True
+            firstIs_a ['a','b','c'] `shouldBe` True
+            firstIs_a ['b','c'] `shouldBe` False
+            firstIs_a [] `shouldBe` False
+
+            listIsEmpty [] `shouldBe` True
+            listIsEmpty ['a'] `shouldBe` False
+            listIsEmpty [1] `shouldBe` False
+
+            listIsNonEmpty [] `shouldBe` False
+            listIsNonEmpty [0] `shouldBe` True
+            listIsNonEmpty ['a'] `shouldBe` True
+            listIsNonEmpty ['a','b'] `shouldBe` True
+
+            headOfList ['a'] `shouldBe` 'a'
+            headOfList ['a','b'] `shouldBe` 'a'
+            headOfList ['a','b','c'] `shouldBe` 'a'
+
+            tailOfList ['a'] `shouldBe` []
+            tailOfList ['a','b'] `shouldBe` ['b']
+            tailOfList ['a','b','c'] `shouldBe` ['b','c']
+
+            headAndTail ['a'] `shouldBe` ('a',[])
+            headAndTail ['a','b'] `shouldBe` ('a',['b'])
+            headAndTail ['a','b','c'] `shouldBe` ('a',['b','c'])
