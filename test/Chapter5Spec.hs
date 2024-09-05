@@ -14,3 +14,6 @@ spec = do
 
         it "second generator depends on first" $ do
             [(x,y) | x <- [1..3], y <- [x..3]] `shouldBe` [(1,1),(1,2),(1,3),(2,2),(2,3),(3,3)]
+
+        it "concatenate list of lists" $ do
+            concatenate [[0,1],[2,3],[4]] `shouldBe` [0,1,2,3,4]
