@@ -189,3 +189,11 @@ spec = do
             abc' 1 0 1 `shouldBe` []
             abc' 1 0 0 `shouldBe` [0]
             abc' 1 (-1) 0 `shouldBe` [1, 0]
+
+        it "number of roots of quadratic equation" $ do
+            rootsQuadratic 1 0 1 `shouldBe` 0
+            rootsQuadratic 1 0 0 `shouldBe` 1
+            rootsQuadratic 1 (-1) 0 `shouldBe` 2
+            rootsQuadratic' 1 0 1 `shouldBe` 0
+            rootsQuadratic' 1 0 0 `shouldBe` 1
+            rootsQuadratic' 1 (-1) 0 `shouldBe` 2

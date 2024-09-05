@@ -178,3 +178,14 @@ abc' a b c = let
                     if d == 0
                     then [singleRoot]
                     else [root1, root2]
+
+rootsQuadratic :: Float -> Float -> Float -> Int
+rootsQuadratic a b c = length (abc' a b c)
+
+rootsQuadratic' :: Float -> Float -> Float -> Int
+rootsQuadratic' a b c
+                    | d > 0 = 2
+                    | d == 0 = 1
+                    | otherwise = 0
+                        where
+                            d = discriminant a b c
