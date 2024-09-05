@@ -164,3 +164,17 @@ abc (a, b, c)
       root1 = ((-1*b)+sqrt d) / (2*a)
       root2 = ((-1*b)-sqrt d) / (2*a)
       singleRoot = root1 -- root1 == root2
+
+abc' :: Float -> Float -> Float -> [Float]
+abc' a b c = let
+                d = discriminant a b c
+                root1 = ((-1*b)+sqrt d) / (2*a)
+                root2 = ((-1*b)-sqrt d) / (2*a)
+                singleRoot = root1 -- root1 == root2
+             in
+                if d < 0
+                then []
+                else
+                    if d == 0
+                    then [singleRoot]
+                    else [root1, root2]
