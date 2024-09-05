@@ -284,3 +284,6 @@ spec = do
 
         it "map numbers to their square" $ do
             map (\x -> x * x) [0,1,2,3] `shouldBe` [0,1,4,9]
+
+        it "give itself and its square" $ do
+            map (\x -> (x, x*x)) [0,1,2,3] `shouldBe` [(0,0),(1,1),(2,4),(3,9)]
