@@ -175,6 +175,8 @@ spec = do
         it "minimum" $ do
             min2 0 1 `shouldBe` 0
             min2 10.1 1.5 `shouldBe` 1.5
+            min2' 0 1 `shouldBe` 0
+            min2' 10.1 1.5 `shouldBe` 1.5
             min3 0 1 4 `shouldBe` 0
             min3 10.1 1.5 4.3 `shouldBe` 1.5
             min3' 0 1 10 `shouldBe` 0

@@ -136,6 +136,9 @@ min2 :: (Ord a, Num a) => a -> a -> a
 min2 x y | x <= y = x
          | otherwise = y
 
+min2' :: (Ord a, Num a) => a -> a -> a
+min2' x y = if x <= y then x else y
+
 min3 :: (Ord a, Num a) => a -> a -> a -> a
 min3 x y z = min2 (min2 x y) z
 
