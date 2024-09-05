@@ -202,3 +202,12 @@ spec = do
             isPositive 1 `shouldBe` True
             isPositive 0 `shouldBe` False
             isPositive (-1) `shouldBe` False
+
+        it "smaller than 10, 5 or big" $ do
+            smallOrBig (-1) `shouldBe` "smaller than 5"
+            smallOrBig 0 `shouldBe` "smaller than 5"
+            smallOrBig 4 `shouldBe` "smaller than 5"
+            smallOrBig 5 `shouldBe` "smaller than 10"
+            smallOrBig 9 `shouldBe` "smaller than 10"
+            smallOrBig 10 `shouldBe` "big"
+            smallOrBig 11 `shouldBe` "big"

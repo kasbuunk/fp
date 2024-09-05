@@ -193,3 +193,8 @@ rootsQuadratic' a b c
 isPositive :: Int -> Bool
 isPositive n | n > 0 = True
              | otherwise = False
+
+smallOrBig :: Int -> String
+smallOrBig n | n < 5 = "smaller than 5"
+             | n < 10 = "smaller than 10"
+             | otherwise = "big"
