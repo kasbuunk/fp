@@ -264,3 +264,15 @@ consA = cons 'a'
 
 consEllo :: Char -> [Char]
 consEllo x = x:"ello"
+
+(%%) :: Bool -> Bool -> Bool
+a %% b = if a
+         then if b
+              then True
+              else False
+         else False
+
+(%%%) :: Bool -> Bool -> Bool
+a %%% b = if a
+          then b
+          else False

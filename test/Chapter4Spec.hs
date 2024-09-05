@@ -156,6 +156,21 @@ spec = do
             or'''' False True `shouldBe` True
             or'''' False False `shouldBe` False
 
+        it "formalise meaning &&" $ do
+            True %% True `shouldBe` True
+            False %% True `shouldBe` False
+            True %% False `shouldBe` False
+            False %% False `shouldBe` False
+
+            True %%% True `shouldBe` True
+            False %%% True `shouldBe` False
+            True %%% False `shouldBe` False
+            False %%% False `shouldBe` False
+
+        it "formalise multiply" $ do
+            let mult = (\x -> (\y -> (\z -> x*y*z)))
+            mult 2 3 4 `shouldBe` 24
+
         it "luhn double" $ do
             luhnDouble 3 `shouldBe` 6
             luhnDouble 6 `shouldBe` 3
