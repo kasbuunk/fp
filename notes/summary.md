@@ -40,3 +40,7 @@ An expression is inductively defined as such:
 Expressions can be evaluated to values. If the expression is atomic, i.e. a value like `6`, then evaluation yields the same value.
 
 An if-then-else clause is also an expression, but really just a ternary operator. So the syntax is different from other operators, but it really is a function with three arguments: `ifthenelse :: Bool -> a` where `a` is the type of then and else. Both branches must be of the same type.
+
+### Chapter 5
+
+The expression `x <- [1..5]` is a generator that is read as "the list of numbers x squared such that x is drawn from the list of numbers 1 to 5".

@@ -6,6 +6,7 @@ import qualified Chapter1Spec
 import qualified Chapter2Spec
 import qualified Chapter3Spec
 import qualified Chapter4Spec
+import qualified Chapter5Spec
 
 main :: IO ()
 main = hspec $ do
@@ -14,4 +15,4 @@ main = hspec $ do
     describe "Chapter2" Chapter2Spec.spec
     describe "Chapter3" Chapter3Spec.spec
     describe "Chapter4" Chapter4Spec.spec
-    -- Add the rest
+    describe "Chapter5" Chapter5Spec.spec
