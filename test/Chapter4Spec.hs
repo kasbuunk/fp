@@ -278,3 +278,6 @@ spec = do
             intToString 3 `shouldBe` "three"
             intToString 4 `shouldBe` "four"
             intToString 5 `shouldBe` "too bad, too big"
+
+        it "map numbers to their successor" $ do
+            map ((+) 1) [0,1,2] `shouldBe` [1,2,3]
