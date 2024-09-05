@@ -281,3 +281,6 @@ spec = do
 
         it "map numbers to their successor" $ do
             map ((+) 1) [0,1,2] `shouldBe` [1,2,3]
+
+        it "map numbers to their square" $ do
+            map (\x -> x * x) [0,1,2,3] `shouldBe` [0,1,4,9]
