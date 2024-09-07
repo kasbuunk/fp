@@ -55,3 +55,6 @@ spec = do
     it "is list sorted" $ do
       sorted [0, 1, 2, 3] `shouldBe` True
       sorted [0, 5, 1, 2, 3] `shouldBe` False
+
+    it "positions in list" $ do
+      positions False [True, False, True, False] `shouldBe` [1, 3]
