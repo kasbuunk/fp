@@ -23,3 +23,6 @@ isPrime n = factors n == [1, n]
 
 primes :: Int -> [Int]
 primes n = [x | x <- [2 .. n], isPrime x]
+
+find :: (Eq a) => a -> [(a, b)] -> [b]
+find key dictionary = [value | (drawnKey, value) <- dictionary, drawnKey == key]

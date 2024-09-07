@@ -40,3 +40,8 @@ spec = do
     it "all primes up to n" $ do
       primes 7 `shouldBe` [2, 3, 5, 7]
       primes 20 `shouldBe` [2, 3, 5, 7, 11, 13, 17, 19]
+
+    it "look up value by key" $ do
+      find 0 [(0, 'a'), (1, 'b')] `shouldBe` ['a']
+      find 1 [(0, 'a'), (1, 'b')] `shouldBe` ['b']
+      find 1 [(0, 'a'), (1, 'b'), (1, 'c')] `shouldBe` ['b', 'c']
