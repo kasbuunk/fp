@@ -54,4 +54,7 @@ bin2dec :: [(Int, Int, Int)] -> [Int]
 bin2dec bs = [binaryDecode b | b <- bs]
 
 binaryDecode :: (Int, Int, Int) -> Int
-binaryDecode (x, y, z) = 2 ^ 2 * x + 2 ^ 1 * y + 2 ^ 0 * z
+binaryDecode (x, y, z) = sum [base * 2 ^ exponent | (base, exponent) <- zip bases exponents]
+  where
+    bases = [x, y, z]
+    exponents = [2, 1, 0]
