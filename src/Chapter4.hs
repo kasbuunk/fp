@@ -1,12 +1,12 @@
 module Chapter4 where
 
-even' :: Integral a => a -> Bool
+even' :: (Integral a) => a -> Bool
 even' n = n `mod` 2 == 0
 
 splitAt' :: [a] -> Int -> ([a], [a])
 splitAt' xs length_first = (take length_first xs, drop length_first xs)
 
-reciprocal :: Fractional a => a -> a
+reciprocal :: (Fractional a) => a -> a
 reciprocal x = 1 / x
 
 abs' :: (Num a, Ord a) => a -> a
@@ -16,13 +16,15 @@ signum' :: (Num a, Ord a) => a -> Int
 signum' x = if x < 0 then -1 else if x == 0 then 0 else 1
 
 abs'' :: (Num a, Ord a) => a -> a
-abs'' x | x >= 0 = x
-        | otherwise = -x
+abs'' x
+  | x >= 0 = x
+  | otherwise = -x
 
 signum'' :: (Num a, Ord a) => a -> Int
-signum'' x | x < 0 = -1
-           | x == 0 = 0
-           | x > 0 = 1
+signum'' x
+  | x < 0 = -1
+  | x == 0 = 0
+  | x > 0 = 1
 
 not' :: Bool -> Bool
 not' False = True
@@ -43,8 +45,9 @@ and''' True b = b
 and''' False _ = False
 
 and'''' :: Bool -> Bool -> Bool
-and'''' b c | b = c
-            | otherwise = False
+and'''' b c
+  | b = c
+  | otherwise = False
 
 first :: (a, b) -> a
 first (x, _) = x
@@ -52,29 +55,30 @@ first (x, _) = x
 second :: (a, b) -> b
 second (_, x) = x
 
-startsWith :: Eq a => a -> [a] -> Bool
-startsWith x (y:ys) = x == y
+startsWith :: (Eq a) => a -> [a] -> Bool
+startsWith x (y : ys) = x == y
 
 head' :: [a] -> a
-head' (x:xs) = x
+head' (x : xs) = x
 
 tail' :: [a] -> [a]
-tail' (x:xs) = xs
+tail' (x : xs) = xs
 
-add' :: Num a => a -> a -> a
+add' :: (Num a) => a -> a -> a
 add' = \x -> (\y -> x + y)
 
 const' :: a -> (b -> a)
 const' x = (\_ -> x)
 
 odds' :: Int -> [Int]
-odds' n = map f [0..n-1] where
-          f x = x*2 + 1
+odds' n = map f [0 .. n - 1]
+  where
+    f x = x * 2 + 1
 
 odds'' :: Int -> [Int]
-odds'' n = map (\x -> x*2 + 1) [0..n-1]
+odds'' n = map (\x -> x * 2 + 1) [0 .. n - 1]
 
-sum' :: Num a => [a] -> a
+sum' :: (Num a) => [a] -> a
 sum' = foldl (+) 0
 
 halve :: [a] -> ([a], [a])
@@ -87,18 +91,19 @@ third' :: [a] -> a
 third' xs = xs !! 2
 
 third'' :: [a] -> a
-third'' (_:(_:(x:_))) = x
+third'' (_ : (_ : (x : _))) = x
 
 safetail :: [a] -> [a]
 safetail xs = if length xs == 0 then [] else tail xs
 
 safetail' :: [a] -> [a]
-safetail' xs | length xs == 0 = []
-             | otherwise = tail xs
+safetail' xs
+  | length xs == 0 = []
+  | otherwise = tail xs
 
 safetail'' :: [a] -> [a]
 safetail'' [] = []
-safetail'' (_:xs) = xs
+safetail'' (_ : xs) = xs
 
 or' :: Bool -> Bool -> Bool
 or' True _ = True
@@ -120,21 +125,23 @@ or'''' _ True = True
 or'''' _ _ = False
 
 luhnDouble :: Int -> Int
-luhnDouble x | 2*x > 9 = 2*x - 9
-             | 2*x <= 9 = 2*x
+luhnDouble x
+  | 2 * x > 9 = 2 * x - 9
+  | 2 * x <= 9 = 2 * x
 
 luhn :: Int -> Int -> Int -> Int -> Bool
 luhn a b c d = (((luhnDouble a) + b + (luhnDouble c) + d) `mod` 10) == 0
 
-surfaceRectangle :: Num a => a -> a -> a
-surfaceRectangle height width = height*width
+surfaceRectangle :: (Num a) => a -> a -> a
+surfaceRectangle height width = height * width
 
-volumeCuboid :: Num a => a -> a -> a -> a
+volumeCuboid :: (Num a) => a -> a -> a -> a
 volumeCuboid height width depth = depth * surfaceRectangle height width
 
 min2 :: (Ord a, Num a) => a -> a -> a
-min2 x y | x <= y = x
-         | otherwise = y
+min2 x y
+  | x <= y = x
+  | otherwise = y
 
 min2' :: (Ord a, Num a) => a -> a -> a
 min2' x y = if x <= y then x else y
@@ -143,61 +150,66 @@ min3 :: (Ord a, Num a) => a -> a -> a -> a
 min3 x y z = min2 (min2 x y) z
 
 min3' :: (Ord a, Num a) => a -> a -> a -> a
-min3' x y z = if x <= y then
-                        if x <= z then
-                                  x
-                        else z
-              else if y <= z
-                   then y
-                   else z
+min3' x y z =
+  if x <= y
+    then
+      if x <= z
+        then
+          x
+        else z
+    else
+      if y <= z
+        then y
+        else z
 
 discriminant :: Float -> Float -> Float -> Float
-discriminant a b c = b*b - 4 * a * c
+discriminant a b c = b * b - 4 * a * c
 
 abc :: (Float, Float, Float) -> [Float]
 abc (a, b, c)
-    | d < 0 = []
-    | d == 0 = [singleRoot]
-    | otherwise = [root1, root2]
-    where
-      d = discriminant a b c
-      root1 = ((-1*b)+sqrt d) / (2*a)
-      root2 = ((-1*b)-sqrt d) / (2*a)
-      singleRoot = root1 -- root1 == root2
+  | d < 0 = []
+  | d == 0 = [singleRoot]
+  | otherwise = [root1, root2]
+  where
+    d = discriminant a b c
+    root1 = ((-1 * b) + sqrt d) / (2 * a)
+    root2 = ((-1 * b) - sqrt d) / (2 * a)
+    singleRoot = root1 -- root1 == root2
 
 abc' :: Float -> Float -> Float -> [Float]
-abc' a b c = let
-                d = discriminant a b c
-                root1 = ((-1*b)+sqrt d) / (2*a)
-                root2 = ((-1*b)-sqrt d) / (2*a)
-                singleRoot = root1 -- root1 == root2
-             in
-                if d < 0
-                then []
-                else
-                    if d == 0
-                    then [singleRoot]
-                    else [root1, root2]
+abc' a b c =
+  let d = discriminant a b c
+      root1 = ((-1 * b) + sqrt d) / (2 * a)
+      root2 = ((-1 * b) - sqrt d) / (2 * a)
+      singleRoot = root1 -- root1 == root2
+   in if d < 0
+        then []
+        else
+          if d == 0
+            then [singleRoot]
+            else [root1, root2]
 
 rootsQuadratic :: Float -> Float -> Float -> Int
 rootsQuadratic a b c = length (abc' a b c)
 
 rootsQuadratic' :: Float -> Float -> Float -> Int
 rootsQuadratic' a b c
-                    | d > 0 = 2
-                    | d == 0 = 1
-                    | otherwise = 0
-                        where
-                            d = discriminant a b c
+  | d > 0 = 2
+  | d == 0 = 1
+  | otherwise = 0
+  where
+    d = discriminant a b c
 
 isPositive :: Int -> Bool
-isPositive n | n > 0 = True
-             | otherwise = False
+isPositive n
+  | n > 0 = True
+  | otherwise = False
 
 smallOrBig :: Int -> String
-smallOrBig n | n < 5 = "smaller than 5"
-             | n < 10 = "smaller than 10"
-             | otherwise = "big"
+smallOrBig n
+  | n < 5 = "smaller than 5"
+  | n < 10 = "smaller than 10"
+  | otherwise = "big"
 
 fst3 :: (a, b, c) -> a
 fst3 (x, _, _) = x
@@ -213,7 +225,7 @@ firstFromListLength3Is_a ['a', _, _] = True
 firstFromListLength3Is_a _ = False
 
 firstIs_a :: [Char] -> Bool
-firstIs_a ('a':_) = True
+firstIs_a ('a' : _) = True
 firstIs_a _ = False
 
 listIsEmpty :: [a] -> Bool
@@ -221,29 +233,29 @@ listIsEmpty [] = True
 listIsEmpty _ = False
 
 listIsNonEmpty :: [a] -> Bool
-listIsNonEmpty (_:_) = True
+listIsNonEmpty (_ : _) = True
 listIsNonEmpty _ = False
 
 headOfList :: [a] -> a
-headOfList (x:_) = x
+headOfList (x : _) = x
 
 tailOfList :: [a] -> [a]
-tailOfList (_:xs) = xs
+tailOfList (_ : xs) = xs
 
 headAndTail :: [a] -> (a, [a])
-headAndTail (x:xs) = (x, xs)
+headAndTail (x : xs) = (x, xs)
 
 duplicateFirst :: [a] -> [a]
-duplicateFirst (x:xs) = [x,x] ++ xs
+duplicateFirst (x : xs) = [x, x] ++ xs
 
-decrementLeft :: Num a => (a, b) -> (a, b)
-decrementLeft (x, y) = (x-1, y)
+decrementLeft :: (Num a) => (a, b) -> (a, b)
+decrementLeft (x, y) = (x - 1, y)
 
-decrementRight :: Num b => (a, b) -> (a, b)
-decrementRight (x, y) = (x, y-1)
+decrementRight :: (Num b) => (a, b) -> (a, b)
+decrementRight (x, y) = (x, y - 1)
 
 cutPaste :: [[a]] -> [[a]]
-cutPaste (x:xs) = xs ++ [x]
+cutPaste (x : xs) = xs ++ [x]
 
 intToString :: Int -> String
 intToString 0 = "zero"
@@ -254,7 +266,7 @@ intToString 4 = "four"
 intToString _ = "too bad, too big"
 
 cons :: a -> [a] -> [a]
-cons x xs = x:xs
+cons x xs = x : xs
 
 cons' :: a -> [a] -> [a]
 cons' x xs = (:) x xs
@@ -263,16 +275,19 @@ consA :: [Char] -> [Char]
 consA = cons 'a'
 
 consEllo :: Char -> [Char]
-consEllo x = x:"ello"
+consEllo x = x : "ello"
 
 (%%) :: Bool -> Bool -> Bool
-a %% b = if a
-         then if b
-              then True
-              else False
-         else False
+a %% b =
+  if a
+    then
+      if b
+        then True
+        else False
+    else False
 
 (%%%) :: Bool -> Bool -> Bool
-a %%% b = if a
-          then b
-          else False
+a %%% b =
+  if a
+    then b
+    else False

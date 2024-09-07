@@ -1,4 +1,4 @@
-module Playground  where
+module Playground where
 
 add_one :: Int -> Int
 add_one n = n + 1
@@ -19,7 +19,7 @@ last''' :: [a] -> a
 last''' = head . reverse
 
 last'''' :: [a] -> a
-last'''' xs = xs!!(length xs - 1)
+last'''' xs = xs !! (length xs - 1)
 
 second :: [a] -> a
 second xs = head (tail xs)
@@ -30,10 +30,10 @@ swap (x, y) = (y, x)
 pair :: a -> b -> (a, b)
 pair x y = (x, y)
 
-double' :: Num a => a -> a
-double' x = x*2
+double' :: (Num a) => a -> a
+double' x = x * 2
 
-palindrome :: Eq a => [a] -> Bool
+palindrome :: (Eq a) => [a] -> Bool
 palindrome xs = reverse xs == xs
 
 twice :: (a -> a) -> a -> a
@@ -43,4 +43,4 @@ twice f x = f (f x)
 x |> f = f x
 
 faculty :: Int -> Int
-faculty n = product [1..n]
+faculty n = product [1 .. n]
