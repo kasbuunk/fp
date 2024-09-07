@@ -74,3 +74,7 @@ spec = do
       count 'a' "abcde" `shouldBe` 1
       count 'a' "abcdae" `shouldBe` 2
       count 'x' "abcdae" `shouldBe` 0
+
+    it "all integers are even" $ do
+      allEven [0, 2, 2, 4, 6] `shouldBe` True
+      allEven [1, 0, 2, 2, 4, 6] `shouldBe` False

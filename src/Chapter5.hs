@@ -43,3 +43,6 @@ lowers cs = length [c | c <- cs, isLower c]
 
 count :: Char -> [Char] -> Int
 count needle cs = length [c | c <- cs, c == needle]
+
+allEven :: [Int] -> Bool
+allEven xs = and [even x | x <- xs]
