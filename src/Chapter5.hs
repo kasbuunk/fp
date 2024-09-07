@@ -1,5 +1,7 @@
 module Chapter5 where
 
+import Data.Char (isLower)
+
 cartesian :: [a] -> [b] -> [(a, b)]
 cartesian xs ys = [(x, y) | x <- xs, y <- ys]
 
@@ -35,3 +37,9 @@ sorted xs = and [x <= y | (x, y) <- pairs xs]
 
 positions :: (Eq a) => a -> [a] -> [Int]
 positions needle xs = [index | (x, index) <- zip xs [0 ..], x == needle]
+
+lowers :: [Char] -> Int
+lowers cs = length [c | c <- cs, isLower c]
+
+count :: Char -> [Char] -> Int
+count needle cs = length [c | c <- cs, c == needle]

@@ -64,3 +64,13 @@ spec = do
       take 3 "abcde" `shouldBe` "abc"
       length "abcde" `shouldBe` 5
       zip "abc" [1, 2, 3, 4] `shouldBe` [('a', 1), ('b', 2), ('c', 3)]
+
+    it "count lower case characters in string" $ do
+      lowers "ABCDE" `shouldBe` 0
+      lowers "abCdE" `shouldBe` 3
+      lowers "abcde" `shouldBe` 5
+
+    it "count chars in string" $ do
+      count 'a' "abcde" `shouldBe` 1
+      count 'a' "abcdae" `shouldBe` 2
+      count 'x' "abcdae" `shouldBe` 0
