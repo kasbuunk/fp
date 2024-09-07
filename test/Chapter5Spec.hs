@@ -78,3 +78,14 @@ spec = do
     it "all integers are even" $ do
       allEven [0, 2, 2, 4, 6] `shouldBe` True
       allEven [1, 0, 2, 2, 4, 6] `shouldBe` False
+
+    it "binary encoded integers" $ do
+      codes () `shouldBe` [(0, 0, 0), (0, 0, 1), (0, 1, 0), (0, 1, 1), (1, 0, 0), (1, 0, 1), (1, 1, 0), (1, 1, 1)]
+
+      binaryDecode (0, 0, 0) `shouldBe` 0
+      binaryDecode (1, 1, 1) `shouldBe` 7
+
+      bin2dec [(0, 0, 0)] `shouldBe` [0]
+      bin2dec [(0, 0, 1)] `shouldBe` [1]
+
+      bin2dec (codes ()) `shouldBe` [0, 1, 2, 3, 4, 5, 6, 7]

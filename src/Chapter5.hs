@@ -46,3 +46,12 @@ count needle cs = length [c | c <- cs, c == needle]
 
 allEven :: [Int] -> Bool
 allEven xs = and [even x | x <- xs]
+
+codes :: () -> [(Int, Int, Int)]
+codes _ = [(x, y, z) | x <- [0, 1], y <- [0, 1], z <- [0, 1]]
+
+bin2dec :: [(Int, Int, Int)] -> [Int]
+bin2dec bs = [binaryDecode b | b <- bs]
+
+binaryDecode :: (Int, Int, Int) -> Int
+binaryDecode (x, y, z) = 2 ^ 2 * x + 2 ^ 1 * y + 2 ^ 0 * z
