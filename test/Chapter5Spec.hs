@@ -23,3 +23,6 @@ spec = do
 
     it "alternatively calculate length of list" $ do
       length' [0, 1, 2] `shouldBe` 3
+
+    it "even numbers up to n" $ do
+      evensUpTo 10 `shouldBe` [0, 2, 4, 6, 8, 10]

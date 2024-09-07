@@ -11,3 +11,6 @@ firsts xs = [x | (x, _) <- xs]
 
 length' :: [a] -> Int
 length' xs = sum [1 | _ <- xs]
+
+evensUpTo :: Int -> [Int]
+evensUpTo n = [x | x <- [0 .. n], even x]
