@@ -51,3 +51,7 @@ spec = do
 
     it "pairs adjacent elements" $ do
       pairs [0, 1, 2, 3] `shouldBe` [(0, 1), (1, 2), (2, 3)]
+
+    it "is list sorted" $ do
+      sorted [0, 1, 2, 3] `shouldBe` True
+      sorted [0, 5, 1, 2, 3] `shouldBe` False
