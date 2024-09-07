@@ -30,3 +30,9 @@ spec = do
     it "factors of n" $ do
       factors 15 `shouldBe` [1, 3, 5, 15]
       factors 7 `shouldBe` [1, 7]
+
+    it "n is prime" $ do
+      isPrime 6 `shouldBe` False
+      isPrime 7 `shouldBe` True
+      isPrime 100 `shouldBe` False
+      isPrime 101 `shouldBe` True
