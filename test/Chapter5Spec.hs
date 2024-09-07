@@ -58,3 +58,8 @@ spec = do
 
     it "positions in list" $ do
       positions False [True, False, True, False] `shouldBe` [1, 3]
+
+    it "string comprehensions" $ do
+      "abcde" !! 3 `shouldBe` 'd'
+      take 3 "abcde" `shouldBe` "abc"
+      length "abcde" `shouldBe` 5
