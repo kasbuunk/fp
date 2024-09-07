@@ -36,3 +36,7 @@ spec = do
       isPrime 7 `shouldBe` True
       isPrime 100 `shouldBe` False
       isPrime 101 `shouldBe` True
+
+    it "all primes up to n" $ do
+      primes 7 `shouldBe` [2, 3, 5, 7]
+      primes 20 `shouldBe` [2, 3, 5, 7, 11, 13, 17, 19]
