@@ -63,3 +63,4 @@ spec = do
       "abcde" !! 3 `shouldBe` 'd'
       take 3 "abcde" `shouldBe` "abc"
       length "abcde" `shouldBe` 5
+      zip "abc" [1, 2, 3, 4] `shouldBe` [('a', 1), ('b', 2), ('c', 3)]
