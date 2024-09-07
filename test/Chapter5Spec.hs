@@ -20,3 +20,6 @@ spec = do
 
     it "first of pairs" $ do
       firsts [('a', 0), ('b', 1)] `shouldBe` ['a', 'b']
+
+    it "alternatively calculate length of list" $ do
+      length' [0, 1, 2] `shouldBe` 3
