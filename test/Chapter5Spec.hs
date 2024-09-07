@@ -82,10 +82,13 @@ spec = do
     it "binary encoded integers" $ do
       codes () `shouldBe` [(0, 0, 0), (0, 0, 1), (0, 1, 0), (0, 1, 1), (1, 0, 0), (1, 0, 1), (1, 1, 0), (1, 1, 1)]
 
-      binaryDecode (0, 0, 0) `shouldBe` 0
-      binaryDecode (1, 1, 1) `shouldBe` 7
+      binaryDecode3Tuple (0, 0, 0) `shouldBe` 0
+      binaryDecode3Tuple (1, 1, 1) `shouldBe` 7
 
       bin2dec [(0, 0, 0)] `shouldBe` [0]
       bin2dec [(0, 0, 1)] `shouldBe` [1]
 
       bin2dec (codes ()) `shouldBe` [0, 1, 2, 3, 4, 5, 6, 7]
+
+    it "integers from n down to 0" $ do
+      intsDownFrom 5 `shouldBe` [5, 4, 3, 2, 1, 0]

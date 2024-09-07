@@ -51,10 +51,15 @@ codes :: () -> [(Int, Int, Int)]
 codes _ = [(x, y, z) | x <- [0, 1], y <- [0, 1], z <- [0, 1]]
 
 bin2dec :: [(Int, Int, Int)] -> [Int]
-bin2dec bs = [binaryDecode b | b <- bs]
+bin2dec bs = [binaryDecode [x, y, z] | (x, y, z) <- bs]
 
-binaryDecode :: (Int, Int, Int) -> Int
-binaryDecode (x, y, z) = sum [base * 2 ^ exponent | (base, exponent) <- zip bases exponents]
+intsDownFrom :: Int -> [Int]
+intsDownFrom n = reverse [0 .. n]
+
+binaryDecode :: [Int] -> Int
+binaryDecode bases = sum [base * 2 ^ exponent | (base, exponent) <- zip bases exponents]
   where
-    bases = [x, y, z]
-    exponents = [2, 1, 0]
+    exponents = intsDownFrom (length bases - 1)
+
+binaryDecode3Tuple :: (Int, Int, Int) -> Int
+binaryDecode3Tuple (x, y, z) = binaryDecode [x, y, z]
