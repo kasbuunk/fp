@@ -26,3 +26,6 @@ primes n = [x | x <- [2 .. n], isPrime x]
 
 find :: (Eq a) => a -> [(a, b)] -> [b]
 find key dictionary = [value | (drawnKey, value) <- dictionary, drawnKey == key]
+
+pairs :: [a] -> [(a, a)]
+pairs xs = zip xs (tail xs)

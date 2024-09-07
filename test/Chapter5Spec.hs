@@ -45,3 +45,9 @@ spec = do
       find 0 [(0, 'a'), (1, 'b')] `shouldBe` ['a']
       find 1 [(0, 'a'), (1, 'b')] `shouldBe` ['b']
       find 1 [(0, 'a'), (1, 'b'), (1, 'c')] `shouldBe` ['b', 'c']
+
+    it "try zip" $ do
+      zip ['a', 'b', 'c', 'd'] [0, 1, 2, 3, 4, 5] `shouldBe` [('a', 0), ('b', 1), ('c', 2), ('d', 3)]
+
+    it "pairs adjacent elements" $ do
+      pairs [0, 1, 2, 3] `shouldBe` [(0, 1), (1, 2), (2, 3)]
