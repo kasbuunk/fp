@@ -26,3 +26,7 @@ spec = do
 
     it "even numbers up to n" $ do
       evensUpTo 10 `shouldBe` [0, 2, 4, 6, 8, 10]
+
+    it "factors of n" $ do
+      factors 15 `shouldBe` [1, 3, 5, 15]
+      factors 7 `shouldBe` [1, 7]
