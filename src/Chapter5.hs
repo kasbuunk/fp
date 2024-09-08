@@ -69,3 +69,6 @@ between lower upper = [lower + 1 .. upper - 1]
 
 occurrences :: (Eq a) => a -> [a] -> [a]
 occurrences needle xs = [x | x <- xs, x == needle]
+
+isIn :: (Eq a) => a -> [a] -> Bool
+isIn needle xs = length (occurrences needle xs) > 0

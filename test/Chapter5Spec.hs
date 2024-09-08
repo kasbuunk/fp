@@ -97,4 +97,7 @@ spec = do
       between 5 10 `shouldBe` [6, 7, 8, 9]
 
     it "occurrences in list" $ do
+      occurrences 10 [1, 2, 3, 1] `shouldBe` []
       occurrences 1 [1, 2, 3, 1] `shouldBe` [1, 1]
+      isIn 1 [1, 2, 3, 1] `shouldBe` True
+      isIn 0 [1, 2, 3, 1] `shouldBe` False
