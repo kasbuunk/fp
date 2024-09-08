@@ -32,6 +32,8 @@ find key dictionary = [value | (drawnKey, value) <- dictionary, drawnKey == key]
 pairs :: [a] -> [(a, a)]
 pairs xs = zip xs (tail xs)
 
+-- sorted returns whether a list is sorted. It checks this by defining all
+-- adjacent pairs of elements and for each pair, checks that they're ordered.
 sorted :: (Ord a) => [a] -> Bool
 sorted xs = and [x <= y | (x, y) <- pairs xs]
 
