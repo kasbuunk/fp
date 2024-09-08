@@ -209,6 +209,11 @@ spec = do
     it "perfect numbers" $ do
       perfects 500 `shouldBe` [6, 28, 496]
 
+    it "equivalent list comprehension" $ do
+      let xs = [1, 2]
+      let ys = [3, 4]
+      [(x, y) | x <- xs, y <- ys] `shouldBe` concat [[(x, y) | y <- ys] | x <- xs]
+
     it "redefine positions" $ do
       positions' 'a' ['b', 'a', 'b', 'a'] `shouldBe` [1, 3]
 
