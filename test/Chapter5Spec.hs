@@ -92,3 +92,6 @@ spec = do
 
     it "integers from n down to 0" $ do
       intsDownFrom 5 `shouldBe` [5, 4, 3, 2, 1, 0]
+
+    it "numbers between lower and upper bound" $ do
+      between 5 10 `shouldBe` [6, 7, 8, 9]

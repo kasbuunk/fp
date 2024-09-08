@@ -63,3 +63,6 @@ binaryDecode bases = sum [base * 2 ^ exponent | (base, exponent) <- zip bases ex
 
 binaryDecode3Tuple :: (Int, Int, Int) -> Int
 binaryDecode3Tuple (x, y, z) = binaryDecode [x, y, z]
+
+between :: Int -> Int -> [Int]
+between lower upper = [lower + 1 .. upper - 1]
