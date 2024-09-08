@@ -42,9 +42,9 @@ spec = do
       primes 20 `shouldBe` [2, 3, 5, 7, 11, 13, 17, 19]
 
     it "look up value by key" $ do
-      find 0 [(0, 'a'), (1, 'b')] `shouldBe` ['a']
-      find 1 [(0, 'a'), (1, 'b')] `shouldBe` ['b']
-      find 1 [(0, 'a'), (1, 'b'), (1, 'c')] `shouldBe` ['b', 'c']
+      find' 0 [(0, 'a'), (1, 'b')] `shouldBe` ['a']
+      find' 1 [(0, 'a'), (1, 'b')] `shouldBe` ['b']
+      find' 1 [(0, 'a'), (1, 'b'), (1, 'c')] `shouldBe` ['b', 'c']
 
     it "try zip" $ do
       zip ['a', 'b', 'c', 'd'] [0, 1, 2, 3, 4, 5] `shouldBe` [('a', 0), ('b', 1), ('c', 2), ('d', 3)]
@@ -208,3 +208,6 @@ spec = do
 
   it "perfect numbers" $ do
     perfects 500 `shouldBe` [6, 28, 496]
+
+  it "redefine positions" $ do
+    positions' 'a' ['b', 'a', 'b', 'a'] `shouldBe` [1, 3]

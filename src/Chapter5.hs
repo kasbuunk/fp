@@ -29,8 +29,8 @@ isPrime n = factors n == [1, n]
 primes :: Int -> [Int]
 primes n = [x | x <- [2 .. n], isPrime x]
 
-find :: (Eq a) => a -> [(a, b)] -> [b]
-find key dictionary = [value | (drawnKey, value) <- dictionary, drawnKey == key]
+find' :: (Eq a) => a -> [(a, b)] -> [b]
+find' key dictionary = [value | (drawnKey, value) <- dictionary, drawnKey == key]
 
 pairs :: [a] -> [(a, a)]
 pairs xs = zip xs (tail xs)
@@ -179,3 +179,6 @@ pythagoreanTriples n = [(x, y, z) | x <- [1 .. n], y <- [1 .. n], z <- [1 .. n],
 
 perfects :: Int -> [Int]
 perfects n = [x | x <- [1 .. n], x == sum (factors x) - x]
+
+positions' :: (Eq a) => a -> [a] -> [Int]
+positions' x xs = [index | (x', index) <- zip xs [0 ..], x' == x]
