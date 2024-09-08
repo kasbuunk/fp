@@ -95,3 +95,6 @@ shift :: Int -> Char -> Char
 shift n c
   | isLower c = intToAlpha ((alphaToInt c + n) `mod` 26)
   | otherwise = c
+
+encode :: Int -> [Char] -> [Char]
+encode n cs = [shift n c | c <- cs]

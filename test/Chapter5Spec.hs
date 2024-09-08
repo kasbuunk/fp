@@ -126,3 +126,7 @@ spec = do
       shift (-1) 'a' `shouldBe` 'z'
       shift 1 'z' `shouldBe` 'a'
       shift 1 ',' `shouldBe` ','
+
+    it "shift string" $ do
+      encode 1 "abc" `shouldBe` "bcd"
+      encode (-1) "abc" `shouldBe` "zab"
