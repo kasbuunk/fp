@@ -202,3 +202,6 @@ spec = do
 
   it "implement replicate with list comprehensions" $ do
     replicate' 3 True `shouldBe` [True, True, True]
+
+  it "pythagorean triples" $ do
+    pythagoreanTriples 10 `shouldBe` [(3, 4, 5), (4, 3, 5), (6, 8, 10), (8, 6, 10)]
