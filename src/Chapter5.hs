@@ -59,9 +59,7 @@ intsDownFrom :: Int -> [Int]
 intsDownFrom n = reverse [0 .. n]
 
 binaryDecode :: [Int] -> Int
-binaryDecode bases = sum [base * 2 ^ exponent | (base, exponent) <- zip bases exponents]
-  where
-    exponents = intsDownFrom (length bases - 1)
+binaryDecode bases = sum [base * 2 ^ e | (base, e) <- zip bases (exponents bases)]
 
 binaryDecode3Tuple :: (Int, Int, Int) -> Int
 binaryDecode3Tuple (x, y, z) = binaryDecode [x, y, z]
@@ -76,12 +74,13 @@ isIn :: (Eq a) => a -> [a] -> Bool
 isIn needle xs = length (occurrences needle xs) > 0
 
 evenElements :: [a] -> [a]
-evenElements xs = [x | (x, index) <- zip xs [0 ..], index `mod` 2 == 1]
+evenElements xs = [x | (x, index) <- zip xs [0 ..], even (index + 1)]
 
 selectEvenLT1 :: [Int] -> [Float] -> [(Int, Float)]
 selectEvenLT1 numbers prices = [(n, p) | (n, p) <- zip numbers prices, even n, p < 1.0]
 
+exponents :: [a] -> [Int]
+exponents xs = intsDownFrom (length xs - 1)
+
 stringToInt :: String -> Int
-stringToInt s = sum [digitToInt factor * 10 ^ e | (factor, e) <- zip s exponents]
-  where
-    exponents = intsDownFrom (length s - 1)
+stringToInt s = sum [digitToInt factor * 10 ^ e | (factor, e) <- zip s (exponents s)]
