@@ -59,7 +59,7 @@ intsDownFrom :: Int -> [Int]
 intsDownFrom n = reverse [0 .. n]
 
 binaryDecode :: [Int] -> Int
-binaryDecode bases = sum [base * 2 ^ e | (base, e) <- zip bases (exponents bases)]
+binaryDecode weights = sum [weight * 2 ^ e | (weight, e) <- zip weights (exponents weights)]
 
 binaryDecode3Tuple :: (Int, Int, Int) -> Int
 binaryDecode3Tuple (x, y, z) = binaryDecode [x, y, z]
@@ -83,4 +83,4 @@ exponents :: [a] -> [Int]
 exponents xs = intsDownFrom (length xs - 1)
 
 stringToInt :: String -> Int
-stringToInt s = sum [digitToInt factor * 10 ^ e | (factor, e) <- zip s (exponents s)]
+stringToInt weights = sum [digitToInt weight * 10 ^ e | (weight, e) <- zip weights (exponents weights)]
