@@ -193,3 +193,6 @@ spec = do
     sumSquaresUpTo 1 `shouldBe` 1
     sumSquaresUpTo 2 `shouldBe` 5
     sumSquaresUpTo 100 `shouldBe` 338350
+
+  it "grid m x n" $ do
+    grid 1 2 `shouldBe` [(0, 0), (0, 1), (0, 2), (1, 0), (1, 1), (1, 2)]

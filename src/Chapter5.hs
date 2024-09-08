@@ -164,3 +164,6 @@ crack input = encode (-cipherGuess) input
 
 sumSquaresUpTo :: Int -> Int
 sumSquaresUpTo n = sum [x ^ 2 | x <- [1 .. n]]
+
+grid :: Int -> Int -> [(Int, Int)]
+grid n m = [(n', m') | n' <- [0 .. n], m' <- [0 .. m]]
