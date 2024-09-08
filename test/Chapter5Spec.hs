@@ -199,3 +199,6 @@ spec = do
 
   it "square grid excluding diagonal" $ do
     squareGrid 2 `shouldBe` [(0, 1), (0, 2), (1, 0), (1, 2), (2, 0), (2, 1)]
+
+  it "implement replicate with list comprehensions" $ do
+    replicate' 3 True `shouldBe` [True, True, True]

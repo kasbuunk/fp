@@ -170,3 +170,6 @@ grid n m = [(n', m') | n' <- [0 .. n], m' <- [0 .. m]]
 
 squareGrid :: Int -> [(Int, Int)]
 squareGrid n = [(n', m') | (n', m') <- grid n n, n' /= m']
+
+replicate' :: Int -> a -> [a]
+replicate' n x = [x | _ <- [0 .. n - 1]]
