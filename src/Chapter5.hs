@@ -176,3 +176,6 @@ replicate' n x = [x | _ <- [0 .. n - 1]]
 
 pythagoreanTriples :: Int -> [(Int, Int, Int)]
 pythagoreanTriples n = [(x, y, z) | x <- [1 .. n], y <- [1 .. n], z <- [1 .. n], x ^ 2 + y ^ 2 == z ^ 2]
+
+perfects :: Int -> [Int]
+perfects n = [x | x <- [1 .. n], x == sum (factors x) - x]

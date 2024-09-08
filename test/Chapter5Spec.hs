@@ -205,3 +205,6 @@ spec = do
 
   it "pythagorean triples" $ do
     pythagoreanTriples 10 `shouldBe` [(3, 4, 5), (4, 3, 5), (6, 8, 10), (8, 6, 10)]
+
+  it "perfect numbers" $ do
+    perfects 500 `shouldBe` [6, 28, 496]
