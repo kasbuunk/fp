@@ -66,3 +66,6 @@ binaryDecode3Tuple (x, y, z) = binaryDecode [x, y, z]
 
 between :: Int -> Int -> [Int]
 between lower upper = [lower + 1 .. upper - 1]
+
+occurrences :: (Eq a) => a -> [a] -> [a]
+occurrences needle xs = [x | x <- xs, x == needle]

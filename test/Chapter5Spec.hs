@@ -95,3 +95,6 @@ spec = do
 
     it "numbers between lower and upper bound" $ do
       between 5 10 `shouldBe` [6, 7, 8, 9]
+
+    it "occurrences in list" $ do
+      occurrences 1 [1, 2, 3, 1] `shouldBe` [1, 1]
