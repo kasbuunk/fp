@@ -90,3 +90,6 @@ alphaToInt c = ord c - ord 'a'
 
 intToAlpha :: Int -> Char
 intToAlpha n = chr (n + ord 'a')
+
+shift :: Int -> Char -> Char
+shift n c = intToAlpha ((alphaToInt c + n) `mod` 26)

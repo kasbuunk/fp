@@ -120,3 +120,7 @@ spec = do
       alphaToInt 'z' `shouldBe` 25
       intToAlpha 0 `shouldBe` 'a'
       intToAlpha 25 `shouldBe` 'z'
+
+    it "shift letter" $ do
+      shift 1 'a' `shouldBe` 'b'
+      shift 1 'z' `shouldBe` 'a'
