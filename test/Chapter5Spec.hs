@@ -114,3 +114,9 @@ spec = do
 
     it "string to int" $ do
       stringToInt "123" `shouldBe` 123
+
+    it "encode and decode between char and int" $ do
+      alphaToInt 'a' `shouldBe` 0
+      alphaToInt 'z' `shouldBe` 25
+      intToAlpha 0 `shouldBe` 'a'
+      intToAlpha 25 `shouldBe` 'z'

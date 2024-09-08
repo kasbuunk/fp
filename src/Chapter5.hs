@@ -1,6 +1,6 @@
 module Chapter5 where
 
-import Data.Char (digitToInt, isLower)
+import Data.Char (chr, digitToInt, isLower, ord)
 
 cartesian :: [a] -> [b] -> [(a, b)]
 cartesian xs ys = [(x, y) | x <- xs, y <- ys]
@@ -84,3 +84,9 @@ exponents xs = intsDownFrom (length xs - 1)
 
 stringToInt :: String -> Int
 stringToInt weights = sum [digitToInt weight * 10 ^ e | (weight, e) <- zip weights (exponents weights)]
+
+alphaToInt :: Char -> Int
+alphaToInt c = ord c - ord 'a'
+
+intToAlpha :: Int -> Char
+intToAlpha n = chr (n + ord 'a')
