@@ -101,3 +101,8 @@ spec = do
       occurrences 1 [1, 2, 3, 1] `shouldBe` [1, 1]
       isIn 1 [1, 2, 3, 1] `shouldBe` True
       isIn 0 [1, 2, 3, 1] `shouldBe` False
+
+    it "elements at even positions" $ do
+      evenElements ["aap", "noot", "mies"] `shouldBe` ["noot"]
+      evenElements [1, 2, 3, 4, 5, 6] `shouldBe` [2, 4, 6]
+      evenElements [0, 1, 2, 3, 4, 5, 6] `shouldBe` [1, 3, 5]

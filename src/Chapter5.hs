@@ -74,3 +74,6 @@ occurrences needle xs = [x | x <- xs, x == needle]
 
 isIn :: (Eq a) => a -> [a] -> Bool
 isIn needle xs = length (occurrences needle xs) > 0
+
+evenElements :: [a] -> [a]
+evenElements xs = [x | (x, index) <- zip xs [0 ..], index `mod` 2 == 1]
