@@ -130,3 +130,4 @@ spec = do
     it "shift string" $ do
       encode 1 "abc" `shouldBe` "bcd"
       encode (-1) "abc" `shouldBe` "zab"
+      encode (-5) (encode 5 "haskell is interesting") `shouldBe` "haskell is interesting"
