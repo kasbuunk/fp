@@ -157,7 +157,7 @@ sortByFirst = sortBy (comparing fst)
 crack :: String -> String
 crack input = encode (-cipherGuess) input
   where
-    cipherGuess = snd (head (sortByFirst [(cipher, index) | (cipher, index) <- zip cipherResults [0 .. 25]]))
+    cipherGuess = head (positions (minimum cipherResults) cipherResults)
     cipherResults = [chiSquared (rotate n os) es | n <- [0 .. 25]]
     os = frequencies input
     es = frequencyTable ()
