@@ -211,3 +211,6 @@ spec = do
 
   it "redefine positions" $ do
     positions' 'a' ['b', 'a', 'b', 'a'] `shouldBe` [1, 3]
+
+  it "scalar product" $ do
+    scalarproduct [1 .. 3] [4 .. 6] `shouldBe` 32

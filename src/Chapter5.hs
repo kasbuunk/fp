@@ -182,3 +182,6 @@ perfects n = [x | x <- [1 .. n], x == sum (factors x) - x]
 
 positions' :: (Eq a) => a -> [a] -> [Int]
 positions' x xs = [index | (x', index) <- zip xs [0 ..], x' == x]
+
+scalarproduct :: (Num a) => [a] -> [a] -> a
+scalarproduct xs ys = sum [x * y | (x, y) <- zip xs ys]
