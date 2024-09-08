@@ -123,4 +123,6 @@ spec = do
 
     it "shift letter" $ do
       shift 1 'a' `shouldBe` 'b'
+      shift (-1) 'a' `shouldBe` 'z'
       shift 1 'z' `shouldBe` 'a'
+      shift 1 ',' `shouldBe` ','
