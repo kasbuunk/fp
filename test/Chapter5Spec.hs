@@ -184,33 +184,33 @@ spec = do
       rotate 8 [1, 2, 3, 4, 5] `shouldBe` [4, 5, 1, 2, 3]
 
     it "crack caesar" $ do
-      let text = "the sun was setting behind the hills, casting a warm orange glow over the small town. people were finishing their day, heading home from work or sitting outside their houses, enjoying the evening breeze. the streets were quiet, and the occasional sound of laughter or distant music echoed in the air. birds flew across the sky in graceful patterns, making their way back to their nests. it was one of those moments where everything felt peaceful and calm. as night began to fall, the town lights flickered on, casting a soft glow on the empty streets. the air grew cooler, and a few stars started to twinkle in the darkening sky. some families gathered around their dinner tables, while others took evening strolls, talking quietly as they walked. the town seemed to slow down, preparing for another restful night."
+      let text = "The sun was setting behind the hills, casting a warm orange glow over the small town. People were finishing their day, heading home from work or sitting outside their houses, enjoying the evening breeze. The streets were quiet, and the occasional sound of laughter or distant music echoed in the air. Birds flew across the sky in graceful patterns, making their way back to their nests. It was one of those moments where everything felt peaceful and calm. As night began to fall, the town lights flickered on, casting a soft glow on the empty streets. The air grew cooler, and a few stars started to twinkle in the darkening sky. Some families gathered around their dinner tables, while others took evening strolls, talking quietly as they walked. The town seemed to slow down, preparing for another restful night."
       let cipher = 4
 
       crack (encode cipher text) `shouldBe` text
 
-  it "sum of squared numbers until n" $ do
-    sumSquaresUpTo 1 `shouldBe` 1
-    sumSquaresUpTo 2 `shouldBe` 5
-    sumSquaresUpTo 100 `shouldBe` 338350
+    it "sum of squared numbers until n" $ do
+      sumSquaresUpTo 1 `shouldBe` 1
+      sumSquaresUpTo 2 `shouldBe` 5
+      sumSquaresUpTo 100 `shouldBe` 338350
 
-  it "grid m x n" $ do
-    grid 1 2 `shouldBe` [(0, 0), (0, 1), (0, 2), (1, 0), (1, 1), (1, 2)]
+    it "grid m x n" $ do
+      grid 1 2 `shouldBe` [(0, 0), (0, 1), (0, 2), (1, 0), (1, 1), (1, 2)]
 
-  it "square grid excluding diagonal" $ do
-    squareGrid 2 `shouldBe` [(0, 1), (0, 2), (1, 0), (1, 2), (2, 0), (2, 1)]
+    it "square grid excluding diagonal" $ do
+      squareGrid 2 `shouldBe` [(0, 1), (0, 2), (1, 0), (1, 2), (2, 0), (2, 1)]
 
-  it "implement replicate with list comprehensions" $ do
-    replicate' 3 True `shouldBe` [True, True, True]
+    it "implement replicate with list comprehensions" $ do
+      replicate' 3 True `shouldBe` [True, True, True]
 
-  it "pythagorean triples" $ do
-    pythagoreanTriples 10 `shouldBe` [(3, 4, 5), (4, 3, 5), (6, 8, 10), (8, 6, 10)]
+    it "pythagorean triples" $ do
+      pythagoreanTriples 10 `shouldBe` [(3, 4, 5), (4, 3, 5), (6, 8, 10), (8, 6, 10)]
 
-  it "perfect numbers" $ do
-    perfects 500 `shouldBe` [6, 28, 496]
+    it "perfect numbers" $ do
+      perfects 500 `shouldBe` [6, 28, 496]
 
-  it "redefine positions" $ do
-    positions' 'a' ['b', 'a', 'b', 'a'] `shouldBe` [1, 3]
+    it "redefine positions" $ do
+      positions' 'a' ['b', 'a', 'b', 'a'] `shouldBe` [1, 3]
 
-  it "scalar product" $ do
-    scalarproduct [1 .. 3] [4 .. 6] `shouldBe` 32
+    it "scalar product" $ do
+      scalarproduct [1 .. 3] [4 .. 6] `shouldBe` 32
