@@ -1,6 +1,9 @@
 module Chapter5 where
 
+import Chapter1 (square)
 import Data.Char (chr, digitToInt, isLower, ord)
+import Data.List (sortBy)
+import Data.Ord (comparing)
 
 cartesian :: [a] -> [b] -> [(a, b)]
 cartesian xs ys = [(x, y) | x <- xs, y <- ys]
@@ -98,3 +101,63 @@ shift n c
 
 encode :: Int -> [Char] -> [Char]
 encode n cs = [shift n c | c <- cs]
+
+frequencyTable :: () -> [Float]
+frequencyTable _ =
+  [ 8.1,
+    1.5,
+    2.8,
+    4.2,
+    12.7,
+    2.2,
+    2.0,
+    6.1,
+    7.0,
+    0.2,
+    0.8,
+    4.0,
+    2.4,
+    6.7,
+    7.5,
+    1.9,
+    0.1,
+    6.0,
+    6.3,
+    9.0,
+    2.8,
+    1.0,
+    2.4,
+    0.2,
+    2.0,
+    0.1
+  ]
+
+percent :: Int -> Int -> Float
+percent n m = (fromIntegral n) / (fromIntegral m) * 100.0
+
+reasonablyClose :: Float -> Float -> Bool
+reasonablyClose n m = (n - m) / m <= 0.001
+
+frequencies :: [Char] -> [Float]
+frequencies cs = [percent (count c cs) n | c <- ['a' .. 'z']]
+  where
+    n = lowers cs
+
+chiSquared :: [Float] -> [Float] -> Float
+chiSquared os es = sum [(o - e) ^ 2 / e | (o, e) <- zip os es]
+
+rotate :: Int -> [a] -> [a]
+rotate n xs = drop n' xs ++ take n' xs
+  where
+    n' = n `mod` length xs
+
+sortByFirst :: (Ord a) => [(a, b)] -> [(a, b)]
+sortByFirst = sortBy (comparing fst)
+
+crack :: String -> String
+crack input = encode (-cipherGuess) input
+  where
+    cipherGuess = snd (head (sortByFirst [(cipher, index) | (cipher, index) <- zip cipherResults [0 .. 25]]))
+    cipherResults = [chiSquared (rotate n os) es | n <- [0 .. 25]]
+    os = frequencies input
+    es = frequencyTable ()

@@ -131,3 +131,60 @@ spec = do
       encode 1 "abc" `shouldBe` "bcd"
       encode (-1) "abc" `shouldBe` "zab"
       encode (-5) (encode 5 "haskell is interesting") `shouldBe` "haskell is interesting"
+
+    it "check table length" $ do
+      length (frequencyTable ()) `shouldBe` 26
+
+    it "calculate percentage" $ do
+      reasonablyClose (percent 5 15) 33.33333 `shouldBe` True
+
+    it "fequencies of characters" $ do
+      frequencies "ab"
+        `shouldBe` [ 50.0,
+                     50.0,
+                     0,
+                     0,
+                     0,
+                     0,
+                     0,
+                     0,
+                     0,
+                     0,
+                     0,
+                     0,
+                     0,
+                     0,
+                     0,
+                     0,
+                     0,
+                     0,
+                     0,
+                     0,
+                     0,
+                     0,
+                     0,
+                     0,
+                     0,
+                     0
+                   ]
+
+    it "chi squared" $ do
+      let observed = [1.0, 0.1]
+      let expected = [1.0, 0.1]
+      chiSquared observed expected `shouldBe` 0.0
+
+      let observed' = [1.0, 2.0]
+      let expected' = [2.0, 4.0]
+      chiSquared observed' expected' `shouldBe` (0.5 + 1.0)
+
+    it "rotate string" $ do
+      rotate 0 [1, 2, 3, 4, 5] `shouldBe` [1, 2, 3, 4, 5]
+      rotate 3 [1, 2, 3, 4, 5] `shouldBe` [4, 5, 1, 2, 3]
+      rotate 5 [1, 2, 3, 4, 5] `shouldBe` [1, 2, 3, 4, 5]
+      rotate 8 [1, 2, 3, 4, 5] `shouldBe` [4, 5, 1, 2, 3]
+
+    it "crack caesar" $ do
+      let text = "the sun was setting behind the hills, casting a warm orange glow over the small town. people were finishing their day, heading home from work or sitting outside their houses, enjoying the evening breeze. the streets were quiet, and the occasional sound of laughter or distant music echoed in the air. birds flew across the sky in graceful patterns, making their way back to their nests. it was one of those moments where everything felt peaceful and calm. as night began to fall, the town lights flickered on, casting a soft glow on the empty streets. the air grew cooler, and a few stars started to twinkle in the darkening sky. some families gathered around their dinner tables, while others took evening strolls, talking quietly as they walked. the town seemed to slow down, preparing for another restful night."
+      let cipher = 4
+
+      crack (encode cipher text) `shouldBe` text
