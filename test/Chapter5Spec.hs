@@ -111,3 +111,6 @@ spec = do
       let numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
       let prices = [0.1, 0.1, 0.1, 0.1, 0.1, 2.0, 0.1, 2.0, 0.1, 2.0]
       selectEvenLT1 numbers prices `shouldBe` [(2, 0.1), (4, 0.1)]
+
+    it "string to int" $ do
+      stringToInt "123" `shouldBe` 123

@@ -1,6 +1,6 @@
 module Chapter5 where
 
-import Data.Char (isLower)
+import Data.Char (digitToInt, isLower)
 
 cartesian :: [a] -> [b] -> [(a, b)]
 cartesian xs ys = [(x, y) | x <- xs, y <- ys]
@@ -80,3 +80,8 @@ evenElements xs = [x | (x, index) <- zip xs [0 ..], index `mod` 2 == 1]
 
 selectEvenLT1 :: [Int] -> [Float] -> [(Int, Float)]
 selectEvenLT1 numbers prices = [(n, p) | (n, p) <- zip numbers prices, even n, p < 1.0]
+
+stringToInt :: String -> Int
+stringToInt s = sum [digitToInt factor * 10 ^ e | (factor, e) <- zip s exponents]
+  where
+    exponents = intsDownFrom (length s - 1)
