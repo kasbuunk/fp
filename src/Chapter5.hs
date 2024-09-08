@@ -161,3 +161,6 @@ crack input = encode (-cipherGuess) input
     cipherResults = [chiSquared (rotate n os) es | n <- [0 .. 25]]
     os = frequencies input
     es = frequencyTable ()
+
+sumSquaresUpTo :: Int -> Int
+sumSquaresUpTo n = sum [x ^ 2 | x <- [1 .. n]]

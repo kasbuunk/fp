@@ -188,3 +188,8 @@ spec = do
       let cipher = 4
 
       crack (encode cipher text) `shouldBe` text
+
+  it "sum of squared numbers until n" $ do
+    sumSquaresUpTo 1 `shouldBe` 1
+    sumSquaresUpTo 2 `shouldBe` 5
+    sumSquaresUpTo 100 `shouldBe` 338350
