@@ -106,3 +106,8 @@ spec = do
       evenElements ["aap", "noot", "mies"] `shouldBe` ["noot"]
       evenElements [1, 2, 3, 4, 5, 6] `shouldBe` [2, 4, 6]
       evenElements [0, 1, 2, 3, 4, 5, 6] `shouldBe` [1, 3, 5]
+
+    it "select product" $ do
+      let numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+      let prices = [0.1, 0.1, 0.1, 0.1, 0.1, 2.0, 0.1, 2.0, 0.1, 2.0]
+      selectEvenLT1 numbers prices `shouldBe` [(2, 0.1), (4, 0.1)]

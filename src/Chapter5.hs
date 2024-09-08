@@ -77,3 +77,6 @@ isIn needle xs = length (occurrences needle xs) > 0
 
 evenElements :: [a] -> [a]
 evenElements xs = [x | (x, index) <- zip xs [0 ..], index `mod` 2 == 1]
+
+selectEvenLT1 :: [Int] -> [Float] -> [(Int, Float)]
+selectEvenLT1 numbers prices = [(n, p) | (n, p) <- zip numbers prices, even n, p < 1.0]
