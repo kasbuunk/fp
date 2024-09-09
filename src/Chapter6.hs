@@ -11,3 +11,7 @@ recursiveMultiply x y = x + recursiveMultiply x (y - 1)
 product' :: (Num a) => [a] -> a
 product' [] = 1
 product' (x : xs) = x * product xs
+
+length' :: [a] -> Int
+length' [] = 0
+length' (_ : xs) = 1 + length' xs

@@ -23,3 +23,8 @@ spec = do
       product' [] `shouldBe` 1
       product' [5] `shouldBe` 5
       product' [1, 2, 3] `shouldBe` 6
+
+    it "recursive length" $ do
+      length' [] `shouldBe` 0
+      length' [1] `shouldBe` 1
+      length' [1, 2] `shouldBe` 2
