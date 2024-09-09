@@ -23,3 +23,9 @@ reverse' (x : xs) = reverse' xs ++ [x]
 append :: [a] -> [a] -> [a]
 append [] ys = ys
 append (x : xs) ys = x : append xs ys
+
+insert :: (Ord a) => a -> [a] -> [a]
+insert x [] = [x]
+insert x (y : ys)
+  | x <= y = x : y : ys
+  | otherwise = y : insert x ys
