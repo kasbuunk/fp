@@ -50,3 +50,10 @@ spec = do
     it "reinvent zip" $ do
       zip' [1, 2, 3] ['a', 'b', 'c'] `shouldBe` [(1, 'a'), (2, 'b'), (3, 'c')]
       zip' [1, 2, 3] ['a', 'b'] `shouldBe` [(1, 'a'), (2, 'b')]
+
+    it "reinvent drop" $ do
+      drop' 0 [1] `shouldBe` [1]
+      drop' 0 [1, 2, 3] `shouldBe` [1, 2, 3]
+      drop' 1 [1, 2, 3] `shouldBe` [2, 3]
+      drop' 2 [1, 2, 3] `shouldBe` [3]
+      drop' 3 [1, 2, 3] `shouldBe` []
