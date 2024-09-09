@@ -46,3 +46,7 @@ spec = do
 
     it "insertion sort" $ do
       insertionsort [4, 2, 5, 1, 3] `shouldBe` [1, 2, 3, 4, 5]
+
+    it "reinvent zip" $ do
+      zip' [1, 2, 3] ['a', 'b', 'c'] `shouldBe` [(1, 'a'), (2, 'b'), (3, 'c')]
+      zip' [1, 2, 3] ['a', 'b'] `shouldBe` [(1, 'a'), (2, 'b')]
