@@ -18,3 +18,8 @@ spec = do
       recursiveMultiply 0 1 `shouldBe` 0
       recursiveMultiply 1 1 `shouldBe` 1
       recursiveMultiply 6 5 `shouldBe` 30
+
+    it "recursive product" $ do
+      product' [] `shouldBe` 1
+      product' [5] `shouldBe` 5
+      product' [1, 2, 3] `shouldBe` 6
