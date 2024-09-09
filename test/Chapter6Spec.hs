@@ -28,3 +28,9 @@ spec = do
       length' [] `shouldBe` 0
       length' [1] `shouldBe` 1
       length' [1, 2] `shouldBe` 2
+
+    it "recursive reverse" $ do
+      reverse' [] `shouldBe` ([] :: [Int])
+      reverse' ['a'] `shouldBe` ['a']
+      reverse' [1, 2] `shouldBe` [2, 1]
+      reverse' [1, 2, 3, 4, 5] `shouldBe` [5, 4, 3, 2, 1]
