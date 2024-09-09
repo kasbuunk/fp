@@ -43,3 +43,8 @@ drop' :: Int -> [a] -> [a]
 drop' 0 xs = xs
 drop' n (_ : xs) = drop (n - 1) xs
 drop' _ _ = []
+
+fibonacci :: Int -> Int
+fibonacci 0 = 0
+fibonacci 1 = 1
+fibonacci n = fibonacci (n - 1) + fibonacci (n - 2)

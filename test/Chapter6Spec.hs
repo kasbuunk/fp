@@ -57,3 +57,9 @@ spec = do
       drop' 1 [1, 2, 3] `shouldBe` [2, 3]
       drop' 2 [1, 2, 3] `shouldBe` [3]
       drop' 3 [1, 2, 3] `shouldBe` []
+
+    it "fibonacci" $ do
+      fibonacci 0 `shouldBe` 0
+      fibonacci 1 `shouldBe` 1
+      fibonacci 2 `shouldBe` 1
+      fibonacci 7 `shouldBe` 13
