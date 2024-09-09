@@ -29,3 +29,7 @@ insert x [] = [x]
 insert x (y : ys)
   | x <= y = x : y : ys
   | otherwise = y : insert x ys
+
+insertionsort :: (Ord a) => [a] -> [a]
+insertionsort [] = []
+insertionsort (x : xs) = insert x (insertionsort xs)

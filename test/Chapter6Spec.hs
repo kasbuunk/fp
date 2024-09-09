@@ -43,3 +43,6 @@ spec = do
 
     it "recursive insert" $ do
       insert 3 [1, 2, 4, 5] `shouldBe` [1, 2, 3, 4, 5]
+
+    it "insertion sort" $ do
+      insertionsort [4, 2, 5, 1, 3] `shouldBe` [1, 2, 3, 4, 5]
