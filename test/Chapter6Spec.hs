@@ -34,3 +34,9 @@ spec = do
       reverse' ['a'] `shouldBe` ['a']
       reverse' [1, 2] `shouldBe` [2, 1]
       reverse' [1, 2, 3, 4, 5] `shouldBe` [5, 4, 3, 2, 1]
+
+    it "recursive append" $ do
+      append [] [0] `shouldBe` ([0])
+      append [0] [] `shouldBe` ([0])
+      append [1] [2] `shouldBe` ([1, 2])
+      append [1, 3] [2, 4] `shouldBe` ([1, 3, 2, 4])
