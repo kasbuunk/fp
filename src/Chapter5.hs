@@ -1,6 +1,5 @@
 module Chapter5 where
 
-import Chapter1 (square)
 import Data.Char (chr, digitToInt, isLower, ord)
 import Data.List (sortBy)
 import Data.Ord (comparing)
