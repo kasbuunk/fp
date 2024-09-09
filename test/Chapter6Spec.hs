@@ -63,3 +63,8 @@ spec = do
       fibonacci 1 `shouldBe` 1
       fibonacci 2 `shouldBe` 1
       fibonacci 7 `shouldBe` 13
+
+    it "qsort" $ do
+      qsort [1] `shouldBe` [1]
+      qsort [1, 2, 3, 3, 5] `shouldBe` [1, 2, 3, 3, 5]
+      qsort [3, 5, 1, 3, 2] `shouldBe` [1, 2, 3, 3, 5]

@@ -48,3 +48,10 @@ fibonacci :: Int -> Int
 fibonacci 0 = 0
 fibonacci 1 = 1
 fibonacci n = fibonacci (n - 1) + fibonacci (n - 2)
+
+qsort :: (Ord a) => [a] -> [a]
+qsort [] = []
+qsort (x : xs) = qsort lower ++ [x] ++ qsort greater
+  where
+    lower = [y | y <- xs, y <= x]
+    greater = [z | z <- xs, z > x]
