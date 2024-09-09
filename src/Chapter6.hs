@@ -55,3 +55,11 @@ qsort (x : xs) = qsort lower ++ [x] ++ qsort greater
   where
     lower = [y | y <- xs, y <= x]
     greater = [z | z <- xs, z > x]
+
+evens :: [a] -> [a]
+evens [] = []
+evens (x : xs) = x : odds xs
+
+odds :: [a] -> [a]
+odds [] = []
+odds (_ : xs) = evens xs

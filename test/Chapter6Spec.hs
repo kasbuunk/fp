@@ -68,3 +68,7 @@ spec = do
       qsort [1] `shouldBe` [1]
       qsort [1, 2, 3, 3, 5] `shouldBe` [1, 2, 3, 3, 5]
       qsort [3, 5, 1, 3, 2] `shouldBe` [1, 2, 3, 3, 5]
+
+    it "elements at even and odd positions" $ do
+      evens [0, 4, 6, 2, 1, 4] `shouldBe` [0, 6, 1]
+      odds [0, 4, 6, 2, 1, 4] `shouldBe` [4, 2, 4]
