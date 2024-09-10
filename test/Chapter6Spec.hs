@@ -111,5 +111,10 @@ spec = do
       and' [False, False] `shouldBe` False
 
     it "recursive concat" $ do
-      concat ["abc"] `shouldBe` "abc"
-      concat ["abc", "def"] `shouldBe` "abcdef"
+      concat' ["abc"] `shouldBe` "abc"
+      concat' ["abc", "def"] `shouldBe` "abcdef"
+
+    it "recursive replicate" $ do
+      replicate' 0 'a' `shouldBe` []
+      replicate' 1 'a' `shouldBe` ['a']
+      replicate' 2 'a' `shouldBe` ['a', 'a']

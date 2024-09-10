@@ -119,3 +119,8 @@ concat' :: [[a]] -> [a]
 concat' [] = []
 concat' [[xs]] = [xs]
 concat' (xs : xss) = xs ++ concat' xss
+
+replicate' :: Int -> a -> [a]
+replicate' 0 _ = []
+replicate' 1 x = [x]
+replicate' n x = x : replicate' (n - 1) x
