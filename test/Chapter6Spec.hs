@@ -101,3 +101,11 @@ spec = do
 
     it "reinvent init" $ do
       init' [1, 2, 3, 4] `shouldBe` [1, 2, 3]
+
+    it "recursive and" $ do
+      and' [] `shouldBe` True
+      and' [True] `shouldBe` True
+      and' [True, True] `shouldBe` True
+      and' [False, True] `shouldBe` False
+      and' [True, False] `shouldBe` False
+      and' [False, False] `shouldBe` False

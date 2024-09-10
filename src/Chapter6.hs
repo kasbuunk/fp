@@ -106,5 +106,11 @@ euclid x y
 -- = 1 : 2 : []
 -- = [1,2]
 init' :: [a] -> [a]
+init' [] = undefined
 init' [_] = []
 init' (x : xs) = x : init' xs
+
+and' :: [Bool] -> Bool
+and' [] = True
+and' (False : _) = False
+and' (True : xs) = and' xs
