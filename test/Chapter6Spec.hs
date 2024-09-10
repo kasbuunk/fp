@@ -109,3 +109,7 @@ spec = do
       and' [False, True] `shouldBe` False
       and' [True, False] `shouldBe` False
       and' [False, False] `shouldBe` False
+
+    it "recursive concat" $ do
+      concat ["abc"] `shouldBe` "abc"
+      concat ["abc", "def"] `shouldBe` "abcdef"

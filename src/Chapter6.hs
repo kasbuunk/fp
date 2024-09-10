@@ -114,3 +114,8 @@ and' :: [Bool] -> Bool
 and' [] = True
 and' (False : _) = False
 and' (True : xs) = and' xs
+
+concat' :: [[a]] -> [a]
+concat' [] = []
+concat' [[xs]] = [xs]
+concat' (xs : xss) = xs ++ concat' xss
