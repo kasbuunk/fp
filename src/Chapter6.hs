@@ -172,3 +172,9 @@ last' :: [a] -> a
 last' [] = undefined
 last' [x] = x
 last' (_ : xs) = last' xs
+
+countOccurrences :: (Eq a) => a -> [a] -> Int
+countOccurrences _ [] = 0
+countOccurrences x (x' : xs)
+  | x == x' = 1 + countOccurrences x xs
+  | otherwise = countOccurrences x xs

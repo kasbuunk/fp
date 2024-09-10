@@ -152,3 +152,8 @@ spec = do
     it "recursive last" $ do
       last' [1] `shouldBe` 1
       last' [1, 2, 3] `shouldBe` 3
+
+    it "count occurrences" $ do
+      countOccurrences 1 [] `shouldBe` 0
+      countOccurrences 1 [1] `shouldBe` 1
+      countOccurrences 1 [1, 2, 3, 1, 1] `shouldBe` 3
