@@ -134,3 +134,8 @@ spec = do
       merge [] [1, 3, 4] `shouldBe` [1, 3, 4]
       merge [2, 5, 6] [] `shouldBe` [2, 5, 6]
       merge [2, 5, 6] [1, 3, 4] `shouldBe` [1, 2, 3, 4, 5, 6]
+
+    it "merge sort" $ do
+      mergesort ['a'] `shouldBe` ['a']
+      mergesort [1, 2] `shouldBe` [1, 2]
+      mergesort [2, 45, 2, 3, 1, 6] `shouldBe` [1, 2, 2, 3, 6, 45]

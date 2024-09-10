@@ -142,3 +142,10 @@ merge xs [] = xs
 merge (x : xs) (y : ys)
   | x <= y = x : merge xs (y : ys)
   | otherwise = y : merge (x : xs) ys
+
+mergesort :: (Ord a) => [a] -> [a]
+mergesort [] = []
+mergesort [x] = [x]
+mergesort xs = merge (mergesort left) (mergesort right)
+  where
+    (left, right) = splitAt (length xs `div` 2) xs
