@@ -124,3 +124,8 @@ replicate' :: Int -> a -> [a]
 replicate' 0 _ = []
 replicate' 1 x = [x]
 replicate' n x = x : replicate' (n - 1) x
+
+select :: [a] -> Int -> a
+select [] _ = undefined
+select (x : _) 0 = x
+select (_ : xs) n = select xs (n - 1)

@@ -118,3 +118,7 @@ spec = do
       replicate' 0 'a' `shouldBe` []
       replicate' 1 'a' `shouldBe` ['a']
       replicate' 2 'a' `shouldBe` ['a', 'a']
+
+    it "recursive select" $ do
+      select [1, 2, 3] 0 `shouldBe` 1
+      select [1, 2, 3] 1 `shouldBe` 2
