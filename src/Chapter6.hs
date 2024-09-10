@@ -161,3 +161,8 @@ take' :: (Integral a) => a -> [b] -> [b]
 take' 0 _ = []
 take' _ [] = []
 take' n (x : xs) = x : take' (n - 1) xs
+
+last' :: [a] -> a
+last' [] = undefined
+last' [x] = x
+last' (_ : xs) = last' xs

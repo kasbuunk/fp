@@ -148,3 +148,7 @@ spec = do
 
     it "recursive take" $ do
       take' 3 [1, 2, 3, 4, 5] `shouldBe` [1, 2, 3]
+
+    it "recursive last" $ do
+      last' [1] `shouldBe` 1
+      last' [1, 2, 3] `shouldBe` 3
