@@ -157,3 +157,11 @@ spec = do
       countOccurrences 1 [] `shouldBe` 0
       countOccurrences 1 [1] `shouldBe` 1
       countOccurrences 1 [1, 2, 3, 1, 1] `shouldBe` 3
+
+    it "index of first occurrence" $ do
+      indexFirst 0 [0, 1, 2] `shouldBe` 0
+      indexFirst 1 [0, 1, 2] `shouldBe` 1
+      indexFirst 2 [0, 1, 2] `shouldBe` 2
+
+    it "index without occurrence" $ do
+      evaluate (indexFirst 0 [2, 3, 4]) `shouldThrow` anyErrorCall

@@ -185,3 +185,9 @@ countOccurrences _ [] = 0
 countOccurrences x (x' : xs)
   | x == x' = 1 + countOccurrences x xs
   | otherwise = countOccurrences x xs
+
+indexFirst :: (Eq a) => a -> [a] -> Int
+indexFirst _ [] = undefined
+indexFirst x (x' : xs)
+  | x == x' = 0
+  | otherwise = 1 + indexFirst x xs
