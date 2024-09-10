@@ -187,7 +187,7 @@ countOccurrences x (x' : xs)
   | otherwise = countOccurrences x xs
 
 indexFirst :: (Eq a) => a -> [a] -> Int
-indexFirst _ [] = undefined
+indexFirst _ [] = error "element not found"
 indexFirst x (x' : xs)
   | x == x' = 0
   | otherwise = 1 + indexFirst x xs
