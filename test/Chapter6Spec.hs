@@ -1,6 +1,7 @@
 module Chapter6Spec where
 
 import Chapter6
+import Control.Exception (evaluate)
 import Test.Hspec
 
 spec :: Spec
@@ -11,6 +12,9 @@ spec = do
       fac 1 `shouldBe` 1
       fac 2 `shouldBe` 2
       fac 3 `shouldBe` 6
+
+    it "faculty: undefined for negative int" $ do
+      evaluate (fac (-1)) `shouldThrow` anyErrorCall
 
     it "recursive multiplication" $ do
       recursiveMultiply 0 0 `shouldBe` 0

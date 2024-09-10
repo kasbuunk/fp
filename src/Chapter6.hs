@@ -1,8 +1,10 @@
 module Chapter6 where
 
 fac :: Int -> Int
-fac 0 = 1
-fac n = n * fac (n - 1)
+fac n
+  | n < 0 = undefined
+  | n == 0 = 1
+  | otherwise = n * fac (n - 1)
 
 recursiveMultiply :: Int -> Int -> Int
 recursiveMultiply _ 0 = 0
