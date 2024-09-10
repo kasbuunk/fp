@@ -70,7 +70,7 @@ sumdown :: Int -> Int
 sumdown 0 = 0
 sumdown n = n + sumdown (n - 1)
 
-exp' :: Int -> Int -> Int
+exp' :: (Num a, Eq a, Integral b) => a -> b -> a
 exp' _ 0 = 1
 exp' 0 _ = 0
 exp' x y = x * exp' x (y - 1)

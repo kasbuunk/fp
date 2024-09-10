@@ -89,3 +89,6 @@ spec = do
       exp' 2 1 `shouldBe` 2
       exp' 2 3 `shouldBe` 8
       exp' 3 3 `shouldBe` 27
+      exp' 2.3 0 `shouldBe` 1
+      exp' 2.3 1 `shouldBe` 2.3
+      exp' 2.3 2 `shouldBe` 2.3 * 2.3
