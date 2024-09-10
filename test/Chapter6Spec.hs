@@ -80,3 +80,12 @@ spec = do
     it "sumdown" $ do
       sumdown 0 `shouldBe` 0
       sumdown 3 `shouldBe` 6
+
+    it "recursive exponentiation" $ do
+      exp' 0 1 `shouldBe` 0
+      exp' 0 0 `shouldBe` 1
+      exp' 1 0 `shouldBe` 1
+      exp' 1 1 `shouldBe` 1
+      exp' 2 1 `shouldBe` 2
+      exp' 2 3 `shouldBe` 8
+      exp' 3 3 `shouldBe` 27
