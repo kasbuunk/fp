@@ -129,3 +129,8 @@ spec = do
       elem' 0 [1] `shouldBe` False
       elem' 0 [0, 1] `shouldBe` True
       elem' 0 [1, 2, 3] `shouldBe` False
+
+    it "recursive merge" $ do
+      merge [] [1, 3, 4] `shouldBe` [1, 3, 4]
+      merge [2, 5, 6] [] `shouldBe` [2, 5, 6]
+      merge [2, 5, 6] [1, 3, 4] `shouldBe` [1, 2, 3, 4, 5, 6]
