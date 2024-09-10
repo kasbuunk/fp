@@ -73,6 +73,13 @@ evens :: [a] -> [a]
 evens [] = []
 evens (x : xs) = x : odds xs
 
+-- odds "abcde"
+-- = evens "bcde"
+-- = 'b' : odds "cde"
+-- = 'b' : evens "de"
+-- = 'b' : 'd' : odds "e"
+-- = 'b' : 'd' : []
+-- = "bd"
 odds :: [a] -> [a]
 odds [] = []
 odds (_ : xs) = evens xs
