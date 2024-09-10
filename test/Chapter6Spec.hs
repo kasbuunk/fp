@@ -145,3 +145,6 @@ spec = do
       sum' [0] `shouldBe` 0
       sum' [1] `shouldBe` 1
       sum' [1, 4] `shouldBe` 5
+
+    it "recursive take" $ do
+      take' 3 [1, 2, 3, 4, 5] `shouldBe` [1, 2, 3]
