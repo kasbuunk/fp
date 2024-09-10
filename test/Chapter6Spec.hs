@@ -92,3 +92,9 @@ spec = do
       exp' 2.3 0 `shouldBe` 1
       exp' 2.3 1 `shouldBe` 2.3
       exp' 2.3 2 `shouldBe` 2.3 * 2.3
+
+    it "euclid's algorithm" $ do
+      euclid 0 1 `shouldBe` 0
+      euclid 1 0 `shouldBe` 0
+      euclid 1 1 `shouldBe` 1
+      euclid 6 27 `shouldBe` 3

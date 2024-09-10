@@ -70,7 +70,21 @@ sumdown :: Int -> Int
 sumdown 0 = 0
 sumdown n = n + sumdown (n - 1)
 
+-- e.g.
+-- exp' 2 3
+-- = 2 * exp' 2 2
+-- = 2 * 2 * exp' 2 1
+-- = 2 * 2 * 2 * exp' 2 0
+-- = 2 * 2 * 2 * 1
+-- = 8
 exp' :: (Num a, Eq a, Integral b) => a -> b -> a
 exp' _ 0 = 1
 exp' 0 _ = 0
 exp' x y = x * exp' x (y - 1)
+
+euclid :: Int -> Int -> Int
+euclid x y
+  | x == 0 || y == 0 = 0
+  | x == y = x
+  | x < y = euclid x (y - x)
+  | otherwise = euclid (x - y) y
