@@ -98,3 +98,6 @@ spec = do
       euclid 1 0 `shouldBe` 0
       euclid 1 1 `shouldBe` 1
       euclid 6 27 `shouldBe` 3
+
+    it "reinvent init" $ do
+      init' [1, 2, 3, 4] `shouldBe` [1, 2, 3]
