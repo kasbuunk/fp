@@ -152,3 +152,7 @@ mergesort xs = merge (mergesort left) (mergesort right)
 
 halve :: [a] -> ([a], [a])
 halve xs = splitAt (length xs `div` 2) xs
+
+sum' :: (Num a) => [a] -> a
+sum' [] = 0
+sum' (x : xs) = x + sum xs

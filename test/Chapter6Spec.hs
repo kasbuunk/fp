@@ -139,3 +139,9 @@ spec = do
       mergesort ['a'] `shouldBe` ['a']
       mergesort [1, 2] `shouldBe` [1, 2]
       mergesort [2, 45, 2, 3, 1, 6] `shouldBe` [1, 2, 2, 3, 6, 45]
+
+    it "recursive sum" $ do
+      sum' [] `shouldBe` 0
+      sum' [0] `shouldBe` 0
+      sum' [1] `shouldBe` 1
+      sum' [1, 4] `shouldBe` 5
