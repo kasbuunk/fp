@@ -162,6 +162,12 @@ take' 0 _ = []
 take' _ [] = []
 take' n (x : xs) = x : take' (n - 1) xs
 
+-- last' [3,1,4,3,2]
+-- = last' [1,4,3,2]
+-- = last' [4,3,2]
+-- = last' [3,2]
+-- = last' [2]
+-- = 2
 last' :: [a] -> a
 last' [] = undefined
 last' [x] = x
