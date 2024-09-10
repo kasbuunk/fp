@@ -148,4 +148,7 @@ mergesort [] = []
 mergesort [x] = [x]
 mergesort xs = merge (mergesort left) (mergesort right)
   where
-    (left, right) = splitAt (length xs `div` 2) xs
+    (left, right) = halve xs
+
+halve :: [a] -> ([a], [a])
+halve xs = splitAt (length xs `div` 2) xs
