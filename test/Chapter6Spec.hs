@@ -76,3 +76,7 @@ spec = do
     it "elements at even and odd positions" $ do
       evens [0, 4, 6, 2, 1, 4] `shouldBe` [0, 6, 1]
       odds [0, 4, 6, 2, 1, 4] `shouldBe` [4, 2, 4]
+
+    it "sumdown" $ do
+      sumdown 0 `shouldBe` 0
+      sumdown 3 `shouldBe` 6

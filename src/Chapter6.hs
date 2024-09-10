@@ -65,3 +65,7 @@ evens (x : xs) = x : odds xs
 odds :: [a] -> [a]
 odds [] = []
 odds (_ : xs) = evens xs
+
+sumdown :: Int -> Int
+sumdown 0 = 0
+sumdown n = n + sumdown (n - 1)
