@@ -122,3 +122,10 @@ spec = do
     it "recursive select" $ do
       select [1, 2, 3] 0 `shouldBe` 1
       select [1, 2, 3] 1 `shouldBe` 2
+
+    it "recursive elem" $ do
+      elem' 0 [] `shouldBe` False
+      elem' 0 [0] `shouldBe` True
+      elem' 0 [1] `shouldBe` False
+      elem' 0 [0, 1] `shouldBe` True
+      elem' 0 [1, 2, 3] `shouldBe` False

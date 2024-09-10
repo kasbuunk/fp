@@ -129,3 +129,9 @@ select :: [a] -> Int -> a
 select [] _ = undefined
 select (x : _) 0 = x
 select (_ : xs) n = select xs (n - 1)
+
+elem' :: (Eq a) => a -> [a] -> Bool
+elem' _ [] = False
+elem' x (x' : xs)
+  | x == x' = True
+  | otherwise = elem' x xs
