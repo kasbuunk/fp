@@ -24,3 +24,9 @@ spec = do
       map'' even [0, 1, 2] `shouldBe` [True, False, True]
       map'' reverse ["abc", "def", "ghi"] `shouldBe` ["cba", "fed", "ihg"]
       map'' (map' (+ 1)) [[0, 1], [2, 3]] `shouldBe` [[1, 2], [3, 4]]
+
+    it "redefine filter" $ do
+      filter' (\_ -> False) [0, 1, 2, 3] `shouldBe` []
+      filter' (\_ -> True) [0, 1, 2, 3] `shouldBe` [0, 1, 2, 3]
+      filter' (\x -> x > 1) [0, 1, 2, 3] `shouldBe` [2, 3]
+      filter' (\x -> x == 1) [0, 1, 2, 3] `shouldBe` [1]
