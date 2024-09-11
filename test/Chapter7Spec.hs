@@ -50,3 +50,6 @@ spec = do
 
     it "takeWhile with predicate" $ do
       takeWhile even [0, 2, 10, 9, 2, 3, 0] `shouldBe` [0, 2, 10]
+
+    it "dropWhile with predicate" $ do
+      dropWhile odd [1, 7, 3, 0, 2, 10, 7] `shouldBe` [0, 2, 10, 7]
