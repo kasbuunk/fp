@@ -6,6 +6,7 @@ import qualified Chapter3Spec
 import qualified Chapter4Spec
 import qualified Chapter5Spec
 import qualified Chapter6Spec
+import qualified Chapter7Spec
 import qualified PlaygroundSpec
 import Test.Hspec
 
@@ -18,3 +19,4 @@ main = hspec $ do
   describe "Chapter4" Chapter4Spec.spec
   describe "Chapter5" Chapter5Spec.spec
   describe "Chapter6" Chapter6Spec.spec
+  describe "Chapter7" Chapter7Spec.spec
