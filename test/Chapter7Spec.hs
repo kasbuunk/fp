@@ -40,3 +40,6 @@ spec = do
     it "sum of squares is even" $ do
       sumsqreven [0, 1, 3] `shouldBe` 0
       sumsqreven [0 .. 6] `shouldBe` 56
+
+    it "all with predicate" $ do
+      all even [0, 2, 6, 4, 8] `shouldBe` True
