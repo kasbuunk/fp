@@ -14,5 +14,13 @@ spec = do
       twice (* 2) 5 `shouldBe` 20
 
     it "redefine map" $ do
-      let add1 = add' 1
-      map' add1 [0, 1, 2] `shouldBe` [1, 2, 3]
+      map' (+ 1) [0, 1, 2] `shouldBe` [1, 2, 3]
+      map' even [0, 1, 2] `shouldBe` [True, False, True]
+      map' reverse ["abc", "def", "ghi"] `shouldBe` ["cba", "fed", "ihg"]
+      map' (map' (+ 1)) [[0, 1], [2, 3]] `shouldBe` [[1, 2], [3, 4]]
+
+    it "redefine map recursively" $ do
+      map'' (+ 1) [0, 1, 2] `shouldBe` [1, 2, 3]
+      map'' even [0, 1, 2] `shouldBe` [True, False, True]
+      map'' reverse ["abc", "def", "ghi"] `shouldBe` ["cba", "fed", "ihg"]
+      map'' (map' (+ 1)) [[0, 1], [2, 3]] `shouldBe` [[1, 2], [3, 4]]
