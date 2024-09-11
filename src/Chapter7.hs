@@ -14,4 +14,10 @@ map'' _ [] = []
 map'' f (x : xs) = f x : map'' f xs
 
 filter' :: (a -> Bool) -> [a] -> [a]
-filter' f xs = [x | x <- xs, f x]
+filter' p xs = [x | x <- xs, p x]
+
+filter'' :: (a -> Bool) -> [a] -> [a]
+filter'' _ [] = []
+filter'' p (x : xs)
+  | p x = x : filter'' p xs
+  | otherwise = filter'' p xs

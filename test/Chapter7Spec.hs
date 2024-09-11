@@ -30,3 +30,9 @@ spec = do
       filter' (\_ -> True) [0, 1, 2, 3] `shouldBe` [0, 1, 2, 3]
       filter' (\x -> x > 1) [0, 1, 2, 3] `shouldBe` [2, 3]
       filter' (\x -> x == 1) [0, 1, 2, 3] `shouldBe` [1]
+      filter' even [0 .. 10] `shouldBe` [0, 2, 4, 6, 8, 10]
+      filter' (> 2) [0 .. 5] `shouldBe` [3, 4, 5]
+      filter' (/= ' ') "this sentence without spaces" `shouldBe` "thissentencewithoutspaces"
+
+    it "redefine filter recursively" $ do
+      filter'' even [0 .. 10] `shouldBe` [0, 2, 4, 6, 8, 10]
