@@ -191,3 +191,25 @@ indexFirst _ [] = error "element not found"
 indexFirst x (x' : xs)
   | x == x' = 0
   | otherwise = 1 + indexFirst x xs
+
+listToTuples :: [(a, b)] -> ([a], [b])
+listToTuples [] = ([], [])
+listToTuples xs = (first xs, second xs)
+
+first :: [(a, b)] -> [a]
+first [] = []
+first (x : xs) = x' : first xs
+  where
+    (x', _) = x
+
+second :: [(a, b)] -> [b]
+second [] = []
+second (x : xs) = x' : second xs
+  where
+    (_, x') = x
+
+listToTuples' :: [(a, b)] -> ([a], [b])
+listToTuples' xs = (as, bs)
+  where
+    as = [x | (x, _) <- xs]
+    bs = [x | (_, x) <- xs]

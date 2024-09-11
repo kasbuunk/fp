@@ -165,3 +165,7 @@ spec = do
 
     it "index without occurrence" $ do
       evaluate (indexFirst 0 [2, 3, 4]) `shouldThrow` anyErrorCall
+
+    it "list to tuples" $ do
+      listToTuples [(1, 'a'), (2, 'b'), (3, 'c')] `shouldBe` ([1, 2, 3], "abc")
+      listToTuples' [(1, 'a'), (2, 'b'), (3, 'c')] `shouldBe` ([1, 2, 3], "abc")
