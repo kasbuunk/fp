@@ -43,3 +43,7 @@ spec = do
 
     it "all with predicate" $ do
       all even [0, 2, 6, 4, 8] `shouldBe` True
+
+    it "any with predicate" $ do
+      any odd [0, 1, 2] `shouldBe` True
+      any odd [0, 10, 2] `shouldBe` False
