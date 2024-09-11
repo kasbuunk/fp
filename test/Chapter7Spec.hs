@@ -36,3 +36,7 @@ spec = do
 
     it "redefine filter recursively" $ do
       filter'' even [0 .. 10] `shouldBe` [0, 2, 4, 6, 8, 10]
+
+    it "sum of squares is even" $ do
+      sumsqreven [0, 1, 3] `shouldBe` 0
+      sumsqreven [0 .. 6] `shouldBe` 56

@@ -21,3 +21,6 @@ filter'' _ [] = []
 filter'' p (x : xs)
   | p x = x : filter'' p xs
   | otherwise = filter'' p xs
+
+sumsqreven :: [Int] -> Int
+sumsqreven xs = sum (map (^ 2) (filter even xs))
