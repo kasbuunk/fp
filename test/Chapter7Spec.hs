@@ -47,3 +47,6 @@ spec = do
     it "any with predicate" $ do
       any odd [0, 1, 2] `shouldBe` True
       any odd [0, 10, 2] `shouldBe` False
+
+    it "takeWhile with predicate" $ do
+      takeWhile even [0, 2, 10, 9, 2, 3, 0] `shouldBe` [0, 2, 10]
