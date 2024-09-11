@@ -24,3 +24,15 @@ filter'' p (x : xs)
 
 sumsqreven :: [Int] -> Int
 sumsqreven xs = sum (map (^ 2) (filter even xs))
+
+sum' :: (Num a) => [a] -> a
+sum' = foldr (+) 0
+
+product' :: (Num a) => [a] -> a
+product' = foldr (*) 1
+
+or' :: [Bool] -> Bool
+or' = foldr (||) False
+
+and' :: [Bool] -> Bool
+and' = foldr (&&) True

@@ -53,3 +53,16 @@ spec = do
 
     it "dropWhile with predicate" $ do
       dropWhile odd [1, 7, 3, 0, 2, 10, 7] `shouldBe` [0, 2, 10, 7]
+
+    it "redefine with foldr" $ do
+      sum' [] `shouldBe` 0
+      sum' [5 .. 7] `shouldBe` 18
+
+      product' [] `shouldBe` 1
+      product' [5 .. 7] `shouldBe` 210
+
+      or' [] `shouldBe` False
+      or' [False, True] `shouldBe` True
+
+      and' [] `shouldBe` True
+      and' [False, True] `shouldBe` False
