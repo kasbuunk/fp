@@ -66,3 +66,7 @@ spec = do
 
       and' [] `shouldBe` True
       and' [False, True] `shouldBe` False
+
+    it "composition" $ do
+      (double . add1) 5 `shouldBe` 12
+      (add1 . double) 5 `shouldBe` 11

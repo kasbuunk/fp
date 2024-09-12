@@ -36,3 +36,9 @@ or' = foldr (||) False
 
 and' :: [Bool] -> Bool
 and' = foldr (&&) True
+
+add1 :: Int -> Int
+add1 = (+1)
+
+double :: Int -> Int
+double = (*2)
