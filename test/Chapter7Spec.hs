@@ -71,13 +71,21 @@ spec = do
       (double . add1) 5 `shouldBe` 12
       (add1 . double) 5 `shouldBe` 11
 
-    it "redefine with foldr" $ do
+    it "length with foldr" $ do
       length' "" `shouldBe` 0
       length' "abcdef" `shouldBe` 6
 
     it "reverse with foldr" $ do
       reverse' "" `shouldBe` ""
       reverse' "abcdef" `shouldBe` "fedcba"
+
+    it "length with foldl" $ do
+      length'' "" `shouldBe` 0
+      length'' "abcdef" `shouldBe` 6
+
+    it "reverse with foldl" $ do
+      reverse'' "" `shouldBe` ""
+      reverse'' "abcdef" `shouldBe` "fedcba"
 
     it "sum with foldl" $ do
       sum'' [] `shouldBe` 0

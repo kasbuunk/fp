@@ -50,8 +50,14 @@ foldr' f acc (x : xs) = f x (foldr' f acc xs)
 length' :: [a] -> Int
 length' = foldr (\_ acc -> acc + 1) 0
 
+length'' :: [a] -> Int
+length'' = foldl (\acc _ -> acc + 1) 0
+
 reverse' :: [a] -> [a]
 reverse' = foldr snoc []
+
+reverse'' :: [a] -> [a]
+reverse'' = foldl (\xs x -> x : xs) []
 
 snoc :: a -> [a] -> [a]
 snoc x xs = xs ++ [x]
