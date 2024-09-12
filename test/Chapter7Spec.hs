@@ -74,3 +74,7 @@ spec = do
     it "redefine with foldr" $ do
       length' "" `shouldBe` 0
       length' "abcdef" `shouldBe` 6
+
+    it "reverse with foldr" $ do
+      reverse' "" `shouldBe` ""
+      reverse' "abcdef" `shouldBe` "fedcba"
