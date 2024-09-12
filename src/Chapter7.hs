@@ -55,3 +55,9 @@ reverse' = foldr snoc []
 
 snoc :: a -> [a] -> [a]
 snoc x xs = xs ++ [x]
+
+sum'' :: (Num a) => [a] -> a
+sum'' = sum''' 0
+  where
+    sum''' v [] = v
+    sum''' v (x : xs) = x + sum''' v xs

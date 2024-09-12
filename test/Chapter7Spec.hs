@@ -78,3 +78,7 @@ spec = do
     it "reverse with foldr" $ do
       reverse' "" `shouldBe` ""
       reverse' "abcdef" `shouldBe` "fedcba"
+
+    it "sum with foldl" $ do
+      sum'' [] `shouldBe` 0
+      sum'' [5, 10, 12] `shouldBe` 27
