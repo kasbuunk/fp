@@ -57,7 +57,7 @@ reverse' :: [a] -> [a]
 reverse' = foldr snoc []
 
 reverse'' :: [a] -> [a]
-reverse'' = foldl (\xs x -> x : xs) []
+reverse'' = foldl (flip (:)) []
 
 snoc :: a -> [a] -> [a]
 snoc x xs = xs ++ [x]
