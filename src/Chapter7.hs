@@ -26,19 +26,23 @@ sumsqreven :: [Int] -> Int
 sumsqreven xs = sum (map (^ 2) (filter even xs))
 
 sum' :: (Num a) => [a] -> a
-sum' = foldr (+) 0
+sum' = foldr' (+) 0
 
 product' :: (Num a) => [a] -> a
-product' = foldr (*) 1
+product' = foldr' (*) 1
 
 or' :: [Bool] -> Bool
-or' = foldr (||) False
+or' = foldr' (||) False
 
 and' :: [Bool] -> Bool
-and' = foldr (&&) True
+and' = foldr' (&&) True
 
 add1 :: Int -> Int
-add1 = (+1)
+add1 = (+ 1)
 
 double :: Int -> Int
-double = (*2)
+double = (* 2)
+
+foldr' :: (a -> b -> b) -> b -> [a] -> b
+foldr' _ acc [] = acc
+foldr' f acc (x : xs) = foldr' f (f x acc) xs
