@@ -61,3 +61,7 @@ sum'' = sum''' 0
   where
     sum''' v [] = v
     sum''' v (x : xs) = x + sum''' v xs
+
+foldl' :: (a -> b -> a) -> a -> [b] -> a
+foldl' _ acc [] = acc
+foldl' f acc (x : xs) = foldl' f (f acc x) xs

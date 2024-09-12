@@ -84,7 +84,7 @@ spec = do
       sum'' [5, 10, 12] `shouldBe` 27
 
     it "exponent with foldl" $ do
-      foldl (^) 2 [3, 4] `shouldBe` ((2 ^ 3) ^ 4)
+      foldl' (^) 2 [3, 4] `shouldBe` ((2 ^ 3) ^ 4)
 
     it "exponent with foldr" $ do
       foldr (^) 2 [3, 4] `shouldBe` (3 ^ (4 ^ 2))
