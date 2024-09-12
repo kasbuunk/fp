@@ -45,4 +45,4 @@ double = (* 2)
 
 foldr' :: (a -> b -> b) -> b -> [a] -> b
 foldr' _ acc [] = acc
-foldr' f acc (x : xs) = foldr' f (f x acc) xs
+foldr' f acc (x : xs) = f x (foldr' f acc xs)
