@@ -46,3 +46,6 @@ double = (* 2)
 foldr' :: (a -> b -> b) -> b -> [a] -> b
 foldr' _ acc [] = acc
 foldr' f acc (x : xs) = f x (foldr' f acc xs)
+
+length' :: [a] -> Int
+length' = foldr (\_ acc -> acc + 1) 0

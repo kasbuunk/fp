@@ -70,3 +70,7 @@ spec = do
     it "composition" $ do
       (double . add1) 5 `shouldBe` 12
       (add1 . double) 5 `shouldBe` 11
+
+    it "redefine with foldr" $ do
+      length' "" `shouldBe` 0
+      length' "abcdef" `shouldBe` 6
