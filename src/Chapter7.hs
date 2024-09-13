@@ -4,7 +4,7 @@ add' :: Int -> Int -> Int
 add' x y = x + y
 
 twice :: (a -> a) -> a -> a
-twice f a = f (f a)
+twice f = f . f
 
 map' :: (a -> b) -> [a] -> [b]
 map' f xs = [f x | x <- xs]
@@ -23,7 +23,7 @@ filter'' p (x : xs)
   | otherwise = filter'' p xs
 
 sumsqreven :: [Int] -> Int
-sumsqreven xs = sum (map (^ 2) (filter even xs))
+sumsqreven = sum . map (^ 2) . filter even
 
 sum' :: (Num a) => [a] -> a
 sum' = foldr' (+) 0
