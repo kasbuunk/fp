@@ -1,5 +1,7 @@
 module Chapter7 where
 
+import Data.Char
+
 add' :: Int -> Int -> Int
 add' x y = x + y
 
@@ -77,3 +79,10 @@ odd' = not . even
 
 compose :: [a -> a] -> (a -> a)
 compose = foldr (.) id
+
+type Bit = Int
+
+bin2int :: [Bit] -> Int
+bin2int bits = sum [bit * weight | (bit, weight) <- zip bits weights]
+  where
+    weights = iterate (* 2) 1

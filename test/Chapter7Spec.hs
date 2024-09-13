@@ -106,3 +106,6 @@ spec = do
       compose [not, not] False `shouldBe` False
       compose [not, not, not] True `shouldBe` False
       compose [not, not, not] False `shouldBe` True
+
+    it "binary to int" $ do
+      bin2int [1, 0, 1, 1] `shouldBe` 13
