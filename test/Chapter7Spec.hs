@@ -100,3 +100,9 @@ spec = do
     it "compose odd" $ do
       odd' 1 `shouldBe` True
       odd' 2 `shouldBe` False
+
+    it "compose list" $ do
+      compose [not] True `shouldBe` False
+      compose [not, not] False `shouldBe` False
+      compose [not, not, not] True `shouldBe` False
+      compose [not, not, not] False `shouldBe` True

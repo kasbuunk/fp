@@ -74,3 +74,6 @@ foldl' f acc (x : xs) = foldl' f (f acc x) xs
 
 odd' :: (Integral a) => a -> Bool
 odd' = not . even
+
+compose :: [a -> a] -> (a -> a)
+compose = foldr (.) id
