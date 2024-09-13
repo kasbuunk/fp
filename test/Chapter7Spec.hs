@@ -123,3 +123,7 @@ spec = do
 
     it "transmit string" $ do
       transmit "abcde" `shouldBe` "abcde"
+
+    it "count elements" $ do
+      count "Green" [] `shouldBe` 0
+      count "Green" ["Red", "Green", "Green", "Blue", "Green"] `shouldBe` 3

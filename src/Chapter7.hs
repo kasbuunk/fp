@@ -109,3 +109,6 @@ transmit = decode . channel . encode
 
 channel :: a -> a
 channel = id
+
+count :: (Eq a) => a -> [a] -> Int
+count needle = length . filter (== needle)
