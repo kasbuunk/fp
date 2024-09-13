@@ -109,3 +109,6 @@ spec = do
 
     it "binary to int" $ do
       bin2int [1, 0, 1, 1] `shouldBe` 13
+
+    it "int to binary" $ do
+      int2bin 13 `shouldBe` [1, 0, 1, 1]
