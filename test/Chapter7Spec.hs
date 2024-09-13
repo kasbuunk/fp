@@ -96,3 +96,7 @@ spec = do
 
     it "exponent with foldr" $ do
       foldr (^) 2 [3, 4] `shouldBe` (3 ^ (4 ^ 2))
+
+    it "compose odd" $ do
+      odd' 1 `shouldBe` True
+      odd' 2 `shouldBe` False

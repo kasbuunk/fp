@@ -71,3 +71,6 @@ sum'' = sum''' 0
 foldl' :: (a -> b -> a) -> a -> [b] -> a
 foldl' _ acc [] = acc
 foldl' f acc (x : xs) = foldl' f (f acc x) xs
+
+odd' :: (Integral a) => a -> Bool
+odd' = not . even
