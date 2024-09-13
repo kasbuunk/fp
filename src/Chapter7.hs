@@ -83,6 +83,4 @@ compose = foldr (.) id
 type Bit = Int
 
 bin2int :: [Bit] -> Int
-bin2int bits = sum [bit * weight | (bit, weight) <- zip bits weights]
-  where
-    weights = iterate (* 2) 1
+bin2int = foldr (\x y -> x + 2 * y) 0
