@@ -112,3 +112,11 @@ spec = do
 
     it "int to binary" $ do
       int2bin 13 `shouldBe` [1, 0, 1, 1]
+
+    it "make 8 bits" $ do
+      make8 [1, 0, 1, 1] `shouldBe` [1, 0, 1, 1, 0, 0, 0, 0]
+
+    it "encode string to bits" $ do
+      encode "abc" `shouldBe` [1, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1, 1, 0, 0, 0, 1, 1, 0]
+      decode [1, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1, 1, 0, 0, 0, 1, 1, 0] `shouldBe` "abc"
+      decode (encode "abc") `shouldBe` "abc"

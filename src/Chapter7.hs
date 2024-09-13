@@ -88,3 +88,18 @@ bin2int = foldr (\x y -> x + 2 * y) 0
 int2bin :: Int -> [Bit]
 int2bin 0 = []
 int2bin n = n `mod` 2 : int2bin (n `div` 2)
+
+make8 :: [Bit] -> [Bit]
+make8 bits
+  | length bits < 8 = make8 (bits ++ [0])
+  | otherwise = bits
+
+encode :: String -> [Bit]
+encode = concat . map (make8 . int2bin . ord)
+
+chop8 :: [Bit] -> [[Bit]]
+chop8 [] = []
+chop8 bits = take 8 bits : chop8 (drop 8 bits)
+
+decode :: [Bit] -> String
+decode bits = map chr (map bin2int (chop8 bits))
