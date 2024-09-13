@@ -120,3 +120,6 @@ spec = do
       encode "abc" `shouldBe` [1, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1, 1, 0, 0, 0, 1, 1, 0]
       decode [1, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1, 1, 0, 0, 0, 1, 1, 0] `shouldBe` "abc"
       decode (encode "abc") `shouldBe` "abc"
+
+    it "transmit string" $ do
+      transmit "abcde" `shouldBe` "abcde"
