@@ -146,3 +146,7 @@ spec = do
     it "rank ballot results" $ do
       let ballots = [["Red", "Green"], ["Blue"], ["Green", "Red","Blue"], ["Blue","Green", "Red"], ["Green"]]
         in rank ballots `shouldBe` ["Red",  "Blue", "Green"]
+
+    it "winner of ballot votes" $ do
+      let ballots = [["Red", "Green"], ["Blue"], ["Green", "Red","Blue"], ["Blue","Green", "Red"], ["Green"]]
+        in winner' ballots `shouldBe` "Green"

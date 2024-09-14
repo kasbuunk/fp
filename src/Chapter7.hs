@@ -143,3 +143,8 @@ elim target = map (filter (/= target))
 
 rank :: Ord a => [[a]] -> [a]
 rank = map snd . result . map head
+
+winner' :: Ord a => [[a]] -> a
+winner' bs = case rank (rmempty bs) of
+              [c] -> c -- Only one left, this is the winner.
+              (c:cs) -> winner' (elim c bs) -- Ranked in increasing order, so this can be removed.
