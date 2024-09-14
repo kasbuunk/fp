@@ -136,9 +136,7 @@ winner :: [(a, b)] -> b
 winner = snd . last
 
 rmempty :: (Eq a) => [[a]] -> [[a]]
-rmempty [] = []
-rmempty ([] : xss) = rmempty xss
-rmempty (xs : xss) = xs : rmempty xss
+rmempty = filter (/= [])
 
 elim :: (Eq a) => a -> [[a]] -> [[a]]
 elim target = map (filter (/= target))
