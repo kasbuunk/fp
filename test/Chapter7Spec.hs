@@ -127,3 +127,9 @@ spec = do
     it "count elements" $ do
       count "Green" [] `shouldBe` 0
       count "Green" ["Red", "Green", "Green", "Blue", "Green"] `shouldBe` 3
+
+    it "remove duplicates" $ do
+      removeDuplicates votes `shouldBe` ["Red", "Blue", "Green"]
+
+    it "first past the post" $ do
+      result votes `shouldBe` [(1, "Green"), (2, "Red"), (3, "Blue")]

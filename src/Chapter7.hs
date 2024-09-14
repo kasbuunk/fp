@@ -112,3 +112,22 @@ channel = id
 
 count :: (Eq a) => a -> [a] -> Int
 count needle = length . filter (== needle)
+
+votes :: [String]
+votes = ["Red", "Blue", "Green", "Blue", "Blue", "Red"]
+
+removeDuplicates :: (Eq a) => [a] -> [a]
+removeDuplicates [] = []
+removeDuplicates (x : xs) = x : filter (/= x) (removeDuplicates xs)
+
+result :: [String] -> [(Int, String)]
+result votes' = sortByFirst [(count uniqueVote votes', uniqueVote) | uniqueVote <- uniqueVotes]
+  where
+    uniqueVotes = removeDuplicates votes'
+
+sortByFirst :: (Ord a, Ord b) => [(a, b)] -> [(a, b)]
+sortByFirst [] = []
+sortByFirst (x : xs) = sortByFirst smaller ++ [x] ++ sortByFirst greater
+  where
+    smaller = [x' | x' <- xs, x' <= x]
+    greater = [x' | x' <- xs, x' > x]
