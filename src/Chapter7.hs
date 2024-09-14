@@ -134,3 +134,8 @@ sortByFirst (x : xs) = sortByFirst smaller ++ [x] ++ sortByFirst greater
 
 winner :: [(a, b)] -> b
 winner = snd . last
+
+rmempty :: (Eq a) => [[a]] -> [[a]]
+rmempty [] = []
+rmempty ([] : xss) = rmempty xss
+rmempty (xs : xss) = xs : rmempty xss
