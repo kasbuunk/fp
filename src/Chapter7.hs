@@ -131,3 +131,6 @@ sortByFirst (x : xs) = sortByFirst smaller ++ [x] ++ sortByFirst greater
   where
     smaller = [x' | x' <- xs, x' <= x]
     greater = [x' | x' <- xs, x' > x]
+
+winner :: [(a, b)] -> b
+winner = snd . last

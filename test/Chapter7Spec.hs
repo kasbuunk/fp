@@ -133,3 +133,4 @@ spec = do
 
     it "first past the post" $ do
       result votes `shouldBe` [(1, "Green"), (2, "Red"), (3, "Blue")]
+      winner (result votes) `shouldBe` "Blue"
