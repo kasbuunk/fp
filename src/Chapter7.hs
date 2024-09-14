@@ -120,7 +120,7 @@ removeDuplicates :: (Eq a) => [a] -> [a]
 removeDuplicates [] = []
 removeDuplicates (x : xs) = x : filter (/= x) (removeDuplicates xs)
 
-result :: [String] -> [(Int, String)]
+result :: Ord a => [a] -> [(Int, a)]
 result votes' = sortByFirst [(count uniqueVote votes', uniqueVote) | uniqueVote <- uniqueVotes]
   where
     uniqueVotes = removeDuplicates votes'
@@ -140,3 +140,6 @@ rmempty = filter (/= [])
 
 elim :: (Eq a) => a -> [[a]] -> [[a]]
 elim target = map (filter (/= target))
+
+rank :: Ord a => [[a]] -> [a]
+rank = map snd . result . map head

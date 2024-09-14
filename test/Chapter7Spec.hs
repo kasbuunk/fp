@@ -141,4 +141,8 @@ spec = do
 
     it "eliminate losers" $ do
       let ballots = [["Red", "Green"], ["Blue"], ["Green", "Red","Blue"], ["Blue","Green", "Red"], ["Green"]]
-       in elim "Red" ballots `shouldBe` [ ["Green"],["Blue"], ["Green", "Blue"], ["Blue","Green"], ["Green"]]
+        in elim "Red" ballots `shouldBe` [ ["Green"],["Blue"], ["Green", "Blue"], ["Blue","Green"], ["Green"]]
+
+    it "rank ballot results" $ do
+      let ballots = [["Red", "Green"], ["Blue"], ["Green", "Red","Blue"], ["Blue","Green", "Red"], ["Green"]]
+        in rank ballots `shouldBe` ["Red",  "Blue", "Green"]
