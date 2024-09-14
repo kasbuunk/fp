@@ -138,3 +138,7 @@ spec = do
     it "remove empty ballot" $ do
       rmempty [[], ["Green"]] `shouldBe` [["Green"]]
       rmempty [["Green"], [], ["Red", "Blue"]] `shouldBe` [["Green"], ["Red", "Blue"]]
+
+    it "eliminate losers" $ do
+      let ballots = [["Red", "Green"], ["Blue"], ["Green", "Red","Blue"], ["Blue","Green", "Red"], ["Green"]]
+       in elim "Red" ballots `shouldBe` [ ["Green"],["Blue"], ["Green", "Blue"], ["Blue","Green"], ["Green"]]
