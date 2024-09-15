@@ -158,3 +158,7 @@ spec = do
     it "redefine all" $ do
       all' (> 0) [1, 2, 3] `shouldBe` True
       all' (> 0) [1, 2, 3, 0] `shouldBe` False
+
+    it "redefine any" $ do
+      any' (\x -> length x > 10) ["", "short", "not long"] `shouldBe` False
+      any' (\x -> length x > 10) ["", "short", "surely long enough"] `shouldBe` True

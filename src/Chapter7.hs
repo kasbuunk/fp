@@ -158,3 +158,6 @@ filterMap' p m = map m . filter p
 
 all' :: (a -> Bool) -> [a] -> Bool
 all' p = and . map p
+
+any' :: (a -> Bool) -> [a] -> Bool
+any' p = or . map p
