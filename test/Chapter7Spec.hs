@@ -162,3 +162,7 @@ spec = do
     it "redefine any" $ do
       any' (\x -> length x > 10) ["", "short", "not long"] `shouldBe` False
       any' (\x -> length x > 10) ["", "short", "surely long enough"] `shouldBe` True
+
+    it "redefine takeWhile" $ do
+      takeWhile' (> 0) [1, 2, 3, -1, 3] `shouldBe` [1, 2, 3]
+      takeWhile' (> 0) [0, 1, 2, 3, -1, 3] `shouldBe` []
