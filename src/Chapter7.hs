@@ -176,3 +176,6 @@ dropWhile' p (x : xs)
 
 map''' :: (a -> b) -> [a] -> [b]
 map''' f = foldr ((:) . f) []
+
+filter''' :: (a -> Bool) -> [a] -> [a]
+filter''' p = foldr ((++) . (\x -> [x | p x])) []
