@@ -121,6 +121,10 @@ spec = do
       decode [1, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1, 1, 0, 0, 0, 1, 1, 0] `shouldBe` "abc"
       decode (encode "abc") `shouldBe` "abc"
 
+    it "encode string to bits with parity" $ do
+      encodeWithParity "a" `shouldBe` [1, 0, 0, 0, 0, 1, 1, 0, 1]
+      encodeWithParity "c" `shouldBe` [ 1, 1, 0, 0, 0, 1, 1, 0, 0]
+
     it "transmit string" $ do
       transmit "abcde" `shouldBe` "abcde"
 

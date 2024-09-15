@@ -95,7 +95,16 @@ make8 bits
   | otherwise = bits
 
 encode :: String -> [Bit]
-encode = concat . map (make8 . int2bin . ord)
+encode = concat . map encodeChar
+
+encodeChar :: Char -> [Bit]
+encodeChar = make8 . int2bin . ord
+
+encodeWithParity :: String -> [Bit]
+encodeWithParity = concat . map (appendParityBit . encodeChar)
+
+appendParityBit :: [Bit] -> [Bit]
+appendParityBit bits = bits ++ if even (count 1 bits) then [0] else [1]
 
 chop8 :: [Bit] -> [[Bit]]
 chop8 [] = []
