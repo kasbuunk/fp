@@ -152,5 +152,5 @@ winner' bs = case rank (rmempty bs) of
 filterMap :: (a -> Bool) -> (a -> b) -> [a] -> [b]
 filterMap p f xs = [f x | x <- xs, p x]
 
-positive :: (a -> Bool) -> (a -> b) -> [a] -> [b]
-positive p m xs = map m (filter p xs)
+filterMap' :: (a -> Bool) -> (a -> b) -> [a] -> [b]
+filterMap' p m = map m . filter p

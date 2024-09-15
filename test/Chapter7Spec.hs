@@ -153,6 +153,6 @@ spec = do
 
     it "re-express list comprehension" $ do
       filterMap (\x -> x >= 1) (\x -> x + 1) [0, 2, 3, -1] `shouldBe` [3, 4]
-      positive (\x -> x >= 1) (\x -> x + 1) [0, 2, 3, -1] `shouldBe` [3, 4]
+      filterMap' (\x -> x >= 1) (\x -> x + 1) [0, 2, 3, -1] `shouldBe` [3, 4]
 
 -- positive (\x -> x <= 1) [0, 2, 3, -1] `shouldBe` [2, 3]
