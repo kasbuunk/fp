@@ -179,3 +179,8 @@ map''' f = foldr ((:) . f) []
 
 filter''' :: (a -> Bool) -> [a] -> [a]
 filter''' p = foldr ((++) . (\x -> [x | p x])) []
+
+dec2int :: [Int] -> Int
+dec2int ns = sum [n * powerOf10 | (n, powerOf10) <- zip (reverse ns) powersOf10]
+  where
+    powersOf10 = [10 ^ x | x <- [0 ..]]

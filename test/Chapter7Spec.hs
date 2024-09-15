@@ -178,3 +178,6 @@ spec = do
     it "redefine filter p" $ do
       filter''' (== 1) [0, 1, 2, 3, 1, 1] `shouldBe` [1, 1, 1]
       filter''' (/= 1) [0, 1, 2, 3, 1, 1] `shouldBe` [0, 2, 3]
+
+    it "dec2int" $ do
+      dec2int [2, 3, 4, 5] `shouldBe` 2345
