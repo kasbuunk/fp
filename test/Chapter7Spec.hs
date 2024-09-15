@@ -1,6 +1,7 @@
 module Chapter7Spec where
 
 import Chapter7
+import Control.DeepSeq (force)
 import Control.Exception (evaluate)
 import Test.Hspec
 
@@ -177,6 +178,12 @@ spec = do
 
     it "transmit string" $ do
       transmit "abcde" `shouldBe` "abcde"
+
+    it "transmit string with parity" $ do
+      transmitWithParity "abcde" `shouldBe` "abcde"
+
+    it "faulty transmitter" $ do
+      evaluate (force (transmitFaulty "abcde")) `shouldThrow` anyErrorCall
 
     it "count elements" $ do
       count "Green" [] `shouldBe` 0

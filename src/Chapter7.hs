@@ -141,6 +141,13 @@ decode = map (chr . bin2int) . chop8
 transmit :: String -> String
 transmit = decode . channel . encode
 
+transmitWithParity :: String -> String
+transmitWithParity = decodeWithParity . channel . encodeWithParity
+
+-- transmitFaulty forgets the first bit during transmission.
+transmitFaulty :: String -> String
+transmitFaulty = decodeWithParity . tail . channel . encodeWithParity
+
 channel :: a -> a
 channel = id
 
