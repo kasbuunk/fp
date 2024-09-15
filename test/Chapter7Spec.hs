@@ -181,3 +181,9 @@ spec = do
 
     it "dec2int" $ do
       dec2int [2, 3, 4, 5] `shouldBe` 2345
+
+    it "redefine uncurry" $ do
+      uncurry' (\x -> \y -> x + y) (1, 2) `shouldBe` 3
+
+    it "redefine curry" $ do
+      curry' (uncurry' (\x -> \y -> x + y)) 1 2 `shouldBe` 3
