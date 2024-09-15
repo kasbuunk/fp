@@ -155,3 +155,6 @@ filterMap p f xs = [f x | x <- xs, p x]
 
 filterMap' :: (a -> Bool) -> (a -> b) -> [a] -> [b]
 filterMap' p m = map m . filter p
+
+all' :: (a -> Bool) -> [a] -> Bool
+all' p = and . map p

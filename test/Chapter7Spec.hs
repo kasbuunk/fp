@@ -155,4 +155,6 @@ spec = do
       filterMap (>= 1) (\x -> x + 1) [0, 2, 3, -1] `shouldBe` [3, 4]
       filterMap' (>= 1) (\x -> x + 1) [0, 2, 3, -1] `shouldBe` [3, 4]
 
--- positive (\x -> x <= 1) [0, 2, 3, -1] `shouldBe` [2, 3]
+    it "redefine all" $ do
+      all' (> 0) [1, 2, 3] `shouldBe` True
+      all' (> 0) [1, 2, 3, 0] `shouldBe` False
