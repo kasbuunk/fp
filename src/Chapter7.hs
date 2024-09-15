@@ -201,4 +201,4 @@ uncurry' :: (a -> b -> c) -> (a, b) -> c
 uncurry' f = \(x, y) -> f x y
 
 iterate' :: (a -> a) -> a -> [a]
-iterate' f x = x : unfold (\_ -> False) f f x
+iterate' f x = x : unfold (const False) f f x
