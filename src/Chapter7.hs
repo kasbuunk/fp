@@ -146,8 +146,9 @@ rank = map snd . result . map head
 
 winner' :: (Ord a) => [[a]] -> a
 winner' bs = case rank (rmempty bs) of
+  [] -> undefined
   [c] -> c -- Only one left, this is the winner.
-  (c : cs) -> winner' (elim c bs) -- Ranked in increasing order, so this can be removed.
+  (c : _) -> winner' (elim c bs) -- Ranked in increasing order, so this can be removed.
 
 filterMap :: (a -> Bool) -> (a -> b) -> [a] -> [b]
 filterMap p f xs = [f x | x <- xs, p x]
