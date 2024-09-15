@@ -163,6 +163,10 @@ spec = do
       any' (\x -> length x > 10) ["", "short", "not long"] `shouldBe` False
       any' (\x -> length x > 10) ["", "short", "surely long enough"] `shouldBe` True
 
+    it "redefine dropWhile" $ do
+      dropWhile' (> 0) [1, 2, 3, -1, 3] `shouldBe` [-1, 3]
+      dropWhile' (> 0) [0, 1, 2, 3, -1, 3] `shouldBe` [0, 1, 2, 3, -1, 3]
+
     it "redefine takeWhile" $ do
       takeWhile' (> 0) [1, 2, 3, -1, 3] `shouldBe` [1, 2, 3]
       takeWhile' (> 0) [0, 1, 2, 3, -1, 3] `shouldBe` []
