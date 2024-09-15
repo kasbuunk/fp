@@ -187,3 +187,9 @@ spec = do
 
     it "redefine curry" $ do
       curry' (uncurry' (\x -> \y -> x + y)) 1 2 `shouldBe` 3
+
+    it "redefine chop8 with unfold" $ do
+      let bitsInput = [0,0,0,0,1,1,1,1,0,0,1,1,0,0,1,1,0,1,0,1,0,1,0,1]
+      let bitsOutput = [[0,0,0,0,1,1,1,1],[0,0,1,1,0,0,1,1],[0,1,0,1,0,1,0,1]]
+      chop8 bitsInput `shouldBe` bitsOutput
+      chop8' bitsInput `shouldBe` bitsOutput
