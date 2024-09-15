@@ -174,6 +174,9 @@ spec = do
     it "redefine map f" $ do
       map''' (+ 1) [0, 1, 2] `shouldBe` [1, 2, 3]
       map''' (++ ['a']) ["", "x", "abc"] `shouldBe` ["a", "xa", "abca"]
+      map'''' (+ 1) [0, 1, 2] `shouldBe` [1, 2, 3]
+      map'''' (++ ['a']) ["", "x", "abc"] `shouldBe` ["a", "xa", "abca"]
+
 
     it "redefine filter p" $ do
       filter''' (== 1) [0, 1, 2, 3, 1, 1] `shouldBe` [1, 1, 1]

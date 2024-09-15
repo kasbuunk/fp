@@ -101,7 +101,7 @@ chop8 :: [Bit] -> [[Bit]]
 chop8 [] = []
 chop8 bits = take 8 bits : chop8 (drop 8 bits)
 
-unfold :: (a -> Bool) -> (a -> a) -> (a -> a) -> a -> [a]
+unfold :: (a -> Bool) -> (a -> b) -> (a -> a) -> a -> [b]
 unfold p h t x
   | p x = []
   | otherwise = h x : unfold p h t (t x)
@@ -184,6 +184,9 @@ dropWhile' p (x : xs)
 
 map''' :: (a -> b) -> [a] -> [b]
 map''' f = foldr ((:) . f) []
+
+map'''' :: (a -> b) -> [a] -> [b]
+map'''' f = unfold null (f . head) tail
 
 filter''' :: (a -> Bool) -> [a] -> [a]
 filter''' p = foldr ((++) . (\x -> [x | p x])) []
