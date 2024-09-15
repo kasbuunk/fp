@@ -106,12 +106,26 @@ encodeCharWithParity = appendParityBit . make8 . int2bin . ord
 encodeWithParity :: String -> [Bit]
 encodeWithParity = concat . map (appendParityBit . encodeChar)
 
+decodeWithParity :: [Bit] -> String
+decodeWithParity = map decodeCharWithParity . chop 9
+
+decodeCharWithParity :: [Bit] -> Char
+decodeCharWithParity = chr . bin2int . parityCheck
+
+parityCheck :: [Bit] -> [Bit]
+parityCheck bits
+  | length bits == 9 && even (sum bits) = take 8 bits
+  | otherwise = error "Incorrect parity check"
+
 appendParityBit :: [Bit] -> [Bit]
 appendParityBit bits = bits ++ if even (count 1 bits) then [0] else [1]
 
+chop :: Int -> [Bit] -> [[Bit]]
+chop _ [] = []
+chop n bits = take n bits : chop n (drop n bits)
+
 chop8 :: [Bit] -> [[Bit]]
-chop8 [] = []
-chop8 bits = take 8 bits : chop8 (drop 8 bits)
+chop8 = chop 8
 
 unfold :: (a -> Bool) -> (a -> b) -> (a -> a) -> a -> [b]
 unfold p h t x

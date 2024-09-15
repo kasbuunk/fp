@@ -1,6 +1,7 @@
 module Chapter7Spec where
 
 import Chapter7
+import Control.Exception (evaluate)
 import Test.Hspec
 
 spec :: Spec
@@ -121,20 +122,19 @@ spec = do
       decode [1, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1, 1, 0, 0, 0, 1, 1, 0] `shouldBe` "abc"
       decode (encode "abc") `shouldBe` "abc"
 
-    it "encode string to bits without parity" $ do
+    it "encode char to bits without parity" $ do
       let encodedA = [1, 0, 0, 0, 0, 1, 1, 0]
       let encodedB = [0, 1, 0, 0, 0, 1, 1, 0]
-      let encodedC = [ 1, 1, 0, 0, 0, 1, 1, 0]
+      let encodedC = [1, 1, 0, 0, 0, 1, 1, 0]
 
       encodeChar 'a' `shouldBe` encodedA
       encodeChar 'b' `shouldBe` encodedB
       encodeChar 'c' `shouldBe` encodedC
-      encode "abc" `shouldBe` [1, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1, 1, 0, 0, 0, 1, 1, 0]
 
-    it "encode string to bits with parity" $ do
+    it "encode char to bits with parity" $ do
       let encodedA = [1, 0, 0, 0, 0, 1, 1, 0]
       let encodedB = [0, 1, 0, 0, 0, 1, 1, 0]
-      let encodedC = [ 1, 1, 0, 0, 0, 1, 1, 0]
+      let encodedC = [1, 1, 0, 0, 0, 1, 1, 0]
 
       let encodedAWithParity = encodedA ++ [1]
       let encodedBWithParity = encodedB ++ [1]
@@ -143,7 +143,22 @@ spec = do
       encodeCharWithParity 'a' `shouldBe` encodedAWithParity
       encodeCharWithParity 'b' `shouldBe` encodedBWithParity
       encodeCharWithParity 'c' `shouldBe` encodedCWithParity
-      encodeWithParity "abc" `shouldBe` encodedAWithParity ++ encodedBWithParity ++ encodedCWithParity
+
+      decodeWithParity (encodeWithParity "abc") `shouldBe` "abc"
+
+    it "expect parity check error" $ do
+      evaluate
+        ( let encodedA = [1, 0, 0, 0, 0, 1, 1, 0]
+           in parityCheck (encodedA ++ [0])
+        )
+        `shouldThrow` anyErrorCall
+
+    it "expect parity check error whilst decoding" $ do
+      evaluate
+        ( let encodedC = [1, 1, 0, 0, 0, 1, 1, 0]
+           in decodeCharWithParity (encodedC ++ [1])
+        )
+        `shouldThrow` anyErrorCall
 
     it "transmit string" $ do
       transmit "abcde" `shouldBe` "abcde"
@@ -215,13 +230,13 @@ spec = do
       curry' (uncurry' (\x -> \y -> x + y)) 1 2 `shouldBe` 3
 
     it "redefine chop8 with unfold" $ do
-      let bitsInput = [0,0,0,0,1,1,1,1,0,0,1,1,0,0,1,1,0,1,0,1,0,1,0,1]
-      let bitsOutput = [[0,0,0,0,1,1,1,1],[0,0,1,1,0,0,1,1],[0,1,0,1,0,1,0,1]]
+      let bitsInput = [0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1]
+      let bitsOutput = [[0, 0, 0, 0, 1, 1, 1, 1], [0, 0, 1, 1, 0, 0, 1, 1], [0, 1, 0, 1, 0, 1, 0, 1]]
       chop8 bitsInput `shouldBe` bitsOutput
       chop8' bitsInput `shouldBe` bitsOutput
 
     it "redefine iterate with unfold" $ do
-       let xs = [xs | (_, xs) <- zip [0,0,0] (iterate' (+1) 0)]
-       let ys = [ys | (_, ys) <- zip [0,0,0] (iterate' (*2) 1)]
-       xs `shouldBe` [0,1,2]
-       ys `shouldBe` [1,2,4]
+      let xs = [xs | (_, xs) <- zip [0, 0, 0] (iterate' (+ 1) 0)]
+      let ys = [ys | (_, ys) <- zip [0, 0, 0] (iterate' (* 2) 1)]
+      xs `shouldBe` [0, 1, 2]
+      ys `shouldBe` [1, 2, 4]
