@@ -181,6 +181,7 @@ filter''' :: (a -> Bool) -> [a] -> [a]
 filter''' p = foldr ((++) . (\x -> [x | p x])) []
 
 dec2int :: [Int] -> Int
-dec2int ns = sum [n * powerOf10 | (n, powerOf10) <- zip (reverse ns) powersOf10]
-  where
-    powersOf10 = [10 ^ x | x <- [0 ..]]
+dec2int digits = fst (foldl sumOfPowersOf10 (0, 0) (reverse digits))
+
+sumOfPowersOf10 :: (Int, Int) -> Int -> (Int, Int)
+sumOfPowersOf10 (cum, power) digit = (cum + digit * 10 ^ power, power + 1)
