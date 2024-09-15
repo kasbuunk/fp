@@ -153,10 +153,25 @@ spec = do
         )
         `shouldThrow` anyErrorCall
 
-    it "expect parity check error whilst decoding" $ do
+    it "expect parity check error whilst decoding char" $ do
       evaluate
         ( let encodedC = [1, 1, 0, 0, 0, 1, 1, 0]
            in decodeCharWithParity (encodedC ++ [1])
+        )
+        `shouldThrow` anyErrorCall
+
+    it "expect parity check error whilst decoding string" $ do
+      evaluate
+        ( let encodedA = [1, 0, 0, 0, 0, 1, 1, 0]
+              encodedB = [0, 1, 0, 0, 0, 1, 1, 0]
+              encodedC = [1, 1, 0, 0, 0, 1, 1, 0]
+
+              encodedAWithParity = encodedA ++ [1]
+              encodedBWithParity = encodedB ++ [0] -- Parity check error!
+              encodedCWithParity = encodedC ++ [0]
+
+              cipherText = encodedAWithParity ++ encodedBWithParity ++ encodedCWithParity
+           in decodeCharWithParity (cipherText)
         )
         `shouldThrow` anyErrorCall
 
