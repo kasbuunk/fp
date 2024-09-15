@@ -184,7 +184,7 @@ dec2int :: [Int] -> Int
 dec2int = foldl (\x y -> 10 * x + y) 0
 
 curry' :: ((a, b) -> c) -> (a -> b -> c)
-curry' f = \x -> (\y -> f (x, y))
+curry' f = \x y -> f (x, y)
 
 uncurry' :: (a -> b -> c) -> (a, b) -> c
 uncurry' f = \(x, y) -> f x y
