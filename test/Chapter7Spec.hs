@@ -170,3 +170,7 @@ spec = do
     it "redefine takeWhile" $ do
       takeWhile' (> 0) [1, 2, 3, -1, 3] `shouldBe` [1, 2, 3]
       takeWhile' (> 0) [0, 1, 2, 3, -1, 3] `shouldBe` []
+
+    it "redefine map f" $ do
+      map''' (+ 1) [0, 1, 2] `shouldBe` [1, 2, 3]
+      map''' (++ ['a']) ["", "x", "abc"] `shouldBe` ["a", "xa", "abca"]

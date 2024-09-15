@@ -173,3 +173,6 @@ dropWhile' _ [] = []
 dropWhile' p (x : xs)
   | p x = dropWhile' p xs
   | otherwise = x : xs
+
+map''' :: (a -> b) -> [a] -> [b]
+map''' f = foldr ((:) . f) []
