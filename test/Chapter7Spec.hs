@@ -177,7 +177,6 @@ spec = do
       map'''' (+ 1) [0, 1, 2] `shouldBe` [1, 2, 3]
       map'''' (++ ['a']) ["", "x", "abc"] `shouldBe` ["a", "xa", "abca"]
 
-
     it "redefine filter p" $ do
       filter''' (== 1) [0, 1, 2, 3, 1, 1] `shouldBe` [1, 1, 1]
       filter''' (/= 1) [0, 1, 2, 3, 1, 1] `shouldBe` [0, 2, 3]
@@ -196,3 +195,9 @@ spec = do
       let bitsOutput = [[0,0,0,0,1,1,1,1],[0,0,1,1,0,0,1,1],[0,1,0,1,0,1,0,1]]
       chop8 bitsInput `shouldBe` bitsOutput
       chop8' bitsInput `shouldBe` bitsOutput
+
+    it "redefine iterate with unfold" $ do
+       let xs = [xs | (_, xs) <- zip [0,0,0] (iterate' (+1) 0)]
+       let ys = [ys | (_, ys) <- zip [0,0,0] (iterate' (*2) 1)]
+       xs `shouldBe` [0,1,2]
+       ys `shouldBe` [1,2,4]
