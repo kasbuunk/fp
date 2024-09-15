@@ -100,6 +100,9 @@ encode = concat . map encodeChar
 encodeChar :: Char -> [Bit]
 encodeChar = make8 . int2bin . ord
 
+encodeCharWithParity :: Char -> [Bit]
+encodeCharWithParity = appendParityBit . make8 . int2bin . ord
+
 encodeWithParity :: String -> [Bit]
 encodeWithParity = concat . map (appendParityBit . encodeChar)
 

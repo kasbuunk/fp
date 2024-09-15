@@ -121,9 +121,29 @@ spec = do
       decode [1, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1, 1, 0, 0, 0, 1, 1, 0] `shouldBe` "abc"
       decode (encode "abc") `shouldBe` "abc"
 
+    it "encode string to bits without parity" $ do
+      let encodedA = [1, 0, 0, 0, 0, 1, 1, 0]
+      let encodedB = [0, 1, 0, 0, 0, 1, 1, 0]
+      let encodedC = [ 1, 1, 0, 0, 0, 1, 1, 0]
+
+      encodeChar 'a' `shouldBe` encodedA
+      encodeChar 'b' `shouldBe` encodedB
+      encodeChar 'c' `shouldBe` encodedC
+      encode "abc" `shouldBe` [1, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1, 1, 0, 0, 0, 1, 1, 0]
+
     it "encode string to bits with parity" $ do
-      encodeWithParity "a" `shouldBe` [1, 0, 0, 0, 0, 1, 1, 0, 1]
-      encodeWithParity "c" `shouldBe` [ 1, 1, 0, 0, 0, 1, 1, 0, 0]
+      let encodedA = [1, 0, 0, 0, 0, 1, 1, 0]
+      let encodedB = [0, 1, 0, 0, 0, 1, 1, 0]
+      let encodedC = [ 1, 1, 0, 0, 0, 1, 1, 0]
+
+      let encodedAWithParity = encodedA ++ [1]
+      let encodedBWithParity = encodedB ++ [1]
+      let encodedCWithParity = encodedC ++ [0]
+
+      encodeCharWithParity 'a' `shouldBe` encodedAWithParity
+      encodeCharWithParity 'b' `shouldBe` encodedBWithParity
+      encodeCharWithParity 'c' `shouldBe` encodedCWithParity
+      encodeWithParity "abc" `shouldBe` encodedAWithParity ++ encodedBWithParity ++ encodedCWithParity
 
     it "transmit string" $ do
       transmit "abcde" `shouldBe` "abcde"
