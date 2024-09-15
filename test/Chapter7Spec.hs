@@ -140,13 +140,19 @@ spec = do
       rmempty [["Green"], [], ["Red", "Blue"]] `shouldBe` [["Green"], ["Red", "Blue"]]
 
     it "eliminate losers" $ do
-      let ballots = [["Red", "Green"], ["Blue"], ["Green", "Red","Blue"], ["Blue","Green", "Red"], ["Green"]]
-        in elim "Red" ballots `shouldBe` [ ["Green"],["Blue"], ["Green", "Blue"], ["Blue","Green"], ["Green"]]
+      let ballots = [["Red", "Green"], ["Blue"], ["Green", "Red", "Blue"], ["Blue", "Green", "Red"], ["Green"]]
+       in elim "Red" ballots `shouldBe` [["Green"], ["Blue"], ["Green", "Blue"], ["Blue", "Green"], ["Green"]]
 
     it "rank ballot results" $ do
-      let ballots = [["Red", "Green"], ["Blue"], ["Green", "Red","Blue"], ["Blue","Green", "Red"], ["Green"]]
-        in rank ballots `shouldBe` ["Red",  "Blue", "Green"]
+      let ballots = [["Red", "Green"], ["Blue"], ["Green", "Red", "Blue"], ["Blue", "Green", "Red"], ["Green"]]
+       in rank ballots `shouldBe` ["Red", "Blue", "Green"]
 
     it "winner of ballot votes" $ do
-      let ballots = [["Red", "Green"], ["Blue"], ["Green", "Red","Blue"], ["Blue","Green", "Red"], ["Green"]]
-        in winner' ballots `shouldBe` "Green"
+      let ballots = [["Red", "Green"], ["Blue"], ["Green", "Red", "Blue"], ["Blue", "Green", "Red"], ["Green"]]
+       in winner' ballots `shouldBe` "Green"
+
+    it "re-express list comprehension" $ do
+      filterMap (\x -> x >= 1) (\x -> x + 1) [0, 2, 3, -1] `shouldBe` [3, 4]
+      positive (\x -> x >= 1) (\x -> x + 1) [0, 2, 3, -1] `shouldBe` [3, 4]
+
+-- positive (\x -> x <= 1) [0, 2, 3, -1] `shouldBe` [2, 3]

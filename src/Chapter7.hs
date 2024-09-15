@@ -120,7 +120,7 @@ removeDuplicates :: (Eq a) => [a] -> [a]
 removeDuplicates [] = []
 removeDuplicates (x : xs) = x : filter (/= x) (removeDuplicates xs)
 
-result :: Ord a => [a] -> [(Int, a)]
+result :: (Ord a) => [a] -> [(Int, a)]
 result votes' = sortByFirst [(count uniqueVote votes', uniqueVote) | uniqueVote <- uniqueVotes]
   where
     uniqueVotes = removeDuplicates votes'
@@ -141,10 +141,16 @@ rmempty = filter (/= [])
 elim :: (Eq a) => a -> [[a]] -> [[a]]
 elim target = map (filter (/= target))
 
-rank :: Ord a => [[a]] -> [a]
+rank :: (Ord a) => [[a]] -> [a]
 rank = map snd . result . map head
 
-winner' :: Ord a => [[a]] -> a
+winner' :: (Ord a) => [[a]] -> a
 winner' bs = case rank (rmempty bs) of
-              [c] -> c -- Only one left, this is the winner.
-              (c:cs) -> winner' (elim c bs) -- Ranked in increasing order, so this can be removed.
+  [c] -> c -- Only one left, this is the winner.
+  (c : cs) -> winner' (elim c bs) -- Ranked in increasing order, so this can be removed.
+
+filterMap :: (a -> Bool) -> (a -> b) -> [a] -> [b]
+filterMap p f xs = [f x | x <- xs, p x]
+
+positive :: (a -> Bool) -> (a -> b) -> [a] -> [b]
+positive p m xs = map m (filter p xs)
