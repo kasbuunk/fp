@@ -249,3 +249,12 @@ isIn needle = foldr ((||) . (== needle)) False
 
 select :: (Ord a) => a -> a -> [a] -> [a]
 select low high = filter (\x -> x <= high && x >= low)
+
+capitals :: [Char] -> [Char]
+capitals xs = [toUpper x | x <- xs, isAlpha x]
+
+capitals' :: [Char] -> [Char]
+capitals' = map toUpper . filter isAlpha
+
+sumPositionsEqual :: (Eq a) => [a] -> [a] -> Int
+sumPositionsEqual xs ys = sum [i | (x, y, i) <- zip3 xs ys [0 ..], x == y]

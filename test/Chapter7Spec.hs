@@ -280,3 +280,11 @@ spec = do
       select 5 9 [] `shouldBe` []
       select 5 9 [4, 12] `shouldBe` []
       select 5 9 [1 .. 10] `shouldBe` [5 .. 9]
+
+    it "to upper" $ do
+      capitals "abcD&-EF" `shouldBe` "ABCDEF"
+      capitals' "abcD&-EF" `shouldBe` "ABCDEF"
+
+    it "sum of positions of equal elements" $ do
+      sumPositionsEqual [1, 2, 3] [3, 2, 1] `shouldBe` 1
+      sumPositionsEqual [1, 2, 3, 4] [8, 8, 3, 4] `shouldBe` 5
