@@ -172,3 +172,7 @@ twice init :: [a] -> [a]
 ```
 
 d) `twice init [1, 2, 3] :: Num a => [a]`
+
+W7.6
+
+a) The function `foldr` takes a binary operation `f` of type `a -> b -> b`, an accumulator of type `b` and a list of type `[a]`. It returns a result of type `b`, the same as the accumulator. In the list, it takes the last element and folds that `a` to type `b` with `f`. The return value acts as the new accumulator for the second-to-last element in the list. Finally, when this is repeated and the list is exhausted, the final accumulator is returned as the output of the fold.

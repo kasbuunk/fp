@@ -258,3 +258,7 @@ capitals' = map toUpper . filter isAlpha
 
 sumPositionsEqual :: (Eq a) => [a] -> [a] -> Int
 sumPositionsEqual xs ys = sum [i | (x, y, i) <- zip3 xs ys [0 ..], x == y]
+
+minList :: (Ord a) => [a] -> a
+minList [] = undefined
+minList (x : xs) = foldl min x xs

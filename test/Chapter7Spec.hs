@@ -288,3 +288,7 @@ spec = do
     it "sum of positions of equal elements" $ do
       sumPositionsEqual [1, 2, 3] [3, 2, 1] `shouldBe` 1
       sumPositionsEqual [1, 2, 3, 4] [8, 8, 3, 4] `shouldBe` 5
+
+    it "minimum of list" $ do
+      minList [4] `shouldBe` 4
+      minList [5, 1, 9, 2, -1, 11] `shouldBe` -1
