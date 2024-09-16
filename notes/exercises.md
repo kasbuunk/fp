@@ -154,3 +154,21 @@ b) For performance reasons it makes more sense to define them separately for `In
 c) The type of the literal `7.3` is `Fractional a => a`.
 
 d) The types that are part of the `Fractional` type class are: `Float` and `Double`.
+
+## Chapter 7
+
+W7.1
+
+a) The function `twice` is a function that takes a function `f :: a -> a` and an argument of the type `a`, and applies `f` to a and once again to its output of type `a`. That's why the output must be of the same type as its input.
+
+b) `twice :: (a -> a) -> a -> a`
+
+c)
+
+```
+twice :: (b -> b) -> b -> b
+init :: [a] -> [a]
+twice init :: [a] -> [a]
+```
+
+d) `twice init [1, 2, 3] :: Num a => [a]`

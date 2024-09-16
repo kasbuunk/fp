@@ -243,3 +243,6 @@ altMap f g (x : xs) = f x : altMap g f xs
 
 luhn :: [Int] -> Bool
 luhn xs = sum (altMap luhnDouble id xs) `mod` 10 == 0
+
+isIn :: (Eq a) => a -> [a] -> Bool
+isIn needle = foldr ((||) . (== needle)) False

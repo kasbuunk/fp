@@ -269,3 +269,9 @@ spec = do
     it "luhn algorithm" $ do
       luhn [1, 7, 8, 4] `shouldBe` True
       luhn [4, 7, 8, 3] `shouldBe` False
+
+    it "element is in list" $ do
+      isIn 0 [] `shouldBe` False
+      isIn 0 [1, 2] `shouldBe` False
+      isIn 0 [0] `shouldBe` True
+      isIn 0 [1, 2, 0, 3] `shouldBe` True
