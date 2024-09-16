@@ -262,3 +262,10 @@ spec = do
       let ys = [ys | (_, ys) <- zip [0, 0, 0] (iterate' (* 2) 1)]
       xs `shouldBe` [0, 1, 2]
       ys `shouldBe` [1, 2, 4]
+
+    it "alt map" $ do
+      altMap (+ 10) (+ 100) [0 .. 4] `shouldBe` [10, 101, 12, 103, 14]
+
+    it "luhn algorithm" $ do
+      luhn [1, 7, 8, 4] `shouldBe` True
+      luhn [4, 7, 8, 3] `shouldBe` False

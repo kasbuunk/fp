@@ -1,5 +1,6 @@
 module Chapter7 where
 
+import Chapter4 (luhnDouble)
 import Data.Char
 
 add' :: Int -> Int -> Int
@@ -235,3 +236,10 @@ uncurry' f = \(x, y) -> f x y
 
 iterate' :: (a -> a) -> a -> [a]
 iterate' f x = x : unfold (const False) f f x
+
+altMap :: (a -> b) -> (a -> b) -> [a] -> [b]
+altMap _ _ [] = []
+altMap f g (x : xs) = f x : altMap g f xs
+
+luhn :: [Int] -> Bool
+luhn xs = sum (altMap luhnDouble id xs) `mod` 10 == 0
