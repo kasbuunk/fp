@@ -2,6 +2,7 @@ module Chapter7 where
 
 import Chapter4 (luhnDouble)
 import Data.Char
+import Data.List
 
 add' :: Int -> Int -> Int
 add' x y = x + y
@@ -71,9 +72,9 @@ sum'' = sum''' 0
     sum''' v [] = v
     sum''' v (x : xs) = x + sum''' v xs
 
-foldl' :: (a -> b -> a) -> a -> [b] -> a
-foldl' _ acc [] = acc
-foldl' f acc (x : xs) = foldl' f (f acc x) xs
+foldl'' :: (a -> b -> a) -> a -> [b] -> a
+foldl'' _ acc [] = acc
+foldl'' f acc (x : xs) = foldl'' f (f acc x) xs
 
 odd' :: (Integral a) => a -> Bool
 odd' = not . even
@@ -262,3 +263,12 @@ sumPositionsEqual xs ys = sum [i | (x, y, i) <- zip3 xs ys [0 ..], x == y]
 minList :: (Ord a) => [a] -> a
 minList [] = undefined
 minList (x : xs) = foldl min x xs
+
+findPalindromes :: (Eq a) => [a] -> [[a]]
+findPalindromes = filter isPalindrome . findSubstrings
+
+isPalindrome :: (Eq a) => [a] -> Bool
+isPalindrome xs = xs == reverse xs && (length xs >= 2)
+
+findSubstrings :: [a] -> [[a]]
+findSubstrings = concat . map tails . inits

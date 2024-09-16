@@ -94,7 +94,7 @@ spec = do
       sum'' [5, 10, 12] `shouldBe` 27
 
     it "exponent with foldl" $ do
-      foldl' (^) 2 [3, 4] `shouldBe` ((2 ^ 3) ^ 4)
+      foldl'' (^) 2 [3, 4] `shouldBe` ((2 ^ 3) ^ 4)
 
     it "exponent with foldr" $ do
       foldr (^) 2 [3, 4] `shouldBe` (3 ^ (4 ^ 2))
@@ -292,3 +292,13 @@ spec = do
     it "minimum of list" $ do
       minList [4] `shouldBe` 4
       minList [5, 1, 9, 2, -1, 11] `shouldBe` -1
+
+    it "is palindrome" $ do
+      isPalindrome "" `shouldBe` False -- Too few characters
+      isPalindrome "a" `shouldBe` False -- Too few characters
+      isPalindrome "ab" `shouldBe` False
+      isPalindrome "aba" `shouldBe` True
+      isPalindrome "abab" `shouldBe` False
+
+    it "palindrome" $ do
+      findPalindromes "abccba f" `shouldBe` ["cc", "bccb", "abccba"]
