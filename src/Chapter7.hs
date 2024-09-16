@@ -246,3 +246,6 @@ luhn xs = sum (altMap luhnDouble id xs) `mod` 10 == 0
 
 isIn :: (Eq a) => a -> [a] -> Bool
 isIn needle = foldr ((||) . (== needle)) False
+
+select :: (Ord a) => a -> a -> [a] -> [a]
+select low high = filter (\x -> x <= high && x >= low)

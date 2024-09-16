@@ -275,3 +275,8 @@ spec = do
       isIn 0 [1, 2] `shouldBe` False
       isIn 0 [0] `shouldBe` True
       isIn 0 [1, 2, 0, 3] `shouldBe` True
+
+    it "select elments from list" $ do
+      select 5 9 [] `shouldBe` []
+      select 5 9 [4, 12] `shouldBe` []
+      select 5 9 [1 .. 10] `shouldBe` [5 .. 9]
