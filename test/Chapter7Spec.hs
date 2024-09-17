@@ -329,3 +329,7 @@ spec = do
       repeat' 2 (+ 1) 0 `shouldBe` 2
       repeat' 5 (* 2) 1 `shouldBe` 32
       repeat' 3 (^ 2) 2 `shouldBe` 256
+
+    it "add1 with lambda and repeat" $ do
+      let add1 = (\n -> repeat' n (+ 1))
+       in add1 5 1 `shouldBe` 6
