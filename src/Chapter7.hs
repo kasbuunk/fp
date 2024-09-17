@@ -272,3 +272,23 @@ isPalindrome xs = xs == reverse xs && (length xs >= 2)
 
 findSubstrings :: [a] -> [[a]]
 findSubstrings = concat . map tails . inits
+
+foldl1'' :: (a -> a -> a) -> [a] -> a
+foldl1'' _ [] = undefined
+foldl1'' _ [x] = x
+foldl1'' f (x : xs) = f (foldl1'' f xs) x
+
+foldr1' :: (a -> a -> a) -> [a] -> a
+foldr1' _ [] = undefined
+foldr1' _ [x] = x
+foldr1' f (x : xs) = foldr f x xs
+
+-- foldl (+) 0 [1,2,3] = (((0+1)+2)+3)
+foldl''' :: (b -> a -> b) -> b -> [a] -> b
+foldl''' _ acc [] = acc
+foldl''' f acc (x : xs) = f (foldl''' f acc xs) x
+
+-- foldr (+) 0 [1,2,3] = (1+(2+(3+0)))
+foldr''' :: (a -> b -> b) -> b -> [a] -> b
+foldr''' _ acc [] = acc
+foldr''' f acc (x : xs) = f x (foldr''' f acc xs)

@@ -95,9 +95,11 @@ spec = do
 
     it "exponent with foldl" $ do
       foldl'' (^) 2 [3, 4] `shouldBe` ((2 ^ 3) ^ 4)
+      foldl''' (^) 2 [3, 4] `shouldBe` ((2 ^ 3) ^ 4)
 
     it "exponent with foldr" $ do
       foldr (^) 2 [3, 4] `shouldBe` (3 ^ (4 ^ 2))
+      foldr''' (^) 2 [3, 4] `shouldBe` (3 ^ (4 ^ 2))
 
     it "compose odd" $ do
       odd' 1 `shouldBe` True
@@ -302,3 +304,9 @@ spec = do
 
     it "palindrome" $ do
       findPalindromes "abccba f" `shouldBe` ["cc", "bccb", "abccba"]
+
+    it "redefine foldl1" $ do
+      foldl1'' (^) [2, 3, 4] `shouldBe` foldl (^) 2 [3, 4]
+
+    it "redefine foldr1" $ do
+      foldr1' (^) [2, 3, 4] `shouldBe` foldr (^) 2 [3, 4]
