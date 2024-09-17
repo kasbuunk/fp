@@ -324,3 +324,8 @@ spec = do
 
     it "compose sum of squared even integers" $ do
       sumEvenSquared [1 .. 5] `shouldBe` 20
+
+    it "repeat function application" $ do
+      repeat' 2 (+ 1) 0 `shouldBe` 2
+      repeat' 5 (* 2) 1 `shouldBe` 32
+      repeat' 3 (^ 2) 2 `shouldBe` 256
