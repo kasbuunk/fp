@@ -310,3 +310,11 @@ spec = do
 
     it "redefine foldr1" $ do
       foldr1' (^) [2, 3, 4] `shouldBe` foldr (^) 2 [3, 4]
+
+    it "minimum of list with foldl1" $ do
+      minListl1 [4] `shouldBe` 4
+      minListl1 [5, 1, 9, 2, -1, 11] `shouldBe` -1
+
+    it "minimum of list with foldr1" $ do
+      minListr1 [4] `shouldBe` 4
+      minListr1 [5, 1, 9, 2, -1, 11] `shouldBe` -1

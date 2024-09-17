@@ -292,3 +292,9 @@ foldl''' f acc (x : xs) = f (foldl''' f acc xs) x
 foldr''' :: (a -> b -> b) -> b -> [a] -> b
 foldr''' _ acc [] = acc
 foldr''' f acc (x : xs) = f x (foldr''' f acc xs)
+
+minListl1 :: (Ord a) => [a] -> a
+minListl1 = foldl1 min
+
+minListr1 :: (Ord a) => [a] -> a
+minListr1 = foldr1 min
