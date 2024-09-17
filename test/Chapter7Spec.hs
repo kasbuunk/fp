@@ -318,3 +318,9 @@ spec = do
     it "minimum of list with foldr1" $ do
       minListr1 [4] `shouldBe` 4
       minListr1 [5, 1, 9, 2, -1, 11] `shouldBe` -1
+
+    it "compose square of even integers" $ do
+      evenSquared [1 .. 5] `shouldBe` [4, 16]
+
+    it "compose sum of squared even integers" $ do
+      sumEvenSquared [1 .. 5] `shouldBe` 20

@@ -187,3 +187,9 @@ foldr1 :: (a -> a -> a) -> [a] -> a
 ```
 
 b) The types of foldl1 and foldr1 are identical. They differ from foldl and foldr, because the first element of the list is used as the accumulator. Because all elements in a list must be of the same type, the accumulator must be of the same type as the list elements and return type.
+
+W7.11
+
+b) The definition `sumEvenSquared = compose [sum, map (^2), filter even]` is incorrect, because map in this case takes an `Int` and returns an `Int` and applies it to a list of numbers, whilst sum takes `[Int]` and returns a single `Int`. These types are not the same, so they cannot be in the same list that `compose` takes. The correct implementation would be:
+
+`sumEvenSquared = sum . (compose [map (^ 2), filter even])`

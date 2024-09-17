@@ -298,3 +298,9 @@ minListl1 = foldl1 min
 
 minListr1 :: (Ord a) => [a] -> a
 minListr1 = foldr1 min
+
+evenSquared :: [Int] -> [Int]
+evenSquared = compose [map (^ 2), filter even]
+
+sumEvenSquared :: [Int] -> Int
+sumEvenSquared = sum . (compose [map (^ 2), filter even])
