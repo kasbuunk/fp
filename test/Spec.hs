@@ -1,5 +1,6 @@
 module Main (main) where
 
+-- import qualified Assignment1Spec
 import qualified Chapter1Spec
 import qualified Chapter2Spec
 import qualified Chapter3Spec
@@ -20,3 +21,5 @@ main = hspec $ do
   describe "Chapter5" Chapter5Spec.spec
   describe "Chapter6" Chapter6Spec.spec
   describe "Chapter7" Chapter7Spec.spec
+
+-- describe "Assignment1" Assignment1Spec.spec
