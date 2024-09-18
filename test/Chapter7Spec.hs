@@ -333,3 +333,7 @@ spec = do
     it "add1 with lambda and repeat" $ do
       let add1 = (\n -> repeat' n (+ 1))
        in add1 5 1 `shouldBe` 6
+
+    it "bin2char" $ do
+      let encodedA = [1, 0, 0, 0, 0, 1, 1, 0]
+      bin2char encodedA `shouldBe` 'a'

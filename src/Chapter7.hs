@@ -308,3 +308,6 @@ sumEvenSquared = sum . (compose [map (^ 2), filter even])
 repeat' :: Int -> (a -> a) -> a -> a
 repeat' 0 _ x = x
 repeat' n f x = repeat' (n - 1) f (f x)
+
+bin2char :: [Bit] -> Char
+bin2char = chr . bin2int
