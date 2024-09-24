@@ -1,5 +1,4 @@
 .stack-work/
 *~
-src/Assignment*.hs
 src/Figuur.hs
-test/Assignment*Spec.hs
+test/FiguurSpec.hs

@@ -25,7 +25,6 @@ source-repository head
 
 library
   exposed-modules:
-      Assignment1
       Chapter1
       Chapter2
       Chapter3
@@ -67,7 +66,6 @@ test-suite fp-test
   type: exitcode-stdio-1.0
   main-is: Spec.hs
   other-modules:
-      Assignment1Spec
       Chapter1Spec
       Chapter2Spec
       Chapter3Spec
@@ -75,6 +73,7 @@ test-suite fp-test
       Chapter5Spec
       Chapter6Spec
       Chapter7Spec
+      FiguurSpec
       PlaygroundSpec
       Paths_fp
   autogen-modules:
