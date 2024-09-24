@@ -32,7 +32,6 @@ library
       Chapter5
       Chapter6
       Chapter7
-      Figuur
       Lib
       Playground
   other-modules:
@@ -73,7 +72,6 @@ test-suite fp-test
       Chapter5Spec
       Chapter6Spec
       Chapter7Spec
-      FiguurSpec
       PlaygroundSpec
       Paths_fp
   autogen-modules:
