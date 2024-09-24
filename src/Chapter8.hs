@@ -24,3 +24,7 @@ data Shape = Circle Float | Rectangle Float Float
 area :: Shape -> Float
 area (Circle r) = pi * r ^ 2
 area (Rectangle h w) = h * w
+
+safediv :: Int -> Int -> Maybe Int
+safediv _ 0 = Nothing
+safediv x y = Just (x `div` y)

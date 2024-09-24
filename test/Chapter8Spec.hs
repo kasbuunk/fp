@@ -21,3 +21,7 @@ spec = do
     it "shape areas" $ do
       floatEq 0.001 (area (Circle 1)) pi `shouldBe` True
       floatEq 0.001 (area (Rectangle 4 6)) 24 `shouldBe` True
+
+    it "safediv" $ do
+      safediv 20 0 `shouldBe` Nothing
+      safediv 20 2 `shouldBe` Just 10
