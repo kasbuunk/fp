@@ -32,6 +32,7 @@ library
       Chapter5
       Chapter6
       Chapter7
+      Chapter8
       Lib
       Playground
   other-modules:
@@ -72,6 +73,7 @@ test-suite fp-test
       Chapter5Spec
       Chapter6Spec
       Chapter7Spec
+      Chapter8Spec
       PlaygroundSpec
       Paths_fp
   autogen-modules:
