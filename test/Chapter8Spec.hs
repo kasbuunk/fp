@@ -25,3 +25,7 @@ spec = do
     it "safediv" $ do
       safediv 20 0 `shouldBe` Nothing
       safediv 20 2 `shouldBe` Just 10
+
+    it "safehead" $ do
+      safehead ([] :: [Int]) `shouldBe` Nothing
+      safehead [20, 2] `shouldBe` Just 20

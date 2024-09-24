@@ -28,3 +28,7 @@ area (Rectangle h w) = h * w
 safediv :: Int -> Int -> Maybe Int
 safediv _ 0 = Nothing
 safediv x y = Just (x `div` y)
+
+safehead :: [a] -> Maybe a
+safehead [] = Nothing
+safehead (x:_) = Just x
