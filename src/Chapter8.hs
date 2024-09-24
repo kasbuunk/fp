@@ -18,3 +18,9 @@ move East (x, y) = (x + 1, y)
 moves :: [Move] -> Pos -> Pos
 moves [] pos = pos
 moves (m : ms) pos = moves ms (move m pos)
+
+data Shape = Circle Float | Rectangle Float Float
+
+area :: Shape -> Float
+area (Circle r) = pi * r ^ 2
+area (Rectangle h w) = h * w
