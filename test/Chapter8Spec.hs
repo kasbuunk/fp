@@ -29,3 +29,24 @@ spec = do
     it "safehead" $ do
       safehead ([] :: [Int]) `shouldBe` Nothing
       safehead [20, 2] `shouldBe` Just 20
+
+    it "tautology checker" $ do
+      tautology (Const True) `shouldBe` True
+      tautology (Const False) `shouldBe` False
+      tautology (And (Var 'A') (Not (Var 'A'))) `shouldBe` False
+      tautology (Imply (And (Var 'A') (Var 'B')) (Var 'A')) `shouldBe` True
+      tautology (Imply (Var 'A') (And (Var 'B') (Var 'A'))) `shouldBe` False
+      tautology (Imply (And (Var 'A') (Imply (Var 'A') (Var 'B'))) (Var 'B')) `shouldBe` True
+
+    it "generate boolean combinations" $ do
+      bools 0 `shouldBe` ([] :: [[Bool]])
+      bools 1 `shouldBe` [[False], [True]]
+      bools 2 `shouldBe` [[False, False], [False, True], [True, False], [True, True]]
+
+    it "generate substitutions for proposition" $ do
+      substitutes (Imply (Var 'A') (And (Var 'B') (Var 'A')))
+        `shouldBe` [ [('A', False), ('B', False)],
+                     [('A', False), ('B', True)],
+                     [('A', True), ('B', False)],
+                     [('A', True), ('B', True)]
+                   ]
