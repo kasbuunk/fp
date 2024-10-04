@@ -88,3 +88,22 @@ exec (ADD n : c) m = exec c (n+m)
 
 value' :: Expr -> Int
 value' e = eval e []
+
+data Nat = Zero | Succ Nat
+
+add :: Nat -> Nat -> Nat
+add Zero y = y
+-- add (Succ x) y = add x (Succ y)
+add (Succ x) y = Succ (add x y)
+
+mult :: Nat -> Nat -> Nat
+mult Zero _ = Zero
+mult (Succ x) y = add y (mult x y)
+
+nat2int :: Nat -> Int
+nat2int Zero = 0
+nat2int (Succ x) = 1 + nat2int x
+
+int2nat :: Int -> Nat
+int2nat 0 = Zero
+int2nat x = Succ (int2nat (x-1))

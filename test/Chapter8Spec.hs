@@ -58,3 +58,15 @@ spec = do
       value' (Val 0) `shouldBe` 0
       value' (Add (Val 2) (Val 3)) `shouldBe` 5
       value' (Add (Add (Val 2) (Val 3)) (Val 4)) `shouldBe` 9
+
+    it "int <-> nat" $ do
+      nat2int (int2nat 0) `shouldBe` 0
+      nat2int (int2nat 5) `shouldBe` 5
+
+    it "multiply natural numbers" $ do
+      nat2int (mult Zero Zero) `shouldBe` 0
+      nat2int (mult Zero (Succ Zero)) `shouldBe` 0
+      nat2int (mult (Succ Zero) Zero) `shouldBe` 0
+      nat2int (mult (Succ Zero) (Succ Zero) )`shouldBe` 1
+      nat2int (mult (int2nat 2) (int2nat 3)) `shouldBe` 6
+      nat2int (mult (int2nat 5) (int2nat 3)) `shouldBe` 15
