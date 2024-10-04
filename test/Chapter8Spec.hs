@@ -55,3 +55,6 @@ spec = do
       value (Val 0) `shouldBe` 0
       value (Add (Val 2) (Val 3)) `shouldBe` 5
       value (Add (Add (Val 2) (Val 3)) (Val 4)) `shouldBe` 9
+      value' (Val 0) `shouldBe` 0
+      value' (Add (Val 2) (Val 3)) `shouldBe` 5
+      value' (Add (Add (Val 2) (Val 3)) (Val 4)) `shouldBe` 9
