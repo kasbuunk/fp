@@ -70,3 +70,16 @@ spec = do
       nat2int (mult (Succ Zero) (Succ Zero) )`shouldBe` 1
       nat2int (mult (int2nat 2) (int2nat 3)) `shouldBe` 6
       nat2int (mult (int2nat 5) (int2nat 3)) `shouldBe` 15
+
+    it "occurs in tree" $ do
+      occurs 5 (Leaf 5) `shouldBe` True
+      occurs 5 (Leaf 10) `shouldBe` False
+      occurs 5 (Node (Leaf 2) 3 (Leaf 4)) `shouldBe` False
+      occurs 5 (Node (Leaf 2) 3 (Leaf 5)) `shouldBe` True
+      occurs' 5 (Leaf 5) `shouldBe` True
+      occurs' 5 (Leaf 10) `shouldBe` False
+      occurs' 1 (Node (Leaf 2) 3 (Leaf 4)) `shouldBe` False
+      occurs' 2 (Node (Leaf 2) 3 (Leaf 4)) `shouldBe` True
+      occurs' 3 (Node (Leaf 2) 3 (Leaf 4)) `shouldBe` True
+      occurs' 4 (Node (Leaf 2) 3 (Leaf 4)) `shouldBe` True
+      occurs' 5 (Node (Leaf 2) 3 (Leaf 4)) `shouldBe` False

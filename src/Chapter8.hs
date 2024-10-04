@@ -107,3 +107,18 @@ nat2int (Succ x) = 1 + nat2int x
 int2nat :: Int -> Nat
 int2nat 0 = Zero
 int2nat x = Succ (int2nat (x-1))
+
+data Tree a = Leaf a | Node (Tree a) a (Tree a)
+
+occurs :: Ord a => a -> Tree a -> Bool
+occurs x (Leaf y) = x == y
+occurs x (Node n y m)
+          | x == y = True
+          | otherwise = occurs x n || occurs x m
+
+occurs' :: Ord a => a -> Tree a -> Bool
+occurs' x (Leaf y) = x == y
+occurs' x (Node n y m)
+          | compare x y == EQ = True
+          | compare x y == GT = occurs' x m
+          | compare x y == LT = occurs' x n
