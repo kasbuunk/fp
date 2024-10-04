@@ -84,7 +84,7 @@ eval (Add x y) c = eval x (EVAL y : c)
 exec :: Cont -> Int -> Int
 exec [] n = n
 exec (EVAL y : c) n = eval y (ADD n : c)
-exec (ADD n : c) m = exec c (n+m)
+exec (ADD n : c) m = exec c (n + m)
 
 value' :: Expr -> Int
 value' e = eval e []
@@ -106,19 +106,19 @@ nat2int (Succ x) = 1 + nat2int x
 
 int2nat :: Int -> Nat
 int2nat 0 = Zero
-int2nat x = Succ (int2nat (x-1))
+int2nat x = Succ (int2nat (x - 1))
 
 data Tree a = Leaf a | Node (Tree a) a (Tree a)
 
-occurs :: Ord a => a -> Tree a -> Bool
+occurs :: (Ord a) => a -> Tree a -> Bool
 occurs x (Leaf y) = x == y
 occurs x (Node n y m)
-          | x == y = True
-          | otherwise = occurs x n || occurs x m
+  | x == y = True
+  | otherwise = occurs x n || occurs x m
 
-occurs' :: Ord a => a -> Tree a -> Bool
+occurs' :: (Ord a) => a -> Tree a -> Bool
 occurs' x (Leaf y) = x == y
-occurs' x (Node n y m)
-          | compare x y == EQ = True
-          | compare x y == GT = occurs' x m
-          | compare x y == LT = occurs' x n
+occurs' x (Node n y m) = case compare x y of
+  LT -> occurs' x n
+  GT -> occurs' x m
+  EQ -> True
