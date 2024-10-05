@@ -122,3 +122,13 @@ occurs' x (Node n y m) = case compare x y of
   LT -> occurs' x n
   GT -> occurs' x m
   EQ -> True
+
+data Tree' a = Leaf' a | Node' (Tree' a) (Tree' a)
+
+balanced :: Tree' a -> Bool
+balanced (Leaf' _) = True
+balanced (Node' x y) = abs (numLeaves x - numLeaves y) <= 1
+
+numLeaves :: Tree' a -> Int
+numLeaves (Leaf' _) = 1
+numLeaves (Node' x y) = numLeaves x + numLeaves y

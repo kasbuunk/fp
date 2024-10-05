@@ -67,7 +67,7 @@ spec = do
       nat2int (mult Zero Zero) `shouldBe` 0
       nat2int (mult Zero (Succ Zero)) `shouldBe` 0
       nat2int (mult (Succ Zero) Zero) `shouldBe` 0
-      nat2int (mult (Succ Zero) (Succ Zero) )`shouldBe` 1
+      nat2int (mult (Succ Zero) (Succ Zero)) `shouldBe` 1
       nat2int (mult (int2nat 2) (int2nat 3)) `shouldBe` 6
       nat2int (mult (int2nat 5) (int2nat 3)) `shouldBe` 15
 
@@ -83,3 +83,8 @@ spec = do
       occurs' 3 (Node (Leaf 2) 3 (Leaf 4)) `shouldBe` True
       occurs' 4 (Node (Leaf 2) 3 (Leaf 4)) `shouldBe` True
       occurs' 5 (Node (Leaf 2) 3 (Leaf 4)) `shouldBe` False
+
+    it "balanced tree" $ do
+      balanced (Node' (Node' (Leaf' 1) (Leaf' 2)) (Leaf' 1)) `shouldBe` True
+      balanced (Node' (Node' (Leaf' 1) (Leaf' 2)) (Node' (Leaf' 3) (Leaf' 4))) `shouldBe` True
+      balanced (Node' (Node' (Node' (Leaf' 5) (Leaf' 8)) (Leaf' 2)) (Leaf' 1)) `shouldBe` False
