@@ -88,3 +88,10 @@ spec = do
       balanced (Node' (Node' (Leaf' 1) (Leaf' 2)) (Leaf' 1)) `shouldBe` True
       balanced (Node' (Node' (Leaf' 1) (Leaf' 2)) (Node' (Leaf' 3) (Leaf' 4))) `shouldBe` True
       balanced (Node' (Node' (Node' (Leaf' 5) (Leaf' 8)) (Leaf' 2)) (Leaf' 1)) `shouldBe` False
+
+    it "balance tree" $ do
+      balanced (balance [1]) `shouldBe` True
+      balanced (balance [1, 2]) `shouldBe` True
+      balanced (balance [1, 2, 3]) `shouldBe` True
+      balanced (balance [1, 2, 3, 4]) `shouldBe` True
+      balanced (balance [1, 2, 3, 4, 5]) `shouldBe` True

@@ -132,3 +132,15 @@ balanced (Node' x y) = abs (numLeaves x - numLeaves y) <= 1
 numLeaves :: Tree' a -> Int
 numLeaves (Leaf' _) = 1
 numLeaves (Node' x y) = numLeaves x + numLeaves y
+
+balance :: [a] -> Tree' a
+balance [] = undefined
+balance [x] = Leaf' x
+balance xs = Node' (balance firstHalf) (balance secondHalf)
+  where
+    (firstHalf, secondHalf) = splitAtHalf xs
+
+splitAtHalf :: [a] -> ([a], [a])
+splitAtHalf xs = splitAt l xs
+  where
+    l = length xs `div` 2
