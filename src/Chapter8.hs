@@ -7,6 +7,9 @@ type Assoc k v = [(k, v)]
 find :: (Eq k) => k -> Assoc k v -> v
 find key table = head [value | (x, value) <- table, key == x]
 
+findAll :: (Eq k) => k -> Assoc k v -> [v]
+findAll key table = [value | (x, value) <- table, key == x]
+
 data Move = North | South | East | West
 
 type Pos = (Double, Double)
@@ -158,3 +161,8 @@ folde f g (Add x y) = g (folde f g x) (folde f g y)
 
 eval' :: Expr -> Int
 eval' = folde id (+)
+
+testNumber :: Int -> Int -> Maybe Int
+testNumber x y
+  | x >= y = Just y
+  | otherwise = Nothing

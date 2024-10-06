@@ -13,6 +13,10 @@ spec = do
       let t = [("foo", 0), ("bar", 1), ("key", 7), ("baz", 10)]
        in find "key" t `shouldBe` 7
 
+    it "find all" $ do
+      let t = [("foo", 0), ("bar", 1), ("foo", 7), ("baz", 10)]
+       in findAll "foo" t `shouldBe` [0, 7]
+
     it "move positions" $ do
       moves [North, North] (0, 0) `shouldBe` (0, 2)
       moves [West, South] (0, 0) `shouldBe` (-1, -1)
@@ -30,13 +34,25 @@ spec = do
       safehead ([] :: [Int]) `shouldBe` Nothing
       safehead [20, 2] `shouldBe` Just 20
 
-    it "tautology checker" $ do
+    it "tautology checker: const" $ do
       tautology (Const True) `shouldBe` True
       tautology (Const False) `shouldBe` False
+
+    it "tautology checker: and, not" $ do
       tautology (And (Var 'A') (Not (Var 'A'))) `shouldBe` False
+
+    it "tautology checker: implication" $ do
       tautology (Imply (And (Var 'A') (Var 'B')) (Var 'A')) `shouldBe` True
       tautology (Imply (Var 'A') (And (Var 'B') (Var 'A'))) `shouldBe` False
       tautology (Imply (And (Var 'A') (Imply (Var 'A') (Var 'B'))) (Var 'B')) `shouldBe` True
+
+    it "tautology checker: disjunction" $ do
+      tautology (Or (Var 'A') (Const True)) `shouldBe` True
+      tautology (Or (Var 'A') (Const False)) `shouldBe` False
+
+    it "tautology checker: equivalence" $ do
+      tautology (Iff (Var 'A') (Var 'A')) `shouldBe` True
+      tautology (Iff (Var 'A') (Const False)) `shouldBe` False
 
     it "generate boolean combinations" $ do
       bools 0 `shouldBe` ([] :: [[Bool]])
@@ -58,6 +74,9 @@ spec = do
       value' (Val 0) `shouldBe` 0
       value' (Add (Val 2) (Val 3)) `shouldBe` 5
       value' (Add (Add (Val 2) (Val 3)) (Val 4)) `shouldBe` 9
+
+    it "abstract machine: multiplication" $ do
+      value' (Add (Mult (Val 2) (Val 3)) (Val 4)) `shouldBe` 10
 
     it "int <-> nat" $ do
       nat2int (int2nat 0) `shouldBe` 0
@@ -95,3 +114,10 @@ spec = do
       balanced (balance [1, 2, 3]) `shouldBe` True
       balanced (balance [1, 2, 3, 4]) `shouldBe` True
       balanced (balance [1, 2, 3, 4, 5]) `shouldBe` True
+
+    it "folde" $ do
+      eval' (Add (Add (Val 2) (Val 4)) (Val 1)) `shouldBe` 7
+
+    it "testNumber" $ do
+      testNumber 10 18 `shouldBe` Nothing
+      testNumber 10 8 `shouldBe` Just 8
