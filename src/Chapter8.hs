@@ -35,7 +35,7 @@ safehead :: [a] -> Maybe a
 safehead [] = Nothing
 safehead (x : _) = Just x
 
-data Prop = Const Bool | Var Char | Not Prop | And Prop Prop | Imply Prop Prop
+data Prop = Const Bool | Var Char | Not Prop | And Prop Prop | Imply Prop Prop | Or Prop Prop | Iff Prop Prop
 
 type Subst = Assoc Char Bool
 
@@ -48,14 +48,18 @@ evaluate _ (Const b) = b
 evaluate s (Var x) = find x s
 evaluate s (Not p) = not (evaluate s p)
 evaluate s (And p q) = evaluate s p && evaluate s q
+evaluate s (Or p q) = evaluate s p || evaluate s q
 evaluate s (Imply p q) = evaluate s p <= evaluate s q
+evaluate s (Iff p q) = evaluate s p == evaluate s q
 
 vars :: Prop -> [Char]
 vars (Const _) = []
 vars (Var c) = [c]
 vars (Not p) = vars p
 vars (And p q) = vars p ++ vars q
+vars (Or p q) = vars p ++ vars q
 vars (Imply p q) = vars p ++ vars q
+vars (Iff p q) = vars p ++ vars q
 
 bools :: Int -> [[Bool]]
 bools 0 = []
@@ -67,24 +71,28 @@ substitutes p = map (zip vs) (bools (length vs))
   where
     vs = removeDuplicates (vars p)
 
-data Expr = Val Int | Add Expr Expr
+data Expr = Val Int | Add Expr Expr | Mult Expr Expr
 
 value :: Expr -> Int
 value (Val n) = n
 value (Add x y) = value x + value y
+value (Mult x y) = value x * value y
 
 type Cont = [Op]
 
-data Op = EVAL Expr | ADD Int
+data Op = EVAL_ADD Expr | EVAL_MULT Expr | ADD Int | MULT Int
 
 eval :: Expr -> Cont -> Int
 eval (Val n) c = exec c n
-eval (Add x y) c = eval x (EVAL y : c)
+eval (Add x y) c = eval x (EVAL_ADD y : c)
+eval (Mult x y) c = eval x (EVAL_MULT y : c)
 
 exec :: Cont -> Int -> Int
 exec [] n = n
-exec (EVAL y : c) n = eval y (ADD n : c)
+exec (EVAL_ADD y : c) n = eval y (ADD n : c)
+exec (EVAL_MULT y : c) n = eval y (MULT n : c)
 exec (ADD n : c) m = exec c (n + m)
+exec (MULT n : c) m = exec c (n * m)
 
 value' :: Expr -> Int
 value' e = eval e []
@@ -93,7 +101,6 @@ data Nat = Zero | Succ Nat
 
 add :: Nat -> Nat -> Nat
 add Zero y = y
--- add (Succ x) y = add x (Succ y)
 add (Succ x) y = Succ (add x y)
 
 mult :: Nat -> Nat -> Nat
