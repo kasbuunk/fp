@@ -123,7 +123,7 @@ occurs' x (Node n y m) = case compare x y of
   GT -> occurs' x m
   EQ -> True
 
-data Tree' a = Leaf' a | Node' (Tree' a) (Tree' a)
+data Tree' a = Leaf' a | Node' (Tree' a) (Tree' a) deriving (Show)
 
 balanced :: Tree' a -> Bool
 balanced (Leaf' _) = True
@@ -144,3 +144,10 @@ splitAtHalf :: [a] -> ([a], [a])
 splitAtHalf xs = splitAt l xs
   where
     l = length xs `div` 2
+
+folde :: (Int -> a) -> (a -> a -> a) -> Expr -> a
+folde f _ (Val x) = f x
+folde f g (Add x y) = g (folde f g x) (folde f g y)
+
+eval' :: Expr -> Int
+eval' = folde id (+)
