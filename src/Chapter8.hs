@@ -164,5 +164,15 @@ eval' = folde id (+)
 
 testNumber :: Int -> Int -> Maybe Int
 testNumber x y
-  | x >= y = Just y
+  | x >= y && y >= 0 = Just y
   | otherwise = Nothing
+
+data List a = Nil | Cons a (List a)
+
+datalist2list :: [a] -> List a
+datalist2list [] = Nil
+datalist2list (x : xs) = Cons x (datalist2list xs)
+
+list2datalist :: List a -> [a]
+list2datalist Nil = []
+list2datalist (Cons x l) = x : list2datalist l

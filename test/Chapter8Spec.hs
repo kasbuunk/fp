@@ -121,3 +121,8 @@ spec = do
     it "testNumber" $ do
       testNumber 10 18 `shouldBe` Nothing
       testNumber 10 8 `shouldBe` Just 8
+      testNumber 10 (-1) `shouldBe` Nothing
+
+    it "linked list" $ do
+      list2datalist (datalist2list [1]) `shouldBe` [1]
+      list2datalist (datalist2list [1, 2, 3]) `shouldBe` [1, 2, 3]
