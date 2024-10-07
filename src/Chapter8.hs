@@ -170,8 +170,7 @@ testNumber x y
 data List a = Nil | Cons a (List a)
 
 datalist2list :: [a] -> List a
-datalist2list [] = Nil
-datalist2list (x : xs) = Cons x (datalist2list xs)
+datalist2list = foldr Cons Nil
 
 list2datalist :: List a -> [a]
 list2datalist Nil = []
