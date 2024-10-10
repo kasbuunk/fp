@@ -126,3 +126,10 @@ spec = do
     it "linked list" $ do
       list2datalist (datalist2list [1]) `shouldBe` [1]
       list2datalist (datalist2list [1, 2, 3]) `shouldBe` [1, 2, 3]
+
+    it "list Eq" $ do
+      (Nil :: (List Int)) == Nil `shouldBe` True
+      Nil == Cons 2 Nil `shouldBe` False
+      (Cons 2 Nil) == Nil `shouldBe` False
+      (Cons 3 Nil) == (Cons 2 Nil) `shouldBe` False
+      (Cons 2 (Cons 1 Nil)) == (Cons 2 (Cons 1 Nil)) `shouldBe` True

@@ -167,7 +167,13 @@ testNumber x y
   | x >= y && y >= 0 = Just y
   | otherwise = Nothing
 
-data List a = Nil | Cons a (List a)
+data List a = Nil | Cons a (List a) deriving (Show)
+
+instance (Eq a) => Eq (List a) where
+  Nil == Nil = True
+  Nil == _ = False
+  _ == Nil = False
+  Cons x l == Cons y l' = x == y && l == l'
 
 datalist2list :: [a] -> List a
 datalist2list = foldr Cons Nil
