@@ -40,6 +40,9 @@ safehead (x : _) = Just x
 
 data Prop = Const Bool | Var Char | Not Prop | And Prop Prop | Imply Prop Prop | Or Prop Prop | Iff Prop Prop
 
+instance Eq Prop where
+  p == q = tautology (And (Imply p q) (Imply q p))
+
 type Subst = Assoc Char Bool
 
 tautology :: Prop -> Bool

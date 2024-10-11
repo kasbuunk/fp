@@ -133,3 +133,6 @@ spec = do
       (Cons 2 Nil) == Nil `shouldBe` False
       (Cons 3 Nil) == (Cons 2 Nil) `shouldBe` False
       (Cons 2 (Cons 1 Nil)) == (Cons 2 (Cons 1 Nil)) `shouldBe` True
+
+    it "logical equivalence" $ do
+      (Imply (Var 'A') (Var 'A')) == Const True `shouldBe` True
