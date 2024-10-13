@@ -61,6 +61,18 @@ choices = concat . map perms . subs
 choices' :: [a] -> [[a]]
 choices' xs = [zs | ys <- subs xs, zs <- perms ys]
 
+isChoice :: (Eq a) => [a] -> [a] -> Bool
+isChoice [] _ = True
+isChoice (x : xs) ys
+  | x `elem` ys = isChoice xs (rmFirstOccurence x ys)
+  | otherwise = False
+
+rmFirstOccurence :: (Eq a) => a -> [a] -> [a]
+rmFirstOccurence x [] = []
+rmFirstOccurence x (y : ys)
+  | x == y = ys
+  | otherwise = y : rmFirstOccurence x ys
+
 solution :: Expr -> [Int] -> Int -> Bool
 solution e ns n =
   elem (values e) (choices ns) && eval e == [n]

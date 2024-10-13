@@ -33,3 +33,7 @@ spec = do
       -- length (solutions [1, 3, 7, 10, 25, 50] 765) `shouldBe` 780 -- Slow
       length (solutions' [1, 3, 7, 10, 25, 50] 765) `shouldBe` 780
       length (solutions'' [1, 3, 7, 10, 25, 50] 765) `shouldBe` 49
+
+    it "is choice" $ do
+      isChoice [1, 2] [1, 2, 3] `shouldBe` True
+      isChoice [1, 4] [1, 2, 3] `shouldBe` False
