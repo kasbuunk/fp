@@ -21,6 +21,12 @@ valid Sub x y = x > y
 valid Mul _ _ = True
 valid Div x y = x `mod` y == 0
 
+valid'' :: Op -> Int -> Int -> Bool
+valid'' Add _ _ = True
+valid'' Sub _ _ = True
+valid'' Mul _ _ = True
+valid'' Div x y = y /= 0 && x `mod` y == 0
+
 apply :: Op -> Int -> Int -> Int
 apply Add x y = x + y
 apply Sub x y = x - y
@@ -40,6 +46,10 @@ values (App _ l r) = values l ++ values r
 eval :: Expr -> [Int]
 eval (Val n) = [n]
 eval (App o l r) = [apply o x y | x <- eval l, y <- eval r, valid o x y]
+
+eval' :: Expr -> [Int]
+eval' (Val n) = [n]
+eval' (App o l r) = [apply o x y | x <- eval' l, y <- eval' r, valid'' o x y]
 
 subs :: [a] -> [[a]]
 subs [] = [[]]

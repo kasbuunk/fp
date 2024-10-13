@@ -45,3 +45,7 @@ spec = do
     it "count valid expressions" $ do
       let ns = [1, 3, 7, 10, 25, 50] :: [Int]
        in length (filter (\x -> length x == 1) (map eval (concatMap exprs (choices ns)))) `shouldBe` 4672540
+
+    it "count valid expressions for all integers" $ do
+      let ns = [1, 3, 7, 10, 25, 50] :: [Int]
+       in length (filter (\x -> length x == 1) (map eval' (concatMap exprs (choices ns)))) `shouldBe` 10839369
