@@ -47,3 +47,29 @@ interleave x (y : ys) = (x : y : ys) : map (y :) (interleave x ys)
 perms :: [a] -> [[a]]
 perms [] = [[]]
 perms (x : xs) = concat (map (interleave x) (perms xs))
+
+choices :: [a] -> [[a]]
+choices = concat . map perms . subs
+
+solution :: Expr -> [Int] -> Int -> Bool
+solution e ns n =
+  elem (values e) (choices ns) && eval e == [n]
+
+split :: [a] -> [([a], [a])]
+split [] = []
+split [_] = []
+split (x : xs) = ([x], xs) : [(x : ls, rs) | (ls, rs) <- split xs]
+
+exprs :: [Int] -> [Expr]
+exprs [] = []
+exprs [n] = [Val n]
+exprs ns = [e | (ls, rs) <- split ns, l <- exprs ls, r <- exprs rs, e <- combine l r]
+
+combine :: Expr -> Expr -> [Expr]
+combine l r = [App o l r | o <- ops]
+
+ops :: [Op]
+ops = [Add, Sub, Mul, Div]
+
+solutions :: [Int] -> Int -> [Expr]
+solutions ns n = [e | ns' <- choices ns, e <- exprs ns', eval e == [n]]
