@@ -29,4 +29,5 @@ spec = do
       split [1, 2, 3, 4] `shouldBe` [([1], [2, 3, 4]), ([1, 2], [3, 4]), ([1, 2, 3], [4])]
 
     it "solutions" $ do
-      length (solutions [1, 3, 7, 10, 25, 50] 765) `shouldBe` 780
+      -- length (solutions [1, 3, 7, 10, 25, 50] 765) `shouldBe` 780 -- Slow
+      length (solutions' [1, 3, 7, 10, 25, 50] 765) `shouldBe` 780
