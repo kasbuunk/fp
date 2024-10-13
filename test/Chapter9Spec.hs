@@ -37,3 +37,11 @@ spec = do
     it "is choice" $ do
       isChoice [1, 2] [1, 2, 3] `shouldBe` True
       isChoice [1, 4] [1, 2, 3] `shouldBe` False
+
+    it "count expressions" $ do
+      let ns = [1, 3, 7, 10, 25, 50] :: [Int]
+       in length (concatMap exprs (choices ns)) `shouldBe` 33665406
+
+    it "count valid expressions" $ do
+      let ns = [1, 3, 7, 10, 25, 50] :: [Int]
+       in length (filter (\x -> length x == 1) (map eval (concatMap exprs (choices ns)))) `shouldBe` 4672540
