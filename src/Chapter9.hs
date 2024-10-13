@@ -1,37 +1,42 @@
 module Chapter9 where
 
-data Op = Add | Sub | Mul | Div
+data Op = Add | Sub | Mul | Div | Exp
 
 instance Show Op where
   show Add = "+"
   show Sub = "-"
   show Mul = "*"
   show Div = "/"
+  show Exp = "^"
 
 -- Optimised
 valid' :: Op -> Int -> Int -> Bool
 valid' Add x y = x <= y
 valid' Sub x y = x > y
 valid' Mul x y = x <= y && x /= 1 && y /= 1
-valid' Div x y = x `mod` y == 0 && y /= 1
+valid' Div x y = y /= 0 && x `mod` y == 0 && y /= 1
+valid' Exp x y = x > 1 && y > 1
 
 valid :: Op -> Int -> Int -> Bool
 valid Add _ _ = True
 valid Sub x y = x > y
 valid Mul _ _ = True
-valid Div x y = x `mod` y == 0
+valid Div x y = y /= 0 && x `mod` y == 0
+valid Exp x y = x > 1 && y > 1
 
 valid'' :: Op -> Int -> Int -> Bool
 valid'' Add _ _ = True
 valid'' Sub _ _ = True
 valid'' Mul _ _ = True
 valid'' Div x y = y /= 0 && x `mod` y == 0
+valid'' Exp x y = x > 1 && y > 1
 
 apply :: Op -> Int -> Int -> Int
 apply Add x y = x + y
 apply Sub x y = x - y
 apply Mul x y = x * y
 apply Div x y = x `div` y
+apply Exp x y = x ^ y
 
 data Expr = Val Int | App Op Expr Expr
 
@@ -102,6 +107,9 @@ combine l r = [App o l r | o <- ops]
 
 ops :: [Op]
 ops = [Add, Sub, Mul, Div]
+
+opsWithExp :: [Op]
+opsWithExp = [Add, Sub, Mul, Div, Exp]
 
 solutions :: [Int] -> Int -> [Expr]
 solutions ns n = [e | ns' <- choices ns, e <- exprs ns', eval e == [n]]
