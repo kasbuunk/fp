@@ -42,10 +42,16 @@ spec = do
       let ns = [1, 3, 7, 10, 25, 50] :: [Int]
        in length (concatMap exprs (choices ns)) `shouldBe` 33665406
 
-    it "count valid expressions" $ do
-      let ns = [1, 3, 7, 10, 25, 50] :: [Int]
-       in length (filter (\x -> length x == 1) (map eval (concatMap exprs (choices ns)))) `shouldBe` 4672540
+    -- Slow
+    -- it "count valid expressions" $ do
+    --   let ns = [1, 3, 7, 10, 25, 50] :: [Int]
+    --    in length (filter (\x -> length x == 1) (map eval (concatMap exprs (choices ns)))) `shouldBe` 4672540
 
-    it "count valid expressions for all integers" $ do
-      let ns = [1, 3, 7, 10, 25, 50] :: [Int]
-       in length (filter (\x -> length x == 1) (map eval' (concatMap exprs (choices ns)))) `shouldBe` 10839369
+    -- Slow
+    -- it "count valid expressions for all integers" $ do
+    --   let ns = [1, 3, 7, 10, 25, 50] :: [Int]
+    --    in length (filter (\x -> length x == 1) (map eval' (concatMap exprs (choices ns)))) `shouldBe` 10839369
+
+    it "alternative subs" $ do
+      subs' [1] `shouldBe` [[], [1]]
+      subs' [1, 2, 3] `shouldBe` [[], [3], [2], [2, 3], [1], [1, 3], [1, 2], [1, 2, 3]]

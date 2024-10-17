@@ -62,6 +62,12 @@ subs (x : xs) = yss ++ map (x :) yss
   where
     yss = subs xs
 
+subs' :: [a] -> [[a]]
+subs' xs = foldr op e xs
+  where
+    e = [[]]
+    op x yss = yss ++ map (x :) yss
+
 interleave :: a -> [a] -> [[a]]
 interleave x [] = [[x]]
 interleave x (y : ys) = (x : y : ys) : map (y :) (interleave x ys)
