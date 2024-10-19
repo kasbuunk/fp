@@ -76,3 +76,9 @@ welcomeTwo = do
   person2 <- askName
   person1
   person2
+
+for' :: [a] -> (a -> IO ()) -> IO ()
+for' [] _ = return ()
+for' (n : ns) f = do
+  f n
+  for' ns f
