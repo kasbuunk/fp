@@ -26,6 +26,7 @@ source-repository head
 library
   exposed-modules:
       Chapter1
+      Chapter10
       Chapter2
       Chapter3
       Chapter4
@@ -67,6 +68,7 @@ test-suite fp-test
   type: exitcode-stdio-1.0
   main-is: Spec.hs
   other-modules:
+      Chapter10Spec
       Chapter1Spec
       Chapter2Spec
       Chapter3Spec

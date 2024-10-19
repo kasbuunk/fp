@@ -89,7 +89,7 @@ isChoice (x : xs) ys
   | otherwise = False
 
 rmFirstOccurence :: (Eq a) => a -> [a] -> [a]
-rmFirstOccurence x [] = []
+rmFirstOccurence _ [] = []
 rmFirstOccurence x (y : ys)
   | x == y = ys
   | otherwise = y : rmFirstOccurence x ys
