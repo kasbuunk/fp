@@ -43,6 +43,11 @@ showDouble = do
   c <- getChar
   putChar (double c)
 
+showDouble' :: IO ()
+showDouble' = do
+  cs <- readNumber'
+  putStrLn' (show (2 * cs))
+
 double :: Char -> Char
 double c
   | isDigit c && digitToInt c <= 4 = intToDigit (2 * digitToInt c)
@@ -53,3 +58,8 @@ isNumber' [] = True
 isNumber' (c : cs)
   | c >= '0' && c <= '9' = isNumber' cs
   | otherwise = False
+
+readNumber' :: IO Int
+readNumber' = do
+  cs <- getLine
+  if isNumber' cs then return (read cs) else readNumber'
