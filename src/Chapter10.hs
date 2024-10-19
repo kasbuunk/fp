@@ -63,3 +63,16 @@ readNumber' :: IO Int
 readNumber' = do
   cs <- getLine
   if isNumber' cs then return (read cs) else readNumber'
+
+askName :: IO (IO ())
+askName = do
+  putStr "What is your name? "
+  name <- getLine
+  return (putStrLn ("Hello, " ++ name ++ "."))
+
+welcomeTwo :: IO ()
+welcomeTwo = do
+  person1 <- askName
+  person2 <- askName
+  person1
+  person2
