@@ -87,18 +87,18 @@ for' (n : ns) f = do
 hangman :: IO ()
 hangman = do
   secret <- sgetLine
-  won <- play secret
+  won <- playHangman secret
   print won
 
-play :: String -> IO Bool
-play secret = do
+playHangman :: String -> IO Bool
+playHangman secret = do
   guess <- getLine
   if guess == secret
     then
       return True
     else do
       putStrLn (match secret guess)
-      play secret
+      playHangman secret
 
 match :: String -> String -> String
 match xs ys = [if (elem x ys) then x else '-' | x <- xs]
@@ -122,3 +122,74 @@ getCh = do
   x <- getChar
   hSetEcho stdin True
   return x
+
+next :: Int -> Int
+next 1 = 2
+next 2 = 1
+
+type Board = [Int]
+
+initial :: Board
+initial = [5, 4, 3, 2, 1]
+
+finished :: Board -> Bool
+finished = all (== 0)
+
+valid :: Board -> Int -> Int -> Bool
+valid board row num = board !! (row - 1) >= num
+
+move :: Board -> Int -> Int -> Board
+move board row num = [if n == (row - 1) then stars - num else stars | (stars, n) <- zip board [0 ..]]
+
+putRow :: Int -> Int -> IO ()
+putRow x y = do
+  putStrLn (show x ++ ": " ++ concat (replicate y "* "))
+  return ()
+
+putBoard :: Board -> IO ()
+putBoard [x, y, z, u, v] = do
+  putRow 1 x
+  putRow 2 y
+  putRow 3 z
+  putRow 4 u
+  putRow 5 v
+
+getDigit :: String -> IO Int
+getDigit prompt = do
+  putStr prompt
+  x <- getChar
+  newline
+  if isDigit x
+    then
+      return (digitToInt x)
+    else do
+      putStrLn "Try a number."
+      getDigit prompt
+
+newline :: IO ()
+newline = putChar '\n'
+
+playNim :: Board -> Int -> IO ()
+playNim board player = do
+  newline
+  putBoard board
+  if finished board
+    then do
+      newline
+      putStr ("Player " ++ show (next player) ++ "wins!")
+    else do
+      newline
+      putStr ("Player " ++ show player)
+      newline
+      row <- getDigit "Enter a row number: "
+      num <- getDigit "Enter the number of stars to remove: "
+      if valid board row num
+        then
+          playNim (move board row num) (next player)
+        else do
+          putStrLn "Error: invalid move"
+          playNim board player
+
+nim :: IO ()
+nim = do
+  playNim initial 1
