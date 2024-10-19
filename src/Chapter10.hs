@@ -1,6 +1,7 @@
 module Chapter10 where
 
 import Data.Char
+import System.IO
 
 firstAndThirdChar :: IO (Char, Char)
 firstAndThirdChar = do
@@ -82,3 +83,42 @@ for' [] _ = return ()
 for' (n : ns) f = do
   f n
   for' ns f
+
+hangman :: IO ()
+hangman = do
+  secret <- sgetLine
+  won <- play secret
+  print won
+
+play :: String -> IO Bool
+play secret = do
+  guess <- getLine
+  if guess == secret
+    then
+      return True
+    else do
+      putStrLn (match secret guess)
+      play secret
+
+match :: String -> String -> String
+match xs ys = [if (elem x ys) then x else '-' | x <- xs]
+
+sgetLine :: IO String
+sgetLine =
+  do
+    x <- getCh
+    if x == '\n'
+      then do
+        putChar x
+        return []
+      else do
+        putChar '-'
+        xs <- sgetLine
+        return (x : xs)
+
+getCh :: IO Char
+getCh = do
+  hSetEcho stdin False
+  x <- getChar
+  hSetEcho stdin True
+  return x
