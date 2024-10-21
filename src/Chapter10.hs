@@ -273,3 +273,24 @@ births b =
 
 nextgen :: GameBoard -> GameBoard
 nextgen b = survivors b ++ births b
+
+showCell :: GameBoard -> Pos -> Char
+showCell b p
+  | isAlive b p = 'X'
+  | otherwise = '.'
+
+showRow :: GameBoard -> Int -> String
+showRow b y = [showCell b (x, y) | x <- [0 .. width - 1]]
+
+showBoard :: GameBoard -> String
+showBoard b = unlines [showRow b y | y <- [0 .. height - 1]]
+
+clearBoard :: String
+clearBoard = concat (replicate (height * width) "\BS")
+
+life' :: GameBoard -> IO ()
+life' b = do
+  cls
+  putStr (showBoard b)
+  wait 500000
+  life' (nextgen b)
