@@ -11,3 +11,6 @@ spec = do
       isNumber' "9" `shouldBe` True
       isNumber' "10" `shouldBe` True
       isNumber' "a0" `shouldBe` False
+
+    it "nextgen game of life" $ do
+      nextgen glider `shouldBe` [(4, 3), (3, 4), (4, 4), (3,2), (5,3)]

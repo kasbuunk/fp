@@ -193,3 +193,83 @@ playNim board player = do
 nim :: IO ()
 nim = do
   playNim initial 1
+
+life :: GameBoard -> IO ()
+life b =
+  do
+    cls
+    showcells b
+    wait 500000
+    life (nextgen b)
+
+cls :: IO ()
+cls = putStr "\ESC[H\ESC[2J"
+
+wait :: Int -> IO ()
+wait n = sequence_ [return () | _ <- [1 .. n]]
+
+type Pos = (Int, Int)
+
+writeat :: Pos -> String -> IO ()
+writeat p xs = do
+  goto p
+  putStr xs
+
+goto :: Pos -> IO ()
+goto (x, y) = putStr ("\ESC[" ++ show y ++ ";" ++ show x ++ "H")
+
+width :: Int
+width = 10
+
+height :: Int
+height = 10
+
+type GameBoard = [Pos]
+
+glider :: GameBoard
+glider = [(4, 2), (2, 3), (4, 3), (3, 4), (4, 4)]
+
+showcells :: GameBoard -> IO ()
+showcells b = do
+  sequence_ [writeat p "0" | p <- b]
+
+isAlive :: GameBoard -> Pos -> Bool
+isAlive b p = p `elem` b
+
+isEmpty :: GameBoard -> Pos -> Bool
+isEmpty b p = not (isAlive b p)
+
+neighbours :: Pos -> [Pos]
+neighbours (x, y) =
+  map
+    wrap
+    [ (x - 1, y - 1),
+      (x, y - 1),
+      (x + 1, y - 1),
+      (x - 1, y),
+      (x + 1, y),
+      (x - 1, y + 1),
+      (x, y + 1),
+      (x + 1, y + 1)
+    ]
+
+wrap :: Pos -> Pos
+wrap (x, y) = (x `mod` width, y `mod` height)
+
+liveneighbours :: GameBoard -> Pos -> Int
+liveneighbours b = length . filter (isAlive b) . neighbours
+
+survivors :: GameBoard -> [Pos]
+survivors b = filter (\p -> liveneighbours b p `elem` [2, 3]) b
+
+births :: GameBoard -> [Pos]
+births b =
+  [ (x, y)
+    | x <- [0 .. width - 1],
+      y <- [0 .. height - 1],
+      isEmpty b (x, y),
+      liveneighbours b (x, y) == 3
+  ]
+
+nextgen :: GameBoard -> GameBoard
+nextgen b = survivors b ++ births b
