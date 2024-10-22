@@ -19,3 +19,6 @@ next B = B
 
 empty :: Grid
 empty = replicate size (replicate size B)
+
+full :: Grid -> Bool
+full = notElem B . concat

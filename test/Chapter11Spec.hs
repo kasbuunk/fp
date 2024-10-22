@@ -13,3 +13,9 @@ spec = do
 
     it "empty grid" $ do
       empty `shouldBe` [[B, B, B], [B, B, B], [B, B, B]]
+
+    it "empty grid is not full" $ do
+      full empty `shouldBe` False
+
+    it "full grid is full" $ do
+      full (replicate size (replicate size O)) `shouldBe` True
