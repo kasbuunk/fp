@@ -22,3 +22,10 @@ empty = replicate size (replicate size B)
 
 full :: Grid -> Bool
 full = notElem B . concat
+
+turn :: Grid -> Player
+turn g = if os <= xs then O else X
+  where
+    xs = length (filter (== X) ps)
+    os = length (filter (== O) ps)
+    ps = concat g

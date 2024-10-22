@@ -19,3 +19,8 @@ spec = do
 
     it "full grid is full" $ do
       full (replicate size (replicate size O)) `shouldBe` True
+
+    it "whose turn" $ do
+      turn [[B, B, B], [B, B, B], [B, B, B]] `shouldBe` O
+      turn [[O, B, B], [B, B, B], [B, B, B]] `shouldBe` X
+      turn [[X, O, B], [B, B, B], [B, B, B]] `shouldBe` O
