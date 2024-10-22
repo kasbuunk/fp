@@ -33,3 +33,8 @@ spec = do
       wins X [[X, O, B], [X, B, O], [X, O, X]] `shouldBe` True
       wins O [[X, O, B], [X, B, O], [X, O, X]] `shouldBe` False
       wins O [[X, O, B], [X, O, O], [X, O, X]] `shouldBe` True
+
+    it "someone has won" $ do
+      won empty `shouldBe` False
+      won [[X, O, B], [X, O, O], [X, O, X]] `shouldBe` True
+      won [[X, O, B], [X, B, O], [X, O, X]] `shouldBe` True
