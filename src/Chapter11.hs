@@ -49,7 +49,7 @@ won :: Grid -> Bool
 won g = wins O g || wins X g
 
 showGrid :: Grid -> String
-showGrid pps = concat [showRow ps ++ "\n" | ps <- pps]
+showGrid pps = unlines [showRow ps | ps <- pps]
 
 showRow :: [Player] -> String
 showRow [] = ""
@@ -58,3 +58,6 @@ showRow [p]
   | p == X = "X"
   | otherwise = " "
 showRow (p : ps) = showRow [p] ++ "|" ++ showRow ps
+
+putGrid :: Grid -> IO ()
+putGrid = putStr . showGrid
