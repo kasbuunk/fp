@@ -29,3 +29,18 @@ turn g = if os <= xs then O else X
     xs = length (filter (== X) ps)
     os = length (filter (== O) ps)
     ps = concat g
+
+wins :: Player -> Grid -> Bool
+wins p g = winningStrike `elem` strikes
+  where
+    winningStrike
+      | p == X = replicate size X
+      | p == O = replicate size O
+      | otherwise = undefined
+    strikes = rows ++ columns ++ diagonals
+    rows = g
+    columns = transpose g
+    diagonals = [diag g, diag (map reverse g)]
+
+diag :: Grid -> [Player]
+diag g = [x !! n | (x, n) <- zip g [0 .. size - 1]]
