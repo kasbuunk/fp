@@ -47,3 +47,14 @@ diag g = [g !! n !! n | n <- [0 .. size - 1]]
 
 won :: Grid -> Bool
 won g = wins O g || wins X g
+
+showGrid :: Grid -> String
+showGrid pps = concat [showRow ps ++ "\n" | ps <- pps]
+
+showRow :: [Player] -> String
+showRow [] = ""
+showRow [p]
+  | p == O = "O"
+  | p == X = "X"
+  | otherwise = " "
+showRow (p : ps) = showRow [p] ++ "|" ++ showRow ps

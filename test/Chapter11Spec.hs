@@ -38,3 +38,7 @@ spec = do
       won empty `shouldBe` False
       won [[X, O, B], [X, O, O], [X, O, X]] `shouldBe` True
       won [[X, O, B], [X, B, O], [X, O, X]] `shouldBe` True
+
+    it "show grid" $ do
+      showGrid empty `shouldBe` " | | \n | | \n | | \n"
+      showGrid [[X, O, B], [O, X, O], [B, O, X]] `shouldBe` "X|O| \nO|X|O\n |O|X\n"
