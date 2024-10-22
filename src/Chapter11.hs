@@ -43,4 +43,4 @@ wins p g = winningStrike `elem` strikes
     diagonals = [diag g, diag (map reverse g)]
 
 diag :: Grid -> [Player]
-diag g = [x !! n | (x, n) <- zip g [0 .. size - 1]]
+diag g = [g !! n !! n | n <- [0 .. size - 1]]

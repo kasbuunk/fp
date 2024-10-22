@@ -32,3 +32,4 @@ spec = do
       wins X [[X, O, O], [B, O, B], [O, X, X]] `shouldBe` False
       wins X [[X, O, B], [X, B, O], [X, O, X]] `shouldBe` True
       wins O [[X, O, B], [X, B, O], [X, O, X]] `shouldBe` False
+      wins O [[X, O, B], [X, O, O], [X, O, X]] `shouldBe` True
