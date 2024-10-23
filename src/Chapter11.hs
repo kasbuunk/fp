@@ -61,3 +61,6 @@ showRow (p : ps) = showRow [p] ++ "|" ++ showRow ps
 
 putGrid :: Grid -> IO ()
 putGrid = putStr . showGrid
+
+valid :: Grid -> Int -> Bool
+valid g n = n >= 0 && n < size ^ 2 && concat g !! n == B

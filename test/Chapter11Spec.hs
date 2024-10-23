@@ -42,3 +42,14 @@ spec = do
     it "show grid" $ do
       showGrid empty `shouldBe` " | | \n | | \n | | \n"
       showGrid [[X, O, B], [O, X, O], [B, O, X]] `shouldBe` "X|O| \nO|X|O\n |O|X\n"
+
+    it "legal move" $ do
+      valid empty 0 `shouldBe` True
+      valid empty 8 `shouldBe` True
+      valid empty 9 `shouldBe` False
+      valid [[X, B, B], [B, B, B], [B, B, B]] 1 `shouldBe` True
+      valid [[X, B, B], [B, B, B], [B, B, B]] 0 `shouldBe` False
+      valid [[X, B, B], [B, O, B], [B, B, B]] 4 `shouldBe` False
+      valid [[X, B, B], [B, B, B], [B, B, B]] 4 `shouldBe` True
+      valid [[X, B, B], [B, B, B], [B, B, X]] 8 `shouldBe` False
+      valid [[X, B, B], [B, B, B], [B, B, B]] 8 `shouldBe` True
