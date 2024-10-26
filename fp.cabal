@@ -28,6 +28,7 @@ library
       Chapter1
       Chapter10
       Chapter11
+      Chapter15
       Chapter2
       Chapter3
       Chapter4
@@ -71,6 +72,7 @@ test-suite fp-test
   other-modules:
       Chapter10Spec
       Chapter11Spec
+      Chapter15Spec
       Chapter1Spec
       Chapter2Spec
       Chapter3Spec
