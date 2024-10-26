@@ -22,3 +22,7 @@ spec = do
     it "sum powers of n" $ do
       sumPowers 4 2 `shouldBe` 15
       sumPowers 5 2 `shouldBe` 31
+
+    it "next sqrt approximation" $ do
+      next 3.0 1.0 `shouldBe` 2.0
+      next 3.0 2.0 `shouldBe` 1.75

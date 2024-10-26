@@ -14,3 +14,6 @@ firstPowers amount = take amount . powers
 
 sumPowers :: Int -> Int -> Int
 sumPowers amount = sum . firstPowers amount
+
+next :: Float -> Float -> Float
+next n x = (x + n / x) / 2
