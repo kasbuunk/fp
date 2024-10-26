@@ -20,3 +20,6 @@ next n x = (x + n / x) / 2
 
 repeat' :: (Float -> Float -> Float) -> Float -> Float -> [Float]
 repeat' f x y = y : repeat' f x (f x y)
+
+repeat'' :: (Float -> Float) -> Float -> [Float]
+repeat'' f x = iterate f x

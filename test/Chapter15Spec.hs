@@ -29,3 +29,7 @@ spec = do
 
     it "next sqrt sequence" $ do
       take 3 (repeat' next 3.0 1.0) `shouldBe` [1.0, 2.0, 1.75]
+
+    it "iterate sqrt sequence" $ do
+      take 3 (repeat'' (next 3.0) 1.0) `shouldBe` [1.0, 2.0, 1.75]
+      take 3 (iterate (next 3.0) 1.0) `shouldBe` [1.0, 2.0, 1.75]
