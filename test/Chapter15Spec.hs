@@ -26,3 +26,6 @@ spec = do
     it "next sqrt approximation" $ do
       next 3.0 1.0 `shouldBe` 2.0
       next 3.0 2.0 `shouldBe` 1.75
+
+    it "next sqrt sequence" $ do
+      take 3 (repeat' next 3.0 1.0) `shouldBe` [1.0, 2.0, 1.75]
