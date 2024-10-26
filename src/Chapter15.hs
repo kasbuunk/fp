@@ -7,7 +7,7 @@ multByPos' :: [Int] -> [Int]
 multByPos' = zipWith (*) [1 ..]
 
 powers :: Int -> [Int]
-powers n = [n ^ x | x <- [0 ..]]
+powers n = iterate (* n) 1
 
 firstPowers :: Int -> Int -> [Int]
 firstPowers amount = take amount . powers
