@@ -33,3 +33,13 @@ spec = do
     it "iterate sqrt sequence" $ do
       take 3 (repeat'' (next 3.0) 1.0) `shouldBe` [1.0, 2.0, 1.75]
       take 3 (iterate (next 3.0) 1.0) `shouldBe` [1.0, 2.0, 1.75]
+
+    it "close enough approximation sqrt" $ do
+      closeEnough 0.01 [3, 3.0001, 3.000000001] `shouldBe` 3.0001
+      closeEnough 0.01 [3.2, 3.001, 3.0001, 3.00001] `shouldBe` 3.0001
+      closeEnough 0.01 [2.8, 2.998, 2.999, 2.9999] `shouldBe` 2.999
+      closeEnough 0.01 [2.999, 2.9999, 2.99999] `shouldBe` 2.9999
+
+    it "sqrt" $ do
+      abs (sqrt' 1.0 0.01 3 - (sqrt 3)) <= 0.01 `shouldBe` True
+      abs (sqrt' 1.0 0.01 3 - (sqrt 3)) <= 0.000000001 `shouldBe` False
