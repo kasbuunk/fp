@@ -14,3 +14,7 @@ spec = do
 
     it "power lists" $ do
       take 5 (powers 2) `shouldBe` [1, 2, 4, 8, 16]
+      take 5 (powers 3) `shouldBe` [1, 3, 9, 27, 81]
+
+    it "first powers" $ do
+      firstPowers 10 2 `shouldBe` [1, 2, 4, 8, 16, 32, 64, 128, 256, 512]
