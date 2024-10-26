@@ -5,3 +5,6 @@ multByPos xs = [x * p | (x, p) <- zip xs [1 ..]]
 
 multByPos' :: [Int] -> [Int]
 multByPos' = zipWith (*) [1 ..]
+
+powers :: Int -> [Int]
+powers n = [n ^ x | x <- [0 ..]]
