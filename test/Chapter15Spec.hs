@@ -18,3 +18,7 @@ spec = do
 
     it "first powers" $ do
       firstPowers 10 2 `shouldBe` [1, 2, 4, 8, 16, 32, 64, 128, 256, 512]
+
+    it "sum powers of n" $ do
+      sumPowers 4 2 `shouldBe` 15
+      sumPowers 5 2 `shouldBe` 31
