@@ -13,4 +13,4 @@ firstPowers :: Int -> Int -> [Int]
 firstPowers amount = take amount . powers
 
 sumPowers :: Int -> Int -> Int
-sumPowers amount n = sum (firstPowers amount n)
+sumPowers amount = sum . firstPowers amount
