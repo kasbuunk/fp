@@ -3,6 +3,7 @@ module Main (main) where
 import qualified Chapter10Spec
 import qualified Chapter11Spec
 import qualified Chapter15Spec
+import qualified Chapter16Spec
 import qualified Chapter1Spec
 import qualified Chapter2Spec
 import qualified Chapter3Spec
@@ -30,3 +31,4 @@ main = hspec $ do
   describe "Chapter10" Chapter10Spec.spec
   describe "Chapter11" Chapter11Spec.spec
   describe "Chapter15" Chapter15Spec.spec
+  describe "Chapter16" Chapter16Spec.spec
